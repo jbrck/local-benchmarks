@@ -23,17 +23,17 @@ Each benchmark evaluates a specific capability. Full methodology and automation 
 
 | Test | What it measures | Items |
 |---|---|---|
-| [MATH-500](./test_math-500.md) | Multi-step math reasoning (algebra, combinatorics, number theory) | 500 |
-| [HumanEval+](./test_humaneval-plus.md) | Python code generation against hidden test suites | 164 |
-| [GPQA-Diamond](./test_gpqa-diamond.md) | Graduate-level science knowledge (biology, chemistry, physics) | 198 |
-| [IFEval](./test_ifeval.md) | Instruction following with mechanical constraints | 541 |
-| [Tool-eval-bench](./test_tool-eval-bench.md) | Multi-turn agentic tool use across 16 categories | 69 scenarios |
-| [Prose ELO](./test_prose-elo.md) | Writing quality via blind pairwise judgment | 10 tasks × 15 pairs |
-| [Instruction v2](./test_instr-v2.md) | Single-constraint mechanical obedience | 20 tests |
-| [Refusal battery](./test_refusal-battery.md) | Safety alignment on benign/edgy/harmful prompts | 70 prompts |
-| [Reasoning bench](./test_reasoning-bench.md) | Thinking-token efficiency and wall time with reasoning enabled | 8 tasks |
-| [Smoke battery](./test_smoke-battery.md) | Quick screening pass (30 min per model) | 35 tasks |
-| [Speculative decode](./test_spec-decode-mtp-vs-dflash.md) | MTP vs DFlash2 speed and context ceiling comparison | 3 configs × 4 depths |
+| [MATH-500](./test/test_math-500.md) | Multi-step math reasoning (algebra, combinatorics, number theory) | 500 |
+| [HumanEval+](./test/test_humaneval-plus.md) | Python code generation against hidden test suites | 164 |
+| [GPQA-Diamond](./test/test_gpqa-diamond.md) | Graduate-level science knowledge (biology, chemistry, physics) | 198 |
+| [IFEval](./test/test_ifeval.md) | Instruction following with mechanical constraints | 541 |
+| [Tool-eval-bench](./test/test_tool-eval-bench.md) | Multi-turn agentic tool use across 16 categories | 69 scenarios |
+| [Prose ELO](./test/test_prose-elo.md) | Writing quality via blind pairwise judgment | 10 tasks × 15 pairs |
+| [Instruction v2](./test/test_instr-v2.md) | Single-constraint mechanical obedience | 20 tests |
+| [Refusal battery](./test/test_refusal-battery.md) | Safety alignment on benign/edgy/harmful prompts | 70 prompts |
+| [Reasoning bench](./test/test_reasoning-bench.md) | Thinking-token efficiency and wall time with reasoning enabled | 8 tasks |
+| [Smoke battery](./test/test_smoke-battery.md) | Quick screening pass (30 min per model) | 35 tasks |
+| [Speculative decode](./test/test_spec-decode-mtp-vs-dflash.md) | MTP vs DFlash2 speed and context ceiling comparison | 3 configs × 4 depths |
 
 ## Results summary
 
@@ -61,8 +61,27 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | Qwen-AgentWorld-35B-A3B | | | | | | | | | | pruned (smoke: reason 4/10) |
 | Muse-Glimmer-30B | | | | | | | 1332 | | | pruned (bottom prose ELO) |
 
-\* EXL3 HumanEval+ at the 4096-token-cap rerun. The first run at the 1024 default scored 74.4% — an artifact of un-disableable reasoning eating the token budget before code was generated. Details in [humaneval-plus.md](./test_humaneval-plus.md).
+\* EXL3 HumanEval+ at the 4096-token-cap rerun. The first run at the 1024 default scored 74.4% — an artifact of un-disableable reasoning eating the token budget before code was generated. Details in [humaneval-plus.md](./test/test_humaneval-plus.md).
 
 ## Models tested
 
-All local models fit on a single 24 GB RTX 3090. Kept models serve different roles: swift (default — safest, best math), heretic (fiction/writing — not for trusted inputs), GSQ-RCO (smallest VRAM footprint, long context), ornith (best coding), bonsai2 (tiny VRAM, 128K context). Pruned models lost on at least one axis in the full battery.
+Each model that ran the full battery has its own page with results and notes:
+
+| Model | Status | Role |
+|---|---|---|
+| [nous-deepseek-v4-flash](./models/nous-deepseek-v4-flash.md) | baseline | remote baseline |
+| [qwen3.8-27b](./models/qwen3.8-27b.md) | kept | baseline, best coding |
+| [qwen3.8-27b-heretic](./models/qwen3.8-27b-heretic.md) | kept | writing only |
+| [GSQ-RCO-IQ3_S-mtp](./models/gsq-rco-iq3_s-mtp.md) | kept | footprint champion |
+| [swift-qwen3.8-27b](./models/swift-qwen3.8-27b.md) | kept | default |
+| [bonsai2](./models/bonsai2.md) | kept | tiny VRAM, 128K ctx |
+| [orcarouter](./models/orcarouter.md) | kept | uncensored, runtime LoRA |
+| [ornith-1.5-35b-a3b](./models/ornith-1.5-35b-a3b.md) | kept | best coding |
+| [exl3-qwen3.8-27b](./models/exl3-qwen3.8-27b.md) | engine comparison | same weights, different engine |
+| [crack2](./models/crack2.md) | experimental | weight-abliterated |
+| [Signal-3.8-27B-AP](./models/signal-3.8-27b-ap.md) | rejected | mid on every axis |
+| [gpt-oss-20b-mxfp4](./models/gpt-oss-20b-mxfp4.md) | rejected | smoke lied |
+| [hermes-4.3-36b](./models/hermes-4.3-36b.md) | rejected | lost to 27B qwen pair |
+| [qwen3-coder-30b-A3B](./models/qwen3-coder-30b-a3b.md) | rejected | coder that can't code |
+
+Pruned models from smoke only (no full battery): Twin-Turbo, Signal-3.8-27B-AP, gemma-3-27b-it-qat, mistral-small-3.2-24b, Qwen-AgentWorld-35B-A3B, Muse-Glimmer-30B. See [smoke battery](./test/test_smoke-battery.md) for results.
