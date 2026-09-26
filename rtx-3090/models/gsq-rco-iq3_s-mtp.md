@@ -13,6 +13,8 @@
 | Tool-eval-bench | 88 (★★★★) |
 | Instruction v2 | 18/20 |
 | Prose ELO | 1539 |
+| Reasoning bench | not run |
+| Refusal HARMFUL | not run |
 
 **Status:** kept, footprint champion
 

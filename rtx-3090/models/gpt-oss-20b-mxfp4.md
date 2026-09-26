@@ -11,6 +11,12 @@
 | Tool-eval-bench | 75 (★★★★) — TC-48: sent update to unintended recipient |
 | Smoke reasoning | 10/10 |
 | Smoke tool | 10/10 |
+| IFEval prompt/instruction | not run (rejected) |
+| GPQA-Diamond | not run (rejected) |
+| Instruction v2 | not run (rejected) |
+| Prose ELO | not run (rejected) |
+| Reasoning bench | not run (rejected) |
+| Refusal HARMFUL | not run (rejected) |
 
 **Status:** pruned
 

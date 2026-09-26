@@ -12,6 +12,9 @@
 | GPQA-Diamond | 43.9% |
 | Tool-eval-bench | 87 (★★★★) |
 | Instruction v2 | 18/20 |
+| Prose ELO | not run |
+| Reasoning bench | not run |
+| Refusal HARMFUL | not run |
 | Context ceiling | 128K native, ~10 GB VRAM |
 
 **Status:** kept: tiny VRAM, 128K context

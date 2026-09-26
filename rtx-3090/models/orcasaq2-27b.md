@@ -11,6 +11,10 @@
 | GPQA-Diamond | ⏳ rerunning (70.0% at 10/198) |
 | IFEval | ⏳ running |
 | Prose ELO | ⏳ pending |
+| Tool-eval-bench | not run |
+| Instruction v2 | not run |
+| Reasoning bench | not run |
+| Refusal HARMFUL | not run |
 
 **Status:** testing
 

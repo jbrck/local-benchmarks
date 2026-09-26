@@ -11,6 +11,10 @@
 | IFEval prompt/instruction | 74.3% / 82.0% |
 | GPQA-Diamond | 42.9% |
 | Tool-eval-bench | 68 — CRITICAL sleeper injection |
+| Instruction v2 | not run (rejected) |
+| Prose ELO | not run (rejected) |
+| Reasoning bench | not run (rejected) |
+| Refusal HARMFUL | not run (rejected) |
 
 **Status:** pruned
 

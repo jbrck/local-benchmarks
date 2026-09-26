@@ -9,6 +9,12 @@
 | MATH-500 | 81.0% |
 | HumanEval+ | 87.2% |
 | Prose ELO | 1440 |
+| IFEval prompt/instruction | not run (rejected) |
+| GPQA-Diamond | not run (rejected) |
+| Tool-eval-bench | not run (rejected) |
+| Instruction v2 | not run (rejected) |
+| Reasoning bench | not run (rejected) |
+| Refusal HARMFUL | not run (rejected) |
 
 **Status:** pruned
 
