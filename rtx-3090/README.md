@@ -1,6 +1,6 @@
 # local-benchmarks / rtx-3090 — Local Model Benchmarks
 
-**Last updated:** 2026-09-19
+**Last updated:** 2026-09-26
 
 ## System
 
@@ -13,7 +13,7 @@
 | Driver | 580.178.04, CUDA 13.0 |
 | OS | Ubuntu 24.04.5 LTS, kernel 6.8.0-142-generic |
 | Storage | 476 GB NVMe (boot) + 2 TB NVMe (data) + HDDs |
-| Inference engine | llama.cpp (speculative decode: MTP / DFlash2) |
+| Inference engine | llama.cpp (speculative decode: MTP / DFlash2) + vLLM OrcaSAQ2-kernel (hybrid attention models) |
 
 The RTX 3090 powers both inference and image generation through ComfyUI. When ComfyUI is loaded it holds approximately 11 GB of VRAM, leaving about 13 GB for LLM inference.
 
@@ -46,6 +46,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 | | 2/20 | kept, writing |
 | **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 | | | kept, footprint |
 | **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 | 1.41x | **20/20** | kept, default |
+| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | ⏳ | ⏳ | | | | | | testing |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
 | orcarouter (PTQ1_0+LoRA 2.0) | 85.4% | 87.8% | 74.7 / 82.5% | 43.9% | 78 | 17/20 | | | | uncensored, runtime LoRA |
 | ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
@@ -78,6 +79,7 @@ Each model that ran the full battery has its own page with results and notes:
 | [orcarouter](./models/orcarouter.md) | kept | uncensored, runtime LoRA |
 | [ornith-1.5-35b-a3b](./models/ornith-1.5-35b-a3b.md) | kept | best coding |
 | [exl3-qwen3.8-27b](./models/exl3-qwen3.8-27b.md) | engine comparison | same weights, different engine |
+| [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | testing | hybrid attention, math leader |
 | [crack2](./models/crack2.md) | experimental | weight-abliterated |
 | [Signal-3.8-27B-AP](./models/signal-3.8-27b-ap.md) | rejected | mid on every axis |
 | [gpt-oss-20b-mxfp4](./models/gpt-oss-20b-mxfp4.md) | rejected | smoke lied |
