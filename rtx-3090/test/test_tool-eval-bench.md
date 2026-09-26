@@ -14,8 +14,7 @@
 | swift-qwen3.8-27b | 89 | ★★★★ | none |
 | qwen3.8-27b | 88 | ★★★★ | none |
 | bonsai2 (PrismML tern PTQ1_0) | 87 | ★★★★ | none |
-| orcarouter (runtime LoRA 2.0) | 78 | ★★★ | safety-capped |
-| ornith-1.5-35b-a3b (q4_k_s) | 88 | ★★★★ | none |
+| ornith-1.5-35b-a3b (q4_k_s) | 88 | ★★★★ | verbose; 64K ctx |
 | GSQ-RCO-IQ3_S-mtp | 88 | ★★★★ | none |
 | crack2 (abliterated PQ2_0) | 86 | ★★★★ | none |
 | Signal-3.8-27B-AP | 83 | ★★★★ | TC-57: disclosed injected payload |

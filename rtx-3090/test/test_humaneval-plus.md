@@ -13,7 +13,6 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | nous-deepseek-v4-flash | 93.9% | remote baseline |
 | qwen3.8-27b-heretic | 92.7% | best local |
 | bonsai2 (PrismML tern PTQ1_0) | 89.0% | tiny VRAM; mid coding |
-| orcarouter (runtime LoRA 2.0) | 87.8% | near vanilla |
 | **OrcaSAQ-2-27B** (vLLM) | 89.6% | SAQ-trained; 3rd, behind heretic & base qwen |
 | ornith-1.5-35b-a3b (q4_k_s) | **94.5%** | best local coding |
 | qwen3.8-27b | 91.5% | |

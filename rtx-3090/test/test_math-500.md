@@ -13,7 +13,6 @@
 | swift-qwen3.8-27b | 89.2% | best local (previous) |
 | qwen3.8-27b | 86.8% | |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 5.9 GB file, hybrid SSM |
-| orcarouter (runtime LoRA 2.0) | 85.4% | 5.9 GB + 9 MB LoRA |
 | ornith-1.5-35b-a3b (q4_k_s) | 85.2% | 35B MoE, 21 GB, 64k ctx |
 | qwen3.8-27b-heretic | 85.8% | |
 | crack2 (abliterated PQ2_0) | 83.6% | 7.2 GB, weight-edit |

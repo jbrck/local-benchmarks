@@ -14,8 +14,7 @@
 | GSQ-RCO-IQ3_S-mtp | 79.3% | 85.0% | 75 min, 216k tokens |
 | qwen3.8-27b | 77.3% | 83.5% | |
 | bonsai2 (PrismML tern PTQ1_0) | 74.3% | 81.8% | ~65 min, low reason tokens |
-| orcarouter (runtime LoRA 2.0) | 74.7% | 82.5% | low reason tokens |
-| ornith-1.5-35b-a3b (q4_k_s) | 75.0% | 82.7% | 21 GB, 64k ctx |
+| ornith-1.5-35b-a3b (q4_k_s) | 75.0 / 82.7% | verbose coder |
 | qwen3.8-27b-heretic | 77.1% | 83.3% | |
 | crack2 (abliterated PQ2_0) | 77.3% | 84.2% | best IFEval of the abliterated set |
 | qwen3-coder-30b | 74.3% | 82.0% | |

@@ -48,7 +48,6 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 | 1.41x | **20/20** | kept, default |
 | **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | ⏳ | ⏳ | | | | | | testing |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
-| orcarouter (PTQ1_0+LoRA 2.0) | 85.4% | 87.8% | 74.7 / 82.5% | 43.9% | 78 | 17/20 | | | | uncensored, runtime LoRA |
 | ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
 | exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%* | 80.6 / 85.8% | 46.5% | 91 | | | | | EXL3 variant, same weights |
 | crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
@@ -76,7 +75,6 @@ Each model that ran the full battery has its own page with results and notes:
 | [GSQ-RCO-IQ3_S-mtp](./models/gsq-rco-iq3_s-mtp.md) | kept | footprint champion |
 | [swift-qwen3.8-27b](./models/swift-qwen3.8-27b.md) | kept | default |
 | [bonsai2](./models/bonsai2.md) | kept | tiny VRAM, 128K ctx |
-| [orcarouter](./models/orcarouter.md) | kept | uncensored, runtime LoRA |
 | [ornith-1.5-35b-a3b](./models/ornith-1.5-35b-a3b.md) | kept | best coding |
 | [exl3-qwen3.8-27b](./models/exl3-qwen3.8-27b.md) | engine comparison | same weights, different engine |
 | [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | testing | hybrid attention, math leader |

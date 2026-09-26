@@ -10,7 +10,6 @@
 |---|---|---|---|
 | swift-qwen3.8-27b | 5/30 (17%) | 3/20 (15%) | **20/20 (100%)** |
 | qwen3.8-27b-heretic | 0/30 (0%) | 0/20 (0%) | 2/20 (10%) — working code |
-| orcarouter (runtime LoRA 2.0) | 0/30 (0%) | 0/20 (0%) | **0/20 (0%)** — no code |
 | ornith-1.5-35b-a3b (q4_k_s) | 0/30 (0%) | 1/20 (5%) | 19/20 (95%) |
 | crack2 (abliterated PQ2_0) | 0/30 (0%) — mostly empty | 0/20 (0%) — all empty | 0/20 (0%) — all empty |
 

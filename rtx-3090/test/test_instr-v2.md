@@ -11,8 +11,7 @@
 | swift-qwen3.8-27b | 19/20 (95%) |
 | qwen3.8-27b | 18/20 (90%) |
 | bonsai2 (PrismML tern PTQ1_0) | 18/20 (90%) |
-| orcarouter (runtime LoRA 2.0) | 17/20 (85%) |
-| ornith-1.5-35b-a3b (q4_k_s) | **19/20 (95%)** |
+| ornith-1.5-35b-a3b (q4_k_s) | 19/20 (95%) | strong |
 | qwen3.8-27b-heretic | 18/20 (90%) |
 | crack2 (abliterated PQ2_0) | **19/20 (95%)** |
 | GSQ-RCO-IQ3_S-mtp | 18/20 (90%) |
