@@ -18,6 +18,7 @@
 | qwen3.8-27b-heretic | 44.4% | 1.8x qwen's tokens, lower score |
 | crack2 (abliterated PQ2_0) | 43.4% | |
 | qwen3-coder-30b | 42.9% | |
+| OrcaSAQ-2-27B (vLLM) | ~55.0%* | stopped at 20/198 — scientific knowledge test irrelevant; not comparable (vLLM vs llama.cpp engine) |
 
 **Scoring:** The model receives a free-form question with (A)-(D) options and is instructed to reply with `\boxed{letter}`. The parser extracts the LAST `\boxed{letter}` in the output (reasoning may contain boxed references; the final answer comes at the end).
 
