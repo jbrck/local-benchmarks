@@ -16,8 +16,11 @@
 | swift-qwen3.8-27b | 1479 | 23-27-0 |
 | hermes-4.3-36b | 1440 | 18-32-0 |
 | Muse-Glimmer-30B | 1332 | 18-32-0 |
+| **OrcaSAQ-2-27B** (vLLM, no-think) | **1558** | 4-0-6* |
 
 Head-to-head highlights: heretic beats swift 7-3 and GSQ 8-1 but loses to qwen 7-3; qwen beats everyone except a 5-5 tie with Muse; GSQ beats swift 8-2; swift's only dominant win is Muse 9-1.
+
+\* OrcaSAQ-2-27B judged in a separate pass against qwen3.8-27b and hermes-4.3-36b-reasoning (nous-deepseek-v4-flash judge). Undefeated vs both baselines. W-L-T of 4-0-6 means 4 wins, 0 losses, 6 ties across 10 tasks vs each baseline — never lost a pairwise comparison. ELO is not directly comparable to the main battery (different judge session).
 
 Caveats: one judge, one pass, single temperature.
 
