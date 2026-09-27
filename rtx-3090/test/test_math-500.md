@@ -9,7 +9,7 @@
 | Model | Accuracy | Notes |
 |---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | remote baseline |
-| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | **best local** — hybrid attention, 262K ctx |
+| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | **best local** — math leader, 262K ctx |
 | swift-qwen3.8-27b | 89.2% | best local (previous) |
 | qwen3.8-27b | 86.8% | |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 5.9 GB file, hybrid SSM |
