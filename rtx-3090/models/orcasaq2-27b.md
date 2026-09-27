@@ -9,7 +9,7 @@
 | MATH-500 | **90.8%** |
 | HumanEval+ | 89.6% |
 | GPQA-Diamond | 55.0% (20/198) — stopped early |
-| IFEval | ⏳ running |
+| IFEval | **76.0%** / 82.2% |
 | Prose ELO | ⏳ pending |
 | Tool-eval-bench | not run |
 | Instruction v2 | not run |
@@ -25,7 +25,7 @@
 | MATH-500 (500 items) | **11.5h** | 83s | vLLM OrcaSAQ2-kernel |
 | HumanEval+ (164 items) | **2.2h** | 49s | vLLM OrcaSAQ2-kernel |
 | GPQA-Diamond (20/198) | ~41min* | ~74s | vLLM OrcaSAQ2-kernel |
-| IFEval (541 prompts) | ⏳ ~8h est | ~56s | vLLM OrcaSAQ2-kernel |
+| IFEval (541 prompts) | **3.9h** | 26s | vLLM OrcaSAQ2-kernel (--no-think) |
 
 \* GPQA at full 198 items extrapolates to ~4.1h. All timings reflect the vLLM engine at 11.6 tok/s. For comparison, the same tests on llama.cpp GGUF run at 20-25 tok/s and complete 2-4x faster — OrcaSAQ2 has no GGUF quant available.
 

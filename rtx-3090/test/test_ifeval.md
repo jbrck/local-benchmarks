@@ -18,6 +18,7 @@
 | qwen3.8-27b-heretic | 77.1% | 83.3% | |
 | crack2 (abliterated PQ2_0) | 77.3% | 84.2% | best IFEval of the abliterated set |
 | qwen3-coder-30b | 74.3% | 82.0% | |
+| OrcaSAQ-2-27B (vLLM, --no-think) | 76.0% | 82.2% | 3.9h, 172k tokens — thinking disabled for IFEval; 3x improvement over thinking-mode pilot |
 
 **Scoring:** tool-eval-bench's IFEval plugin checks 25 constraint types (length, word limits, JSON schema, forbidden words, start/end with, case transformation, etc.). Each prompt can carry multiple constraints; instruction-level measures whether each individual constraint was satisfied, prompt-level measures whether all constraints on a prompt were satisfied simultaneously.
 
