@@ -38,7 +38,7 @@ Currently the strongest local model on MATH-500 (90.8% — 1.6 pts above swift's
 
 GPQA-Diamond was stopped early (20/198 at 55.0%). The model's scientific knowledge scoring is not comparable to other local models — it was served via vLLM (11.6 tok/s) while all other GPQA runs used llama.cpp GGUF at 20-25 tok/s. More importantly, GPQA-Diamond (graduate science) tests knowledge domains irrelevant to this model's intended use.
 
-Prose ELO **1558** — undefeated vs qwen3.8-27b and hermes-4.3-36b-reasoning in a separate judging session. On par with GSQ-RCO (1539) and ahead of swift (1479). Prose quality is strong when thinking is disabled; with thinking mode, all output tokens are consumed by reasoning and the model returns empty responses.
+Prose ELO **1558** — undefeated vs qwen3.8-27b and hermes-4.3-36b-reasoning in a separate judging session (4W-0L-16T across 20 comparisons — the judge tied 80% of the time, meaning outputs were hard to distinguish). On par with GSQ-RCO (1539) and ahead of swift (1479). Prose quality is strong when thinking is disabled; with thinking mode, all output tokens are consumed by reasoning and the model returns empty responses.
 
 Served via vLLM OrcaSAQ2-kernel (Docker), model ID `exl3`. 262K context at ~21.9 GB VRAM with fp8 KV cache and hybrid attention tuning. Same GPU runs ComfyUI alongside at reduced context depth.
 
