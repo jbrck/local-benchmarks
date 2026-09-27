@@ -18,6 +18,17 @@
 
 **Status:** testing
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **11.5h** | 83s | vLLM OrcaSAQ2-kernel |
+| HumanEval+ (164 items) | **2.2h** | 49s | vLLM OrcaSAQ2-kernel |
+| GPQA-Diamond (20/198) | ~41min* | ~74s | vLLM OrcaSAQ2-kernel |
+| IFEval (541 prompts) | ⏳ ~8h est | ~56s | vLLM OrcaSAQ2-kernel |
+
+\* GPQA at full 198 items extrapolates to ~4.1h. All timings reflect the vLLM engine at 11.6 tok/s. For comparison, the same tests on llama.cpp GGUF run at 20-25 tok/s and complete 2-4x faster — OrcaSAQ2 has no GGUF quant available.
+
 ## Notes
 
 OrcaSAQ-2-27B is a Qwen3-based 27B model with hybrid attention: 48 Gated DeltaNet layers (linear attention, no KV cache) + 16 full-attention layers (every 4th layer). This reduces KV cache memory by ~4x vs dense models, enabling 262K context on a 24 GB GPU with 6.5 GB headroom.

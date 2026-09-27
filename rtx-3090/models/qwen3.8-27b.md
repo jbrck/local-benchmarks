@@ -17,6 +17,14 @@
 
 **Status:** kept
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **3.8h** | 28s | llama.cpp GGUF |
+| HumanEval+ (164 items) | **18min** | 7s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **52min** | 16s | llama.cpp GGUF |
+
 ## Notes
 
 The Qwen3.8-27B family owns this GPU. This is the vanilla Qwen3.8-27B at Q5_K_M quantization — the baseline every other model was compared against. Strong across the board, slightly edged out by specialized variants on individual tests. Prose ELO 1579 puts it second only to heretic among local models.

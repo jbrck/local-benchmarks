@@ -19,6 +19,15 @@
 
 **Status:** kept, default
 
+## Timing
+
+| Test | Total | Per item | Engine |
+||---|---|---|---|
+| MATH-500 (500 items) | **2.8h** | 20s | llama.cpp GGUF |
+| HumanEval+ (164 items) | **9min** | 3s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **14min** | 4s | llama.cpp GGUF |
+| IFEval (541 prompts) | ~75-90min | ~10s | llama.cpp GGUF |
+
 ## Notes
 
 The Swiss Army knife of the local stack. Best local math score (89.2%), best local GPQA (50.5% — the only model above 50%), perfect harmful refusal (20/20), and best instruction-following (19/20). Its reasoning is 1.41x faster than vanilla qwen with 21.7% fewer thinking tokens (its marketing claimed 1.95x/58.3% — direction true, overstated). The tradeoff: coding is a notch behind (87.8% vs 91.5%) and prose is mid-pack (1479). Slight over-refusal on benign prompts (17%). Decode is ~22% slower than GSQ-RCO at equal per-token quality — an engine characteristic, not a model weakness.
