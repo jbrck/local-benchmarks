@@ -184,3 +184,22 @@ Swift's card claimed 1.95x speedup (measured 1.41x). Twin-Turbo (DavidAU) claime
 ### DFlash2 ceiling claim didn't reproduce
 
 A tweet claimed DFlash2 loads ~240k context vs MTP's ~200k on this model and GPU. Both loaded the full native 262k without issue, and the ceiling test pushed both past 400k (MTP: 400k, DFlash2: 420k). The "240k vs 200k" claim was wrong on this box. Verify context ceiling with real load+completion tests, not tweet numbers.
+### OrcaSAQ2-kernel vLLM: thinking produces null content
+
+OrcaSAQ-2-27B has no GGUF quant available. The only serving options are vLLM OrcaSAQ2-kernel (Docker) and native EXL3 (broken on 3.5bpw trellis dequant). Both engines run at ~11.6 tok/s vs llama.cpp's 20-25 tok/s, making every test 2-4x slower than an equivalent GGUF.
+
+On vLLM with `REASONING_PARSER=qwen3` enabled, the model outputs `[think]...[/think]` reasoning before every answer. When ALL output tokens are consumed by reasoning (common for simple prompts like "write a blurb"), vLLM strips the think markers and returns `"content": null` with `finish_reason: "length"`. The response has 500 reasoning tokens and 0 visible content.
+
+**Fix:** Pass `chat_template_kwargs: {"enable_thinking": false}` in every API request to this model for non-reasoning tasks. Equivalent to the `--no-think` flag in tool-eval-bench, which does the same thing under the hood.
+
+### LiteLLM proxy auth for judging
+
+The prose ELO judge script calls the LiteLLM proxy at `http://100.117.19.78:4000/v1`. The proxy requires a valid master key in the `Authorization` header — passing `Bearer local` returns 401 silently, and the judge script catches the exception and records every match as `"tie"`. The first prose ELO run produced 30/30 ties before the auth issue was discovered.
+
+**Fix:** Generate a proxy API key via `PUT /key/generate` with the master key, or store one in a base64-encoded environment variable at runtime. The judge script must decode and pass the key in every request header.
+
+### OrcaSAQ2 IFEval stuck on first request
+
+IFEval run with no `--no-think` flag and default timeout: the model entered thinking mode, generated reasoning indefinitely (no visible output), and the first request appeared stuck for 47 minutes. The log showed no progress because Rich terminal output buffers differently without a PTY.
+
+**Fix:** Always pair `--no-think` with `--no-live` for IFEval on thinking models. Validate with a 3-prompt pilot (with vs without thinking) before committing to the full 541-prompt run.

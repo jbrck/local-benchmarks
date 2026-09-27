@@ -41,3 +41,13 @@ GPQA-Diamond was stopped early (20/198 at 55.0%). The model's scientific knowled
 Prose ELO **1558** — undefeated vs qwen3.8-27b and hermes-4.3-36b-reasoning in a separate judging session. On par with GSQ-RCO (1539) and ahead of swift (1479). Prose quality is strong when thinking is disabled; with thinking mode, all output tokens are consumed by reasoning and the model returns empty responses.
 
 Served via vLLM OrcaSAQ2-kernel (Docker), model ID `exl3`. 262K context at ~21.9 GB VRAM with fp8 KV cache and hybrid attention tuning. Same GPU runs ComfyUI alongside at reduced context depth.
+
+## Reproduction notes
+
+This battery was harder than usual. Specific failures and their resolutions:
+
+**GPQA-Diamond (1024 → 4096 → stopped).** Default 1024 max_tokens produced 71% null responses — the model spent the entire budget on `[think]...[/think]` and vLLM stripped the markers, leaving empty content. Reran at 8192 (later 4096) to match the test standard. Stopped at 20/198 (55.0%) when it became clear the science domain was irrelevant and the vLLM engine made scores incomparable with llama.cpp GGUF runs. **Fix for reproducers:** set `--max-tokens 4096` minimum, and decide upfront whether vLLM vs llama.cpp comparison is meaningful for your question.
+
+**IFEval (stuck → pilot → --no-think).** First attempt ran without max_tokens or --no-think. The model entered thinking mode and generated reasoning indefinitely — first request appeared stuck for 47 minutes. A 3-prompt pilot revealed the fix: thinking mode scored 33% in 4m51s, while `--no-think` scored 100% in 2m47s (3x faster, 3x more accurate). Full run used `--no-think --no-live` and completed 541 prompts in 3.9h at 76.0/82.2%. **Fix for reproducers:** always pilot 3 IFEval prompts with vs without `--no-think` before committing to a full run on thinking models.
+
+**Prose ELO (LiteLLM auth → null content).** Two failures. First: the judge script sent `Authorization: Bearer local` to the LiteLLM proxy, which returned 401. The script caught the exception and recorded every match as `"tie"` — 30/30 ties, useless. Second: even with auth fixed, thinking mode consumed all output tokens on prose prompts (`content: null`). The fix was `chat_template_kwargs: {"enable_thinking": false}` per request — the API-level equivalent of tool-eval-bench's `--no-think`. **Fix for reproducers:** (1) the LiteLLM proxy requires a valid master key, not a dummy; (2) for OrcaSAQ2 on vLLM, pass `chat_template_kwargs: {enable_thinking: false}` on every non-reasoning request.
