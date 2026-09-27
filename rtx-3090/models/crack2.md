@@ -18,6 +18,14 @@
 
 **Status:** kept (experimental)
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **1.5h** | 11s | llama.cpp GGUF |
+| HumanEval+ (164 items) | **6min** | 2s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **23min** | 7s | llama.cpp GGUF |
+
 ## Notes
 
 A PQ2_0 (7.2 GB) weight-abliterated variant of Bonsai2. The abliteration removed all safety refusal, but also destroyed coding ability — HumanEval+ at 76.2% is the second-worst score on this hardware. Output on refusal prompts was almost entirely empty strings (not refusal, just blank). IFEval and instruction-following (19/20) were surprisingly strong. Not suitable for agentic or coding use — purely experimental.

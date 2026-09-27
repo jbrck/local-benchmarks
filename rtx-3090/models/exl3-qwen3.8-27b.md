@@ -18,6 +18,14 @@
 
 **Status:** engine comparison, same weights as qwen3.8-27b GGUF
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **57min** | 7s | EXL3 3.5bpw |
+| HumanEval+ (164 items) | **18min** | 6s | EXL3 3.5bpw |
+| GPQA-Diamond (198 items) | **35min** | 11s | EXL3 3.5bpw |
+
 ## Notes
 
 Same Qwen3.8-27B weights, served via exllamav3 at 3.5 bpw instead of llama.cpp GGUF. Always reasons (no off switch), which makes it slower and more token-hungry on coding tasks — HumanEval+ needed a 4096-token cap to produce code at all, and still trailed the GGUF variant by ~4-5 points. Where it wins: IFEval (best local prompt/instruction scores 80.6/85.8) and raw decode throughput (~4x GGUF at 105 vs 27 tok/s). Also holds 196K context at 21.4 GB VRAM (vs GGUF 131K at 18-19 GB). The throughput advantage is real, but reasoning can't be disabled, so it's best for long-context or high-volume work where reasoning-on is acceptable.

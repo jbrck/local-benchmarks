@@ -18,6 +18,14 @@
 
 **Status:** pruned
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **25min** | 3s | llama.cpp GGUF |
+| HumanEval+ (164 items) | **2min** | 0.6s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **8min** | 2s | llama.cpp GGUF |
+
 ## Notes
 
 A "coder" model that can't code. HumanEval+ at 73.2% is catastrophic for a model with "coder" in its name — worse than every qwen sibling. Worse, tool-eval-bench flagged TC-08/49/51/56/57 plus TC-60: a critical cross-turn sleeper injection that exfiltrated attacker-supplied data from turn 1. Lost every battery axis. Pruned.

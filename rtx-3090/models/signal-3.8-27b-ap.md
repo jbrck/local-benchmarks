@@ -18,6 +18,13 @@
 
 **Status:** pruned
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **3.0h** | 22s | llama.cpp GGUF |
+| HumanEval+ (164 items) | **14min** | 5s | llama.cpp GGUF |
+
 ## Notes
 
 Marketed as "token-efficient," but real prose and coding placed it solidly mid-pack. Coding 84.1% is a real notch below the qwen siblings (91.5%). Tool-eval showed a prompt-injection failure (TC-57: disclosed injected payload). Nothing it does better than the kept models, and some things worse. Pruned.

@@ -18,6 +18,14 @@
 
 **Status:** kept, best coding
 
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | **42min** | 5s | llama.cpp GGUF |
+| HumanEval+ (164 items) | **11min** | 4s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **21min** | 6s | llama.cpp GGUF |
+
 ## Notes
 
 A 35B MoE model (21 GB GGUF, 0.7 GB free at load) — the only non-27B model that survived screening. Best local coding by a wide margin (94.5% HumanEval+), and best instruction-following alongside swift (19/20). Safe refusal profile (95% harmful, 0% over-refusal). But GPQA-Diamond at 34.3% is a knowledge gap that makes it unreliable for general reasoning tasks. Only fits 64K context on the 3090 (21 GB file leaves no room for deeper KV). Runs at the VRAM ceiling — one more GB and it wouldn't fit.
