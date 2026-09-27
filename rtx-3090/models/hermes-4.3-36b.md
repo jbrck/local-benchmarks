@@ -22,7 +22,7 @@
 
 | Test | Total | Per item | Engine |
 |---|---|---|---|
-| MATH-500 (500 items) | **2.1h** | 15s | llama.cpp GGUF |
+| MATH-500 (500 items) | *timing not captured* | *N/A* | llama.cpp GGUF |
 | HumanEval+ (164 items) | **9min** | 3s | llama.cpp GGUF |
 
 ## Notes

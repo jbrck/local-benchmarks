@@ -22,7 +22,7 @@
 
 | Test | Total | Per item | Engine |
 |---|---|---|---|
-| MATH-500 (500 items) | **11.5h** | 83s | vLLM OrcaSAQ2-kernel |
+| MATH-500 (500 items) | *timing not captured* | *N/A* | vLLM OrcaSAQ2-kernel |
 | HumanEval+ (164 items) | **2.2h** | 49s | vLLM OrcaSAQ2-kernel |
 | GPQA-Diamond (20/198) | ~41min* | ~74s | vLLM OrcaSAQ2-kernel |
 | IFEval (541 prompts) | **3.9h** | 26s | vLLM OrcaSAQ2-kernel (--no-think) |
