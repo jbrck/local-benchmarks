@@ -1,6 +1,6 @@
-# OrcaSAQ-2-27B [testing]
+# OrcaSAQ-2-27B [kept]
 
-**Role:** Under evaluation — hybrid attention (SAQ) candidate from OrcaRouter / Continuum AI Corporation.
+**Role:** Math leader, 262K context — hybrid attention (SAQ) model from OrcaRouter / Continuum AI Corporation.
 
 ## Results
 
@@ -16,7 +16,7 @@
 | Reasoning bench | not run |
 | Refusal HARMFUL | not run |
 
-**Status:** testing
+**Status:** kept — math + long context
 
 ## Timing
 
