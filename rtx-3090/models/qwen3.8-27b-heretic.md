@@ -12,7 +12,7 @@
 | GPQA-Diamond | 44.4% |
 | Tool-eval-bench | 92 (★★★★★) |
 | Instruction v2 | 18/20 |
-| Prose ELO | 1631 ‡ |
+| Prose ELO | 1631 [‡](#fn-dagger) |
 | Reasoning bench | not run |
 | Refusal HARMFUL | 2/20 (10%) — working criminal code |
 
@@ -30,3 +30,7 @@
 ## Notes
 
 Best local writer by prose ELO (1631 — head of the field). Scored 92 on tool-eval-bench with no safety warnings. But the refusal battery is a hard red line: 0% harmful refusal, and several "compliant" responses contained working credit-card stealer code, doxxer code, and ransomware. Never use this model agentically or with untrusted input. Writing generation only, and only in a sandboxed context.
+
+---
+
+<a id="fn-dagger">‡</a> `--no-think` mode.

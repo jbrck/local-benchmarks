@@ -12,7 +12,7 @@
 | GPQA-Diamond | 46.0% |
 | Tool-eval-bench | 88 (★★★★) |
 | Instruction v2 | 18/20 |
-| Prose ELO | 1579 ‡ |
+| Prose ELO | 1579 [‡](#fn-dagger) |
 | Reasoning bench | baseline |
 
 **Status:** kept
@@ -29,3 +29,7 @@
 ## Notes
 
 The Qwen3.8-27B family owns this GPU. This is the vanilla Qwen3.8-27B at Q5_K_M quantization — the baseline every other model was compared against. Strong across the board, slightly edged out by specialized variants on individual tests. Prose ELO 1579 puts it second only to heretic among local models.
+
+---
+
+<a id="fn-dagger">‡</a> `--no-think` mode.

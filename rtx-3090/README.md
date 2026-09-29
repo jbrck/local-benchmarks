@@ -42,14 +42,14 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | Model | MATH-500 | HumanEval+ | IFEval P/I | GPQA-D | Tool-eval | Instr v2 | Prose ELO | Reasoning | Refusal H | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | remote baseline |
-| **qwen3.8-27b** (GGUF Q5_K_M) | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | 1579 ‡ | baseline | | kept |
-| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 ‡ | | 2/20 | kept, writing |
-| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 ‡ | | | kept, footprint |
-| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 ‡ | 1.41x | **20/20** | kept, default |
-| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% ‡ | 55.0%*† | | | 1558^‡ | | | kept, math + long ctx |
+| **qwen3.8-27b** (GGUF Q5_K_M) | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | 1579 [‡](#fn-dagger) | baseline | | kept |
+| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 [‡](#fn-dagger) | | 2/20 | kept, writing |
+| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 [‡](#fn-dagger) | | | kept, footprint |
+| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 [‡](#fn-dagger) | 1.41x | **20/20** | kept, default |
+| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | 1558[^](#fn-caret)[‡](#fn-dagger) | | | kept, math + long ctx |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
 | ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
-| exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*§ | 80.6 / 85.8%§ | 46.5%§ | 91§ | | | | | EXL3 variant, reasoning forced |
+| exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
 | crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
@@ -109,3 +109,10 @@ Each model that ran the full battery has its own page with results and notes:
 | [qwen3-coder-30b-A3B](./models/qwen3-coder-30b-a3b.md) | rejected | coder that can't code |
 
 Pruned models from smoke only (no full battery): Twin-Turbo, Signal-3.8-27B-AP, gemma-3-27b-it-qat, mistral-small-3.2-24b, Qwen-AgentWorld-35B-A3B, Muse-Glimmer-30B. See [smoke battery](./test/test_smoke-battery.md) for results.
+
+---
+
+<a id="fn-dagger">‡</a> `--no-think` mode.
+<a id="fn-stuck">†</a> Stuck-loop — model entered a self-referential reasoning loop; run stopped early.
+<a id="fn-section">§</a> Reasoning forced — model architecture cannot disable thinking.
+<a id="fn-caret">^</a> LiteLLM proxy — served through the LiteLLM proxy instead of direct inference.

@@ -8,9 +8,9 @@
 |---|---|
 | MATH-500 | **90.8%** |
 | HumanEval+ | 89.6% |
-| GPQA-Diamond | 55.0%† (20/198) — stopped early; stuck-loop from reasoning |
-| IFEval | **76.0%** / 82.2% ‡ |
-| Prose ELO | **1558** ^‡ |
+| GPQA-Diamond | 55.0%[†](#fn-stuck) (20/198) — stopped early; stuck-loop from reasoning |
+| IFEval | **76.0%** / 82.2% [‡](#fn-dagger) |
+| Prose ELO | **1558** [^](#fn-caret)[‡](#fn-dagger) |
 | Tool-eval-bench | not run |
 | Instruction v2 | not run |
 | Reasoning bench | not run |
@@ -51,3 +51,9 @@ This battery was harder than usual. Specific failures and their resolutions:
 **IFEval (stuck → pilot → --no-think).** First attempt ran without max_tokens or --no-think. The model entered thinking mode and generated reasoning indefinitely — first request appeared stuck for 47 minutes. A 3-prompt pilot revealed the fix: thinking mode scored 33% in 4m51s, while `--no-think` scored 100% in 2m47s (3x faster, 3x more accurate). Full run used `--no-think --no-live` and completed 541 prompts in 3.9h at 76.0/82.2%. **Fix for reproducers:** always pilot 3 IFEval prompts with vs without `--no-think` before committing to a full run on thinking models.
 
 **Prose ELO (LiteLLM auth → null content).** Two failures. First: the judge script sent `Authorization: Bearer local` to the LiteLLM proxy, which returned 401. The script caught the exception and recorded every match as `"tie"` — 30/30 ties, useless. Second: even with auth fixed, thinking mode consumed all output tokens on prose prompts (`content: null`). The fix was `chat_template_kwargs: {"enable_thinking": false}` per request — the API-level equivalent of tool-eval-bench's `--no-think`. **Fix for reproducers:** (1) the LiteLLM proxy requires a valid master key, not a dummy; (2) for OrcaSAQ2 on vLLM, pass `chat_template_kwargs: {enable_thinking: false}` on every non-reasoning request.
+
+---
+
+<a id="fn-dagger">‡</a> `--no-think` mode.
+<a id="fn-stuck">†</a> Stuck-loop — model entered a self-referential reasoning loop; run stopped early.
+<a id="fn-caret">^</a> LiteLLM proxy — served through the LiteLLM proxy instead of direct inference.
