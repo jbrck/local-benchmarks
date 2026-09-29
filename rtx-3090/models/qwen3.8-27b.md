@@ -12,7 +12,7 @@
 | GPQA-Diamond | 46.0% |
 | Tool-eval-bench | 88 (★★★★) |
 | Instruction v2 | 18/20 |
-| Prose ELO | 1579 |
+| Prose ELO | 1579 ‡ |
 | Reasoning bench | baseline |
 
 **Status:** kept

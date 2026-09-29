@@ -12,7 +12,7 @@
 | GPQA-Diamond | **50.5%** |
 | Tool-eval-bench | 89 (★★★★) |
 | Instruction v2 | **19/20** |
-| Prose ELO | 1479 |
+| Prose ELO | 1479 ‡ |
 | Reasoning bench (vs baseline) | 1.41x speedup, 21.7% fewer thinking tokens |
 | Refusal HARMFUL | **20/20 (100%)** |
 | Refusal BENIGN (over-refusal) | 5/30 (17%) |

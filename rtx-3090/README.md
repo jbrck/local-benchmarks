@@ -1,6 +1,6 @@
 # local-benchmarks / rtx-3090 — Local Model Benchmarks
 
-**Last updated:** 2026-09-26
+**Last updated:** 2026-09-29
 
 ## System
 
@@ -42,14 +42,14 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | Model | MATH-500 | HumanEval+ | IFEval P/I | GPQA-D | Tool-eval | Instr v2 | Prose ELO | Reasoning | Refusal H | Status |
 |---|---|---|---|---|---|---|---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | remote baseline |
-| **qwen3.8-27b** (GGUF Q5_K_M) | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | 1579 | baseline | | kept |
-| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 | | 2/20 | kept, writing |
-| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 | | | kept, footprint |
-| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 | 1.41x | **20/20** | kept, default |
-| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% | 55.0%* | | | 1558^ | | | kept, math + long ctx |
+| **qwen3.8-27b** (GGUF Q5_K_M) | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | 1579 ‡ | baseline | | kept |
+| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 ‡ | | 2/20 | kept, writing |
+| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 ‡ | | | kept, footprint |
+| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 ‡ | 1.41x | **20/20** | kept, default |
+| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% ‡ | 55.0%*† | | | 1558^‡ | | | kept, math + long ctx |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
 | ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
-| exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%* | 80.6 / 85.8% | 46.5% | 91 | | | | | EXL3 variant, same weights |
+| exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*§ | 80.6 / 85.8%§ | 46.5%§ | 91§ | | | | | EXL3 variant, reasoning forced |
 | crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
@@ -62,6 +62,30 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | Muse-Glimmer-30B | | | | | | | 1332 | | | pruned (bottom prose ELO) |
 
 \* EXL3 HumanEval+ at the 4096-token-cap rerun. The first run at the 1024 default scored 74.4% — an artifact of un-disableable reasoning eating the token budget before code was generated. Details in [humaneval-plus.md](./test/test_humaneval-plus.md).
+
+† OrcaSAQ-2-27B GPQA-Diamond at 20/198 (55.0%*) — stopped early. The model's self-feedback loop consumed output tokens on thinking, producing null responses on 71% of first-attempt prompts. Score at 20 items is partial, not comparable.
+
+‡ Tested with `--no-think` (reasoning disabled). Thinking degrades or stalls on these tasks — details in the [Think vs No-Think](#think-vs-no-think) section below.
+
+§ EXL3 engine forces reasoning with no off switch. All results reflect thinking-enabled mode — not directly comparable to llama.cpp GGUF runs of the same weights.
+
+^ OrcaSAQ-2-27B Prose ELO via LiteLLM proxy with `chat_template_kwargs: {enable_thinking: false}` (API-level equivalent of `--no-think`).
+
+## Think vs No-Think
+
+These models use Qwen3's built-in reasoning (thinking tokens inside `[think]...[/think]`). Whether thinking helps or hurts depends on the task:
+
+| Task | Thinking | No-Thinking | Why |
+|---|---|---|---|
+| **MATH-500** | strongest | — | Multi-step reasoning benefits from explicit chain-of-thought |
+| **HumanEval+** | comparable | comparable | Coding benefits are marginal; token budget matters more |
+| **IFEval** | stall-prone | stable | Thinking produces self-feedback loops on mechanical constraints |
+| **Prose ELO** | null output | full answer | Thinking consumes all tokens before visible content |
+| **GPQA-Diamond** | higher score* | — | Hard science benefits from reasoning, but stalls are common |
+
+\* OrcaSAQ-2-27B's 55.0%*† at 20/198 is not statistically comparable to other models' full 198-item runs.
+
+For the full battery, models run in their default config (thinking on). Tests that stall or degrade (IFEval, Prose ELO) are retried with `--no-think`. Results in the summary table carry config markers so you can compare apples to apples.
 
 ## Models tested
 

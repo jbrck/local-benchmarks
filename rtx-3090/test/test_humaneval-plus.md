@@ -19,7 +19,7 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | crack2 (abliterated PQ2_0) | **76.2%** | severe coding degrade from abliteration |
 | GSQ-RCO-IQ3_S-mtp | 91.5% | 11.8 GB file, full-size score |
 | swift-qwen3.8-27b | 87.8% | best math, mid coding |
-| exl3-qwen3.8-27b (3.5bpw) | 87.8% | at 4096 cap; see note below |
+| exl3-qwen3.8-27b (3.5bpw) § | 87.8% | at 4096 cap; see note below |
 | hermes-4.3-36b | 87.2% | |
 | Signal-3.8-27B-AP | 84.1% | |
 | qwen3-coder-30b | 73.2% | |

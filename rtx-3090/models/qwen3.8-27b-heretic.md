@@ -12,7 +12,7 @@
 | GPQA-Diamond | 44.4% |
 | Tool-eval-bench | 92 (★★★★★) |
 | Instruction v2 | 18/20 |
-| Prose ELO | 1631 |
+| Prose ELO | 1631 ‡ |
 | Reasoning bench | not run |
 | Refusal HARMFUL | 2/20 (10%) — working criminal code |
 

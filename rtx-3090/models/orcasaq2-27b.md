@@ -8,9 +8,9 @@
 |---|---|
 | MATH-500 | **90.8%** |
 | HumanEval+ | 89.6% |
-| GPQA-Diamond | 55.0% (20/198) — stopped early |
-| IFEval | **76.0%** / 82.2% |
-| Prose ELO | **1558** |
+| GPQA-Diamond | 55.0%† (20/198) — stopped early; stuck-loop from reasoning |
+| IFEval | **76.0%** / 82.2% ‡ |
+| Prose ELO | **1558** ^‡ |
 | Tool-eval-bench | not run |
 | Instruction v2 | not run |
 | Reasoning bench | not run |

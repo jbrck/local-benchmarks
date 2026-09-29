@@ -10,13 +10,13 @@
 
 | Model | ELO | W-L-T |
 |---|---|---|
-| **qwen3.8-27b-heretic** | **1631** | 33-16-1 |
-| **qwen3.8-27b** | **1579** | 32-18-0 |
-| GSQ-RCO-IQ3_S-mtp | 1539 | 25-24-1 |
-| swift-qwen3.8-27b | 1479 | 23-27-0 |
-| hermes-4.3-36b | 1440 | 18-32-0 |
-| Muse-Glimmer-30B | 1332 | 18-32-0 |
-| **OrcaSAQ-2-27B** (vLLM, no-think) | **1558** | 4-0-16* |
+| **qwen3.8-27b-heretic** | **1631** ‡ | 33-16-1 |
+| **qwen3.8-27b** | **1579** ‡ | 32-18-0 |
+| GSQ-RCO-IQ3_S-mtp | 1539 ‡ | 25-24-1 |
+| swift-qwen3.8-27b | 1479 ‡ | 23-27-0 |
+| hermes-4.3-36b | 1440 ‡ | 18-32-0 |
+| Muse-Glimmer-30B | 1332 ‡ | 18-32-0 |
+| **OrcaSAQ-2-27B** (vLLM) | **1558** ^‡ | 4-0-16* |
 
 Head-to-head highlights: heretic beats swift 7-3 and GSQ 8-1 but loses to qwen 7-3; qwen beats everyone except a 5-5 tie with Muse; GSQ beats swift 8-2; swift's only dominant win is Muse 9-1.
 

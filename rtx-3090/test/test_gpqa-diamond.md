@@ -11,14 +11,14 @@
 | nous-deepseek-v4-flash | 83.8% | remote baseline |
 | swift-qwen3.8-27b | 50.5% | best local; 136 average tokens (half of the next closest) |
 | GSQ-RCO-IQ3_S-mtp | 48.0% | |
-| exl3-qwen3.8-27b | 46.5% | |
+| exl3-qwen3.8-27b § | 46.5% | thinking forced |
 | qwen3.8-27b | 46.0% | |
 | bonsai2 (PrismML tern PTQ1_0) | 43.9% | |
 | ornith-1.5-35b-a3b (q4_k_s) | **34.3%** | worst local; knowledge gap |
 | qwen3.8-27b-heretic | 44.4% | 1.8x qwen's tokens, lower score |
 | crack2 (abliterated PQ2_0) | 43.4% | |
 | qwen3-coder-30b | 42.9% | |
-| OrcaSAQ-2-27B (vLLM) | ~55.0%* | stopped at 20/198 — scientific knowledge test irrelevant; not comparable (vLLM vs llama.cpp engine) |
+| OrcaSAQ-2-27B (vLLM) † | ~55.0%* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
 
 **Scoring:** The model receives a free-form question with (A)-(D) options and is instructed to reply with `\boxed{letter}`. The parser extracts the LAST `\boxed{letter}` in the output (reasoning may contain boxed references; the final answer comes at the end).
 

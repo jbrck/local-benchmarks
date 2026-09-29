@@ -6,11 +6,11 @@
 
 | Test | Score |
 |---|---|
-| MATH-500 | 85.8% |
-| HumanEval+ | 87.8% (4096-cap rerun; 74.4% at 1024-cap — artifact) |
-| IFEval prompt/instruction | 80.6% / 85.8% |
-| GPQA-Diamond | 46.5% |
-| Tool-eval-bench | 91 (★★★★) |
+| MATH-500 | 85.8% § |
+| HumanEval+ | 87.8% § (4096-cap rerun; 74.4% at 1024-cap — artifact) |
+| IFEval prompt/instruction | 80.6% / 85.8% § |
+| GPQA-Diamond | 46.5% § |
+| Tool-eval-bench | 91 § (★★★★) |
 | Instruction v2 | not run |
 | Prose ELO | not run |
 | Reasoning bench | not run |
