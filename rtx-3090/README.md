@@ -53,6 +53,15 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
 | crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
 | **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 0/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
+| Twin-Turbo | | | | | | | | 0.59x | | pruned |
+| Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
+| gpt-oss-20b-mxfp4 | 74.2% | 67.7% | | | 75 | | | | | pruned |
+| hermes-4.3-36b | 81.0% | 87.2% | | | | | 1440 | | | pruned |
+| qwen3-coder-30b-A3B | 85.0% | 73.2% | 74.3 / 82.0% | 42.9% | 68 | | | | | pruned |
+| gemma-3-27b-it-qat | | | | | | | | | | pruned (smoke: tool 0/10) |
+| mistral-small-3.2-24b | | | | | | | | | | pruned (smoke: reason 3/10) |
+| Qwen-AgentWorld-35B-A3B | | | | | | | | | | pruned (smoke: reason 4/10) |
+| Muse-Glimmer-30B | | | | | | | 1332 | | | pruned (bottom prose ELO) |
 
 \* EXL3 HumanEval+ at the 4096-token-cap rerun. The first run at the 1024 default scored 74.4% — an artifact of un-disableable reasoning eating the token budget before code was generated. Details in [humaneval-plus.md](./test/test_humaneval-plus.md).
 
@@ -99,6 +108,12 @@ Each model that ran the full battery has its own page with results and notes:
 | [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | kept | math leader, 262K context |
 | [Holo4-27B](./models/holo4-27b.md) | tested | GPQA leader, strong coding, weak math |
 | [crack2](./models/crack2.md) | experimental | weight-abliterated |
+| [Signal-3.8-27B-AP](./models/signal-3.8-27b-ap.md) | rejected | mid on every axis |
+| [gpt-oss-20b-mxfp4](./models/gpt-oss-20b-mxfp4.md) | rejected | smoke lied |
+| [hermes-4.3-36b](./models/hermes-4.3-36b.md) | rejected | lost to 27B qwen pair |
+| [qwen3-coder-30b-A3B](./models/qwen3-coder-30b-a3b.md) | rejected | coder that can't code |
+
+Pruned models from smoke only (no full battery): Twin-Turbo, Signal-3.8-27B-AP, gemma-3-27b-it-qat, mistral-small-3.2-24b, Qwen-AgentWorld-35B-A3B, Muse-Glimmer-30B. See [smoke battery](./test/test_smoke-battery.md) for results.
 
 ---
 
