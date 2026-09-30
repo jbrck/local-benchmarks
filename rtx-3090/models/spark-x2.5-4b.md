@@ -16,16 +16,15 @@
 ## Results
 
 | Test | Score | vs 4B field | Grade |
-|---|---|---|---|
+|---|---|---|---|---|
 | MATH-500 | **72.2%** (361/500) | Strong for 4B | 🟢 |
 | HumanEval+ | **70.7%** (116/164) | Strong for 4B | 🟢 |
 | GPQA-Diamond | **25.3%** (50/198) | ⚠️ See note below | 🟡 |
 | Instruction v2 | **0/20** (0%) | ❌ All empty — reasoning consumed budget | 🔴 |
-| IFEval | | Pending | |
-| Prose ELO | | Pending | |
-| Tool-eval-bench | | Pending | |
-| Refusal H | Unknown | Format mismatch | ⚪ |
-| Refusal B | Unknown | Format mismatch | ⚪ |
+| IFEval | **68.6% / 75.3%** | Below 27B field (77-80%) | 🟡 |
+| Prose ELO | **1500** (4/10 with content) | ❌ 6/10 empty — reasoning consumed budget | 🔴 |
+| Tool-eval-bench | **83 / ★★★★** | Strong for 4B, competitive with 27B agents | 🟢 |
+| Refusal | Unknown | Format mismatch | ⚪ |
 | Reasoning | 0/8 | ❌ All empty — reasoning consumed budget | 🔴 |
 
 ## Analysis
