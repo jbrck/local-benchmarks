@@ -98,6 +98,8 @@ Links to the exact model files (or their base repos) tested on this system. Seve
 | ornith-1.5-35b-a3b (q4_k_s) | [mudler/Ornith-1.5-35B-A3B-APEX-MTP-GGUF](https://huggingface.co/mudler/Ornith-1.5-35B-A3B-APEX-MTP-GGUF) | 35B MoE, 21 GB file, 64K max context on the 3090. Best local coding (94.5% HE+). Worst GPQA (34.3%). |
 | crack2 (abliterated PQ2_0) | [prism-ml/CRACK-2-PQ2_0](https://huggingface.co/prism-ml/CRACK) | PrismML weight-abliterated variant. PQ2_0 packing (7.2 GB). HE+ collapsed to 76.2% from abliteration. |
 | exl3-qwen3.8-27b (3.5bpw) | same weights as qwen3.8-27b above, served via [exllamav3](https://github.com/turboderp/exllamav3) | Same weights, different serving engine. Always reasons. |
+| Nemotron Cascade 2 30B A3B (Q3_K_M) | [mradermacher/Nemotron-Cascade-2-30B-A3B-GGUF](https://huggingface.co/mradermacher/Nemotron-Cascade-2-30B-A3B-GGUF) | Fastest 30B (146 tok/s). Reasoning-heavy: burns budget on thinking. Needs high token caps. |
+| Muse Glimmer 30B (Q4_K_M) | [AaryanK/Muse-Glimmer-30B-GGUF](https://huggingface.co/AaryanK/Muse-Glimmer-30B-GGUF) | Best GPQA (56.6%). Weak coder (62% HE+). Needs build-muse-glimmer binary. Flash-attention OFF. |
 
 ### Pruned models (with rationale and links)
 
@@ -110,7 +112,6 @@ Links to the exact model files (or their base repos) tested on this system. Seve
 | mistral-small-3.2-24b | [mistralai/Mistral-Small-3.2-24B-Instruct-2509](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2509) | 3/10 reasoning on smoke. Too weak at multi-step. |
 | Qwen-AgentWorld-35B-A3B | [Qwen/Qwen-AgentWorld-35B-A3B](https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B) | 4/10 reasoning on smoke. Same problem. |
 | Signal-3.8-27B-AP | Community merge. | Mid on every axis. Token-efficiency pitch didn't survive real prose. |
-| Muse-Glimmer-30B | [Muse-AI/Muse-Glimmer-30B](https://huggingface.co/Muse-AI/Muse-Glimmer-30B) | Bottom of prose ELO (1332). Lost 9-1 to swift. |
 | Twin-Turbo | Community merge. | Reasoning claims inverted: +44% thinking, 0.59x wall speed. |
 
 ## What happens after the runs
@@ -176,6 +177,54 @@ The prose ELO judge script hardcodes the local endpoint. Passing a remote judge 
 ### Smoke tests are not verdicts
 
 The 35-task smoke battery ranks models one way; the full battery often flips it. gpt-oss scored 10/10 reasoning + 10/10 tool on smoke and looked like the champion. The full battery showed it dead last: MATH 74.2%, HE+ 67.7%, 12% on multi-step tool chains. **Smoke = floor check only. Full batteries = the verdict.**
+
+### Unusual architectures need custom server builds
+
+Standard llama.cpp builds may not support experimental architectures. The `muse_glimmer` architecture (PR #26841) requires a server build with explicit CUDA architecture flags:
+
+```bash
+cmake -B build-modelname -DGGML_CUDA=ON -DGGML_NATIVE=ON -DCUDA_ARCHITECTURES=81
+cmake --build build-modelname --target llama-server -j$(nproc)
+```
+
+Without the right build, the server falls back to CPU execution (~1 tok/s instead of 43 tok/s). The symptom is a loaded model that responds but takes 30+ seconds per 200-token generation.
+
+### Flash-attention conflicts with gated architectures
+
+Some architectures (`muse_glimmer`, others with per-layer gating or custom attention) break under flash-attention. Muse Glimmer drops from 43 tok/s to 5 tok/s with `-fa on`. The Vector FA kernel doesn't handle the sigmoid-gated QKVO projections. **Test with and without `-fa` before benchmarking a new model.**
+
+### Hermes environment pollutes PYTHONPATH
+
+The Hermes agent runtime injects its own Python site-packages before the benchmark venv's. When the benchmark venv uses Python 3.12 and Hermes uses 3.14, the 3.14 numpy C extensions cause `ModuleNotFoundError` or `ImportError` under 3.12. The fix:
+
+```bash
+PYTHONPATH= /mnt/data/benchmark-venv/bin/python bench_gpqa.py ...
+```
+
+Clearing `PYTHONPATH` before invoking the benchmark venv python is mandatory for any script that imports numpy, datasets, or other C-extension-heavy packages.
+
+### Battery processes must survive agent lifecycle
+
+Hermes restarts (from updates, context compaction, error recovery) send SIGHUP/SIGTERM to child processes. A benchmark running for 6 hours can't be a child of the agent's shell session. **All long-running battery processes must use `setsid`:**
+
+```bash
+PYTHONPATH= setsid /mnt/data/benchmark-venv/bin/python bench_full.py --model x --out /mnt/data/benchmark-results
+```
+
+`setsid` creates a new session group, isolating the process from the agent's SIGHUP propagation. Without it, Hermes restarts kill the benchmark silently.
+
+### Prose ELO: draws must be excluded from ELO win-rate
+
+The pairwise ELO formula must exclude draws when computing win-rate. Including draws in the denominator causes the total ELO sum to drift downward — every draw subtracts K * draw_rate from both players. The correct formula:
+
+```python
+total_decided = wins_a + wins_b  # excludes draws
+actual_a = wins_a / total_decided
+expected_a = 1 / (1 + 10**((elo_b - elo_a) / 400))
+elo_a += K * (actual_a - expected_a)
+```
+
+With draws excluded, the ELO sum stays constant (zero-sum). The initial mis-application — dividing wins by (wins + losses + draws) — produced nonsensical ratings in the 500-700 range instead of the expected 1000-2000 range.
 
 ### Community merge card claims are unreliable in both directions
 

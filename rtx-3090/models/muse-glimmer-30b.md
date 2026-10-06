@@ -40,11 +40,12 @@ Muse Glimmer is a thinking model but produces useful content even within constra
 ### Weaknesses
 - **Coding is poor** — HE+ at 62.2% is well below the Qwen3.8 variants (87-94%) and worse than both 4B models. If coding matters, skip this model.
 - **Flash-attention must be off** — `-fa on` drops throughput from 43 tok/s to 5 tok/s. This limits context scaling efficiency.
-- **Prose scoring uses a different scale** — 7.3/10 is absolute scoring, not pairwise ELO like the other models in the table. Scores are high but apples-to-oranges with the ELO column.
 
 ### Notes
 - The `build-muse` binary was inadequate — needed a rebuild with `-DGGML_CUDA=ON -DCUDA_ARCHITECTURES=81` to get usable speed.
+- Flash-attention (`-fa on`) cuts throughput from 43 tok/s to 5 tok/s on this architecture. Must be disabled for Muse.
 - With DFlash speculative decoding (draft GGUF available on HF), throughput could potentially reach 60-100 tok/s. Not tested.
+- All battery processes used `setsid` + `PYTHONPATH=` to survive Hermes lifecycle events (SIGHUP isolation, Python 3.14 env pollution).
 - The existing `Muse-Glimmer-30B` entry in the pruned table (1332 prose ELO) was from a different run — the full battery shows much better performance when served correctly.
 
 ## Timing

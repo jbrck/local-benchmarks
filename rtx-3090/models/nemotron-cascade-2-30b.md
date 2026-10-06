@@ -23,7 +23,7 @@ Nemotron is a **thinking model** — it writes full CoT in `reasoning_content` a
 | HumanEval+ | **84.8%** (139/164) | 8th of 12 | Respectable, trails Qwen3.8 variants but above crack2 |
 | GPQA-Diamond | **54.0%** (107/198) | 3rd best (tied with Holo4/OrcaSAQ2) | Strong for graduate science |
 | Instruction v2 | **45.0%** (9/20) | Depressed by reasoning budget | Same mechanism as Spark-X2.5-4B |
-| Prose ELO | **2.5/10** | Depressed — 8/10 tasks produced empty content | Same mechanism |
+| Prose ELO | **1043**[¶](#fn-para) | Depressed — 8/10 tasks produced empty content | Same mechanism |
 | Tool-eval-bench | — | Not tested | |
 | IFEval | — | Not tested with standard suite | |
 
