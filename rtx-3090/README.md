@@ -108,10 +108,10 @@ Each model that ran the full battery has its own page with results and notes:
 | [exl3-qwen3.8-27b](./models/exl3-qwen3.8-27b.md) | engine comparison | same weights, different engine |
 | [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | kept | math leader, 262K context |
 | [Holo4-27B](./models/holo4-27b.md) | tested | GPQA leader, strong coding, weak math |
-||| [crack2](./models/crack2.md) | experimental | weight-abliterated |
-||| [Nemotron Cascade 2 30B A3B](./models/nemotron-cascade-2-30b.md) | tested | fast, thinking model, needs high budget |
-||| [Muse Glimmer 30B](./models/muse-glimmer-30b.md) | tested | strong writer/generalist, weak coder, 41 tok/s |
-||| [Signal-3.8-27B-AP](./models/signal-3.8-27b-ap.md) | rejected | mid on every axis |
+| [crack2](./models/crack2.md) | experimental | weight-abliterated |
+| [Nemotron Cascade 2 30B A3B](./models/nemotron-cascade-2-30b.md) | tested | fast, thinking model, needs high budget |
+| [Muse Glimmer 30B](./models/muse-glimmer-30b.md) | tested | strong writer/generalist, weak coder, 41 tok/s |
+| [Signal-3.8-27B-AP](./models/signal-3.8-27b-ap.md) | rejected | mid on every axis |
 | [gpt-oss-20b-mxfp4](./models/gpt-oss-20b-mxfp4.md) | rejected | smoke lied |
 | [hermes-4.3-36b](./models/hermes-4.3-36b.md) | rejected | lost to 27B qwen pair |
 | [qwen3-coder-30b-A3B](./models/qwen3-coder-30b-a3b.md) | rejected | coder that can't code |
