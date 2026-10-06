@@ -52,8 +52,8 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 || ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
 || exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
 || crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
-|| **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 2.5/10[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
-|| **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20**[†††](#fn-tris) | 7.3/10[†††](#fn-tris) | | | tested: strong writer, mid coder, 41 tok/s |
+|| **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 1043[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
+|| **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20** | **1532**[¶](#fn-para) | | | tested: above-baseline writer, solid GPQA, weak coder |
 || **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 0/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
@@ -125,5 +125,4 @@ Pruned models from smoke only (no full battery): Twin-Turbo, Signal-3.8-27B-AP, 
 <a id="fn-section">§</a> Reasoning forced — model architecture cannot disable thinking.
 <a id="fn-caret">^</a> LiteLLM proxy — served through the LiteLLM proxy instead of direct inference.
 <a id="fn-spark">††</a> Reasoning-content format mismatch — model outputs full thinking in `reasoning_content` and only short answers in `content`. Instr v2, Prose ELO scores reflect the constrained budget, not the model's ceiling.
-<a id="fn-para">¶</a> Nemotron is also a `reasoning_content` model. IFEval and Prose ELO scores are depressed by the same mechanism — model burned the entire token budget on reasoning before producing visible output. With adequate budget (2048+), scores would likely be higher.
-<a id="fn-tris">†††</a> Absolute scoring scale (1-10), not pairwise ELO — not directly comparable to the ELO column format.
+<a id="fn-para">¶</a> Reasoning-content format mismatch — model outputs full thinking in `reasoning_content` and only short answers in `content`. At standard token budgets (400-1500), the model burns most tokens on reasoning. Scores reflect the constrained budget, not the model's ceiling. Nemotron (2/10 tasks with prose content) is hardest hit. Muse (9/10) suffers less.

@@ -24,7 +24,7 @@ Muse Glimmer is a thinking model but produces useful content even within constra
 | HumanEval+ | **62.2%** (102/164) | 11th of 13 | Weak — coding is not a strength |
 | GPQA-Diamond | **56.6%** (112/198) | 2nd best (behind Holo4's 56.1% / tied OrcaSAQ2) | Strong graduate science, stable |
 | Instruction v2 | **75.0%** (15/20) | 2nd best (behind swift's 19/20) | Excellent constraint following |
-| Prose ELO | **7.3/10**[†††](#fn-tris) | Best prose score | Only 1/10 tasks blank; most scored 8-9/10 |
+| Prose ELO | **1532**[¶](#fn-para) | 5th of 7 — pairwise ELO, on the same scale as the table |
 | Tool-eval-bench | — | Not tested | |
 | IFEval | — | Not tested with standard suite | |
 
