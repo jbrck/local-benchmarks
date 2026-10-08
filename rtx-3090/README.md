@@ -1,6 +1,6 @@
 # local-benchmarks / rtx-3090 — Local Model Benchmarks
 
-**Last updated:** 2026-10-05
+**Last updated:** 2026-10-08
 
 ## System
 
@@ -16,6 +16,8 @@
 | Inference engine | llama.cpp (speculative decode: MTP / DFlash2) + vLLM OrcaSAQ2-kernel (hybrid attention models) |
 
 The RTX 3090 powers both inference and image generation through ComfyUI. When ComfyUI is loaded it holds approximately 11 GB of VRAM, leaving about 13 GB for LLM inference.
+
+**Power limit: 300 W (below the card's 350 W default).** The power cap was in place for every benchmark in this repo; the card downclocks to ~1695 MHz SM vs 2100 MHz max under load. All tok/s figures are therefore ~15-20% lower than the card could deliver at default power. Lift the cap with `sudo nvidia-smi -pl 350` before any speed-sensitive comparison.
 
 ## What's tested
 
@@ -53,7 +55,8 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 || exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
 || crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
 || **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 1043[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
-|| **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20** | **1532**[¶](#fn-para) | | | tested: above-baseline writer, solid GPQA, weak coder |
+| **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20** | **1532**[¶](#fn-para) | | | tested: strong writer, solid GPQA, weak coder |
+| **Qwen3.8-27B-TurboFCFusion** ("turbo-fable", Q4_K_M) | 81.0% | **86.0%** | | 35.9% | | **19/20** | ~equal to qwen3.8-27b [¶](#fn-para) | | | tested: strong coder, slow, token-hungry; full page [here](./models/qwen3.8-27b-turbofcfusion.md) |
 || **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 0/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
@@ -75,6 +78,8 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 ^ OrcaSAQ-2-27B Prose ELO via LiteLLM proxy with `chat_template_kwargs: {enable_thinking: false}` (API-level equivalent of `--no-think`).
 
 †† Spark-X2.5-4B uses peg-native reasoning format: the model outputs full thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when they did). On Instr v2, Reasoning bench, and 6/10 Prose tasks, every item exhausted its token budget before reaching the answer. IFEval at 68.6/75.3% is depressed for the same reason (1.4M tokens burned on thinking). MATH, HumanEval+, and Toolbench (83) are unaffected — the thinking completes within the default budget on those tasks, so those scores are genuine.
+
+¶¶ Qwen3.8-27B-TurboFCFusion Prose ELO: 10/10 draws vs qwen3.8-27b at a 3000-token budget (up from default 1500). At the default 1500 budget it scored 1158 with a pile of empty outputs — the model burns thinking tokens before producing content. Same scale as the table's pairwise ELO.
 
 ## Think vs No-Think
 

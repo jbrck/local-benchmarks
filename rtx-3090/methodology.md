@@ -13,6 +13,12 @@ The test pipeline works in stages:
 
 Each stage runs unattended — the agent loads a model, runs the harness, saves results, swaps to the next model, and repeats.
 
+## Test environment caveats
+
+- **GPU power limit is 300 W** — below the RTX 3090's 350 W default. The card holds ~1695 MHz SM (vs 2100 MHz max) under load on every run in this repo. All tok/s figures are ~15-20% lower than the card could deliver. Any speed comparison against this data should account for the cap (`sudo nvidia-smi -pl 350` lifts it).
+- ComfyUI can hold ~11 GB VRAM when loaded, leaving ~13 GB for inference; battery runs are done with ComfyUI idle.
+- Llama.cpp serving used flash attention (`-fa on`) wherever the model tolerates it; models that choke on flash attention (e.g. Muse) are called out per-model.
+
 ## How the agent orchestrates tests
 
 The agent has access to the workstation's terminal and filesystem. A session begins with a goal ("benchmark these 4 models against the full battery"), and the agent works through it step by step:
