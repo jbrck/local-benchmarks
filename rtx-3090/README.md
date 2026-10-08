@@ -47,7 +47,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | | **69.7%** | | **20/20** | 1451 | | | kept, best overall |
 | **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 [‡](#fn-dagger) | | 2/20 | kept, writing |
 | **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 [‡](#fn-dagger) | | | kept, footprint |
-| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 [‡](#fn-dagger) | 1.41x | **20/20** | kept, default |
+| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 [‡](#fn-dagger) | 1.41x | **20/20** | kept, capable all-rounder |
 | **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | 1558[^](#fn-caret)[‡](#fn-dagger) | | | kept, math + long ctx |
 | **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 1406 | 7/8 | 20/20 | tested |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
@@ -108,12 +108,12 @@ Each model that ran the full battery has its own page with results and notes:
 | [qwen3.8-27b](./models/qwen3.8-27b.md) | kept | baseline |
 | [qwen3.8-27b-heretic](./models/qwen3.8-27b-heretic.md) | kept | writing only |
 | [GSQ-RCO-IQ3_S-mtp](./models/gsq-rco-iq3_s-mtp.md) | kept | footprint champion |
-| [swift-qwen3.8-27b](./models/swift-qwen3.8-27b.md) | kept | default |
+| [swift-qwen3.8-27b](./models/swift-qwen3.8-27b.md) | kept | capable all-rounder, good IFEval/refusal |
 | [bonsai2](./models/bonsai2.md) | kept | tiny VRAM, 128K ctx |
 | [ornith-1.5-35b-a3b](./models/ornith-1.5-35b-a3b.md) | kept | 94.5% HE+, fast strong coder |
 | [exl3-qwen3.8-27b](./models/exl3-qwen3.8-27b.md) | engine comparison | same weights, different engine |
-| [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | kept | math leader, 262K context |
-| [Holo4-27B](./models/holo4-27b.md) | tested | GPQA leader, strong coding, weak math |
+| [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | kept | strong math (90.8%), 262K ctx |
+| [Holo4-27B](./models/holo4-27b.md) | tested | strong GPQA (56.1%), strong coding, weak math |
 | [crack2](./models/crack2.md) | experimental | weight-abliterated |
 | [Nemotron Cascade 2 30B A3B](./models/nemotron-cascade-2-30b.md) | tested | fast, thinking model, needs high budget |
 | [Muse Glimmer 30B](./models/muse-glimmer-30b.md) | tested | strong writer/generalist, weak coder, 41 tok/s |
