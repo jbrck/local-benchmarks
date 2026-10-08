@@ -9,18 +9,18 @@
 ## Results
 
 | Model | ELO | W-L-T | Notes |
-|---|---|---|---|
-| **Qwen3.8-27B-GSQ-RCO-IQ3_S-mtp** | **1733** [‡](#fn-dagger) | 35-16-9 | Best overall prose, consistent across genres |
-| **swift-qwen3.8-27b** | **1694** [‡](#fn-dagger) | 31-20-9 | Strong, broad, underrated by earlier passes |
-| **qwen3.8-27b** | **1681** [‡](#fn-dagger) | 30-21-9 | Solid prose, trails heretic/GSQ narrowly |
-| **qwen3.8-27b-heretic** | **1603** [‡](#fn-dagger) | 28-23-9 | Good but slightly below base Qwen in head-to-head |
+|---|---|---|---|---|
+| **Qwen3.8-27B-GSQ-RCO-IQ3_S-mtp** | **1733** [‡](#fn-dagger) | 34-9-17 | Best overall prose, consistent across genres |
+| **swift-qwen3.8-27b** | **1694** [‡](#fn-dagger) | 32-12-16 | Strong, broad, underrated by earlier passes |
+| **qwen3.8-27b** | **1681** [‡](#fn-dagger) | 35-14-11 | Solid prose, trails GSQ narrowly |
+| **qwen3.8-27b-heretic** | **1603** [‡](#fn-dagger) | 25-15-20 | Good but slightly below base Qwen in head-to-head |
 | **OrcaSAQ-2-27B** (vLLM) | **1558** [^](#fn-caret)[‡](#fn-dagger) | 4-0-16* | Separate pass — undefeated but mostly ties |
-| **Muse Glimmer 30B** | **1532** [¶](#fn-para) | 27-24-9 | Above baseline, ~40% wins, best writing of models tested in 2026-10 |
-| **Holo4-27B** | **1406** [‡](#fn-dagger) | 18-32-0 | Mid — below Qwen family baseline |
-| **hermes-4.3-36b** | **1214** | 15-35-10 | Below baseline, clearly outclassed |
-| **Nemotron Cascade 2 30B A3B** | **1043** [¶](#fn-para) | 12-37-11 | Floor — 8/10 tasks produced empty content within 1500-token budget |
+| **Muse Glimmer 30B** | **1532** [¶](#fn-para) | 23-20-17 | Above baseline, ~38% wins, best writing of models tested in 2026-10 |
+| **Holo4-27B** | **1406** [‡](#fn-dagger) | — | Separate head-to-head vs heretic; not in the Oct-06 multi-model pass |
+| **hermes-4.3-36b** | **1214** | 11-42-7 | Below baseline, clearly outclassed |
+| **Nemotron Cascade 2 30B A3B** | **1043** [¶](#fn-para) | 4-52-4 | Floor — 8/10 tasks produced empty content within 1500-token budget |
 
-Head-to-head highlights: heretic beats swift 7-3 and GSQ 8-1 but loses to qwen 7-3; GSQ beats swift 8-2 and Muse 5-1; Muse beats Nemotron 7-0 and hermes 8-2 but loses to GSQ 5-1 and swift 5-2.
+Head-to-head highlights: qwen3.8-27b beats heretic 6-1-3 and Muse 6-3-1 but loses to GSQ 3-5-2 and ties swift 2-4-4. GSQ beats Muse 5-2-3, ties swift 4-2-4, and ties heretic 2-2-6. heretic and swift tie 4-4-2. Muse beats Nemotron 9-0-1 and hermes 6-2-2 but loses to GSQ 5-2-3 and swift 5-1-4.
 
 \* OrcaSAQ-2-27B judged in a separate pass against qwen3.8-27b and hermes-4.3-36b-reasoning (nous-deepseek-v4-flash judge). Undefeated vs both baselines. W-L-T of 4-0-16 means 4 wins, 0 losses, 16 ties across 20 comparisons (10 tasks × 2 baselines) — beat or matched every comparison, never lost. ELO is not directly comparable to the main battery (different judge session). 80% ties suggests the judge found the outputs hard to distinguish, not that OrcaSAQ2 narrowly scraped by.
 
