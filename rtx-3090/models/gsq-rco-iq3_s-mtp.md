@@ -12,7 +12,7 @@
 | GPQA-Diamond | 48.0% |
 | Tool-eval-bench | 88 (★★★★) |
 | Instruction v2 | 18/20 |
-| Prose ELO | 1539 [‡](#fn-dagger) |
+| Prose ELO | 1733 [‡](#fn-dagger) (Oct-06 recomputed) |
 | Reasoning bench | not run |
 | Refusal HARMFUL | not run |
 

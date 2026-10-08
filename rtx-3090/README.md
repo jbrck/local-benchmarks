@@ -45,9 +45,9 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 |---|---|---|---|---|---|---|---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | remote baseline |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | | **69.7%** | | **20/20** | 1451 | | | kept, best overall |
-| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 [‡](#fn-dagger) | | 2/20 | kept, writing |
-| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 [‡](#fn-dagger) | | | kept, footprint |
-| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 [‡](#fn-dagger) | 1.41x | **20/20** | kept, capable all-rounder |
+| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1603 [‡](#fn-dagger) | | 2/20 | kept, writing |
+| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1733 [‡](#fn-dagger) | | | kept, footprint |
+| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1694 [‡](#fn-dagger) | 1.41x | **20/20** | kept, capable all-rounder |
 | **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | 1558[^](#fn-caret)[‡](#fn-dagger) | | | kept, math + long ctx |
 | **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 1406 | 7/8 | 20/20 | tested |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
@@ -80,6 +80,8 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 †† Spark-X2.5-4B uses peg-native reasoning format: the model outputs full thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when they did). On Instr v2, Reasoning bench, and 6/10 Prose tasks, every item exhausted its token budget before reaching the answer. IFEval at 68.6/75.3% is depressed for the same reason (1.4M tokens burned on thinking). MATH, HumanEval+, and Toolbench (83) are unaffected — the thinking completes within the default budget on those tasks, so those scores are genuine.
 
 ¶¶ Qwen3.8-27B-TurboFCFusion Prose ELO: 10/10 draws vs qwen3.8-27b at a 3000-token budget (up from default 1500). At the default 1500 budget it scored 1158 with a pile of empty outputs — the model burns thinking tokens before producing content. Same scale as the table's pairwise ELO.
+
+Prose ELO values are from the **Oct-06 recomputed** pairwise judging run (the latest full-field recompute). Earlier model pages may reference older Sep-14 values — the Oct-06 run supersedes them.
 
 ## Think vs No-Think
 
