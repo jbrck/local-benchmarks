@@ -120,12 +120,14 @@ Each model that ran the full battery has its own page with results and notes:
 | [crack2](./models/crack2.md) | experimental | weight-abliterated |
 | [Nemotron Cascade 2 30B A3B](./models/nemotron-cascade-2-30b.md) | tested | fast, thinking model, needs high budget |
 | [Muse Glimmer 30B](./models/muse-glimmer-30b.md) | tested | strong writer/generalist, weak coder, 41 tok/s |
+| [Spark-X2.5-4B](./models/spark-x2.5-4b.md) | tested | 4B agent model, 185 tok/s, format mismatch deflates scores |
 | [Signal-3.8-27B-AP](./models/signal-3.8-27b-ap.md) | rejected | mid on every axis |
 | [gpt-oss-20b-mxfp4](./models/gpt-oss-20b-mxfp4.md) | rejected | smoke lied |
 | [hermes-4.3-36b](./models/hermes-4.3-36b.md) | rejected | lost to 27B qwen pair |
 | [qwen3-coder-30b-A3B](./models/qwen3-coder-30b-a3b.md) | rejected | coder that can't code |
+| [HyperQwen](./models/hyperqwen.md) | rejected | 3 prose files mislabeled as this; see prose page |
 
-Pruned models from smoke only (no full battery): Twin-Turbo, Signal-3.8-27B-AP, gemma-3-27b-it-qat, mistral-small-3.2-24b, Qwen-AgentWorld-35B-A3B. See [smoke battery](./test/test_smoke-battery.md) for results.
+Pruned models from smoke only (no full battery): Twin-Turbo, gemma-3-27b-it-qat, mistral-small-3.2-24b, Qwen-AgentWorld-35B-A3B. See [smoke battery](./test/test_smoke-battery.md) for results.
 
 ---
 
