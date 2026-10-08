@@ -62,8 +62,9 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
 | gpt-oss-20b-mxfp4 | 74.2% | 67.7% | | | 75 | | | | | pruned |
-| hermes-4.3-36b | 81.0% | 87.2% | | | | | 1440 | | | pruned |
+| hermes-4.3-36b | 81.0% | 87.2% | | | | | 1214 | | | pruned |
 | qwen3-coder-30b-A3B | 85.0% | 73.2% | 74.3 / 82.0% | 42.9% | 68 | | | | | pruned |
+| gemma-4-26b | 48.8% | 56.1% | | 15.0% | | | | | | rejected — far below field |
 | gemma-3-27b-it-qat | | | | | | | | | | pruned (smoke: tool 0/10) |
 | mistral-small-3.2-24b | | | | | | | | | | pruned (smoke: reason 3/10) |
 | Qwen-AgentWorld-35B-A3B | | | | | | | | | | pruned (smoke: reason 4/10) |
@@ -126,6 +127,7 @@ Each model that ran the full battery has its own page with results and notes:
 | [hermes-4.3-36b](./models/hermes-4.3-36b.md) | rejected | lost to 27B qwen pair |
 | [qwen3-coder-30b-A3B](./models/qwen3-coder-30b-a3b.md) | rejected | coder that can't code |
 | [HyperQwen](./models/hyperqwen.md) | rejected | 3 prose files mislabeled as this; see prose page |
+| [Gemma-4-26B](./models/gemma-4-26b.md) | rejected | partial battery, far below field (MATH 48.8%, HE+ 56.1%) |
 
 Pruned models from smoke only (no full battery): Twin-Turbo, gemma-3-27b-it-qat, mistral-small-3.2-24b, Qwen-AgentWorld-35B-A3B. See [smoke battery](./test/test_smoke-battery.md) for results.
 
