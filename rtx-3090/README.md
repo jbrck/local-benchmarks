@@ -42,7 +42,7 @@ Each benchmark evaluates a specific capability. Full methodology and automation 
 Blank cells mean the model was pruned before running that test (smoke battery caught it).
 
 | Model | MATH-500 | HumanEval+ | IFEval P/I | GPQA-D | Tool-eval | Instr v2 | Prose ELO | Reasoning | Refusal H | Status |
-|---|---|---|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | remote baseline |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | | **69.7%** | | **20/20** | 1451 | | | kept, best overall |
 | **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 [‡](#fn-dagger) | | 2/20 | kept, writing |
