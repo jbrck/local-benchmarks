@@ -20,9 +20,9 @@
 | MATH-500 | **72.2%** (361/500) | Strong for 4B | 🟢 |
 | HumanEval+ | **70.7%** (116/164) | Strong for 4B | 🟢 |
 | GPQA-Diamond | **25.3%** (50/198) | ⚠️ See note below | 🟡 |
-| Instruction v2 | **0/20** (0%) | ❌ All empty — reasoning consumed budget | 🔴 |
+| Instruction v2 | **3/20** (15%) | ❌ Mostly empty — reasoning consumed budget | 🔴 |
 | IFEval | **68.6% / 75.3%** | Below 27B field (77-80%) | 🟡 |
-| Prose ELO | **1500** (4/10 with content) | ❌ 6/10 empty — reasoning consumed budget | 🔴 |
+| Prose ELO | **1500** (5/10 with content) | ❌ 5/10 empty — reasoning consumed budget | 🔴 |
 | Tool-eval-bench | **83 / ★★★★** | Strong for 4B, competitive with 27B agents | 🟢 |
 | Refusal | Unknown | Format mismatch | ⚪ |
 | Reasoning | 0/8 | ❌ All empty — reasoning consumed budget | 🔴 |
@@ -41,7 +41,7 @@ Spark-X2.5-4B is a **small, fast agentic model** that punches above its weight o
 
 ### Weaknesses
 - **Reasoning-content format mismatch** — The model outputs thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when it did). Token budget (4096) is exhausted by thinking on complex queries before the answer appears.
-- **Instr v2 0/20, Reasoning 0/8** — Not true zeros; the model never reached `content` output within script token limits
+- **Instr v2 3/20, Reasoning 0/8** — Not true zeros; the model never reached `content` output within script token limits
 - **Refusal bench** — Format/parsing mismatch, no usable scores
 - **4B knowledge ceiling** — Trained on less data than 27B models; GPQA 25.3% even accounting for the content issue is far below 27B field average (~45%)
 

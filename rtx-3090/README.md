@@ -58,7 +58,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 1043[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
 | **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20** | **1532**[¶](#fn-para) | | | tested: strong writer, solid GPQA, weak coder |
 | **Qwen3.8-27B-TurboFCFusion** ("turbo-fable", Q4_K_M) | 81.0% | **86.0%** | | 35.9% | | **19/20** | ~equal to qwen3.8-27b [¶](#fn-para) | | | tested: strong coder, slow, token-hungry; full page [here](./models/qwen3.8-27b-turbofcfusion.md) |
-| **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 0/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
+| **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 3/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
 | gpt-oss-20b-mxfp4 | 74.2% | 67.7% | | | 75 | | | | | pruned |
@@ -78,7 +78,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 
 ^ OrcaSAQ-2-27B Prose ELO via LiteLLM proxy with `chat_template_kwargs: {enable_thinking: false}` (API-level equivalent of `--no-think`).
 
-†† Spark-X2.5-4B uses peg-native reasoning format: the model outputs full thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when they did). On Instr v2, Reasoning bench, and 6/10 Prose tasks, every item exhausted its token budget before reaching the answer. IFEval at 68.6/75.3% is depressed for the same reason (1.4M tokens burned on thinking). MATH, HumanEval+, and Toolbench (83) are unaffected — the thinking completes within the default budget on those tasks, so those scores are genuine.
+†† Spark-X2.5-4B uses peg-native reasoning format: the model outputs full thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when they did). On Instr v2, Reasoning bench, and 5/10 Prose tasks, every item exhausted its token budget before reaching the answer. IFEval at 68.6/75.3% is depressed for the same reason (1.4M tokens burned on thinking). MATH, HumanEval+, and Toolbench (83) are unaffected — the thinking completes within the default budget on those tasks, so those scores are genuine.
 
 ¶¶ Qwen3.8-27B-TurboFCFusion Prose ELO: 10/10 draws vs qwen3.8-27b at a 3000-token budget (up from default 1500). At the default 1500 budget it scored 1158 with a pile of empty outputs — the model burns thinking tokens before producing content. Same scale as the table's pairwise ELO.
 
@@ -133,5 +133,5 @@ Pruned models from smoke only (no full battery): Twin-Turbo, Signal-3.8-27B-AP, 
 <a id="fn-stuck">†</a> Stuck-loop — model entered a self-referential reasoning loop; run stopped early.
 <a id="fn-section">§</a> Reasoning forced — model architecture cannot disable thinking.
 <a id="fn-caret">^</a> LiteLLM proxy — served through the LiteLLM proxy instead of direct inference.
-<a id="fn-spark">††</a> Reasoning-content format mismatch — model outputs full thinking in `reasoning_content` and only short answers in `content`. Instr v2, Prose ELO scores reflect the constrained budget, not the model's ceiling.
+<a id="fn-spark">††</a> Reasoning-content format mismatch — model outputs full thinking in `reasoning_content` and only short answers in `content`. Instr v2 (3/20 — 8, 14, 20 passed), prose, and reasoning scores reflect the constrained budget, not the model's ceiling.
 <a id="fn-para">¶</a> Reasoning-content format mismatch — model outputs full thinking in `reasoning_content` and only short answers in `content`. At standard token budgets (400-1500), the model burns most tokens on reasoning. Scores reflect the constrained budget, not the model's ceiling. Nemotron (2/10 tasks with prose content) is hardest hit. Muse (9/10) suffers less.
