@@ -51,7 +51,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | 1558[^](#fn-caret)[‡](#fn-dagger) | | | kept, math + long ctx |
 | **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 1406 | 7/8 | 20/20 | tested |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
-| ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
+| ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | 2nd coding; worst GPQA; 64k ctx |
 | exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
 | crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 1043[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
@@ -105,12 +105,12 @@ Each model that ran the full battery has its own page with results and notes:
 |---|---|---|
 | [nous-deepseek-v4-flash](./models/nous-deepseek-v4-flash.md) | baseline | remote baseline |
 | [Mirai S Qwen3.8-27B](./models/mirai-s-qwen3-8-27b.md) | kept | best overall — #1 on MATH, HE+, GPQA, Instr |
-| [qwen3.8-27b](./models/qwen3.8-27b.md) | kept | baseline, best coding |
+| [qwen3.8-27b](./models/qwen3.8-27b.md) | kept | baseline |
 | [qwen3.8-27b-heretic](./models/qwen3.8-27b-heretic.md) | kept | writing only |
 | [GSQ-RCO-IQ3_S-mtp](./models/gsq-rco-iq3_s-mtp.md) | kept | footprint champion |
 | [swift-qwen3.8-27b](./models/swift-qwen3.8-27b.md) | kept | default |
 | [bonsai2](./models/bonsai2.md) | kept | tiny VRAM, 128K ctx |
-| [ornith-1.5-35b-a3b](./models/ornith-1.5-35b-a3b.md) | kept | best coding |
+| [ornith-1.5-35b-a3b](./models/ornith-1.5-35b-a3b.md) | kept | 94.5% HE+, fast strong coder |
 | [exl3-qwen3.8-27b](./models/exl3-qwen3.8-27b.md) | engine comparison | same weights, different engine |
 | [OrcaSAQ-2-27B](./models/orcasaq2-27b.md) | kept | math leader, 262K context |
 | [Holo4-27B](./models/holo4-27b.md) | tested | GPQA leader, strong coding, weak math |
