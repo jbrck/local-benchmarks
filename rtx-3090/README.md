@@ -41,23 +41,23 @@ Each benchmark evaluates a specific capability. Full methodology and automation 
 
 Blank cells mean the model was pruned before running that test (smoke battery caught it).
 
-|| Model | MATH-500 | HumanEval+ | IFEval P/I | GPQA-D | Tool-eval | Instr v2 | Prose ELO | Reasoning | Refusal H | Status |
+| Model | MATH-500 | HumanEval+ | IFEval P/I | GPQA-D | Tool-eval | Instr v2 | Prose ELO | Reasoning | Refusal H | Status |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
-|| nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | remote baseline |
-|| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | | **69.7%** | | **20/20** | 1451 | | | kept, best overall |
-|| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 [‡](#fn-dagger) | | 2/20 | kept, writing |
-|| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 [‡](#fn-dagger) | | | kept, footprint |
-|| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 [‡](#fn-dagger) | 1.41x | **20/20** | kept, default |
-|| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | 1558[^](#fn-caret)[‡](#fn-dagger) | | | kept, math + long ctx |
-|| **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 1406 | 7/8 | 20/20 | tested |
-|| bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
-|| ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
-|| exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
-|| crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
-|| **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 1043[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
+| nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | remote baseline |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | | **69.7%** | | **20/20** | 1451 | | | kept, best overall |
+| **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | 1631 [‡](#fn-dagger) | | 2/20 | kept, writing |
+| **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | 1539 [‡](#fn-dagger) | | | kept, footprint |
+| **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1479 [‡](#fn-dagger) | 1.41x | **20/20** | kept, default |
+| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | 1558[^](#fn-caret)[‡](#fn-dagger) | | | kept, math + long ctx |
+| **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 1406 | 7/8 | 20/20 | tested |
+| bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | | kept: tiny VRAM, 128K ctx |
+| ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | | 19/20 (95%) | best coding; worst GPQA; 64k ctx |
+| exl3-qwen3.8-27b (3.5bpw) | 85.8% | 87.8%*[§](#fn-section) | 80.6 / 85.8%[§](#fn-section) | 46.5%[§](#fn-section) | 91[§](#fn-section) | | | | | EXL3 variant, reasoning forced |
+| crack2 (PQ2_0 abliterate) | 83.6% | **76.2%** | 77.3 / 84.2% | 43.4% | 86 | **19/20** | | | | weight-abliterated, HE+ collapse |
+| **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | 1043[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
 | **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20** | **1532**[¶](#fn-para) | | | tested: strong writer, solid GPQA, weak coder |
 | **Qwen3.8-27B-TurboFCFusion** ("turbo-fable", Q4_K_M) | 81.0% | **86.0%** | | 35.9% | | **19/20** | ~equal to qwen3.8-27b [¶](#fn-para) | | | tested: strong coder, slow, token-hungry; full page [here](./models/qwen3.8-27b-turbofcfusion.md) |
-|| **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 0/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
+| **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 0/20[††](#fn-spark) | 1500[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
 | Twin-Turbo | | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | | pruned |
 | gpt-oss-20b-mxfp4 | 74.2% | 67.7% | | | 75 | | | | | pruned |
