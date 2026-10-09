@@ -22,7 +22,6 @@
 | GPQA-Diamond | **25.3%** (50/198) | ⚠️ See note below | 🟡 |
 | Instruction v2 | **3/20** (15%) | ❌ Mostly empty — reasoning consumed budget | 🔴 |
 | IFEval | **68.6% / 75.3%** | Below 27B field (77-80%) | 🟡 |
-| Prose ELO | **1500** (5/10 with content) | ❌ 5/10 empty — reasoning consumed budget | 🔴 |
 | Tool-eval-bench | **83 / ★★★★** | Strong for 4B, competitive with 27B agents | 🟢 |
 | Refusal | Unknown | Format mismatch | ⚪ |
 | Reasoning | 0/8 | ❌ All empty — reasoning consumed budget | 🔴 |

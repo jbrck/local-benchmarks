@@ -12,7 +12,6 @@
 | GPQA-Diamond | 46.5% [§](#fn-section) |
 | Tool-eval-bench | 91 § (★★★★) |
 | Instruction v2 | not run |
-| Prose ELO | — [§](#fn-section) |
 | Reasoning bench | — [§](#fn-section) |
 | Refusal HARMFUL | not run |
 

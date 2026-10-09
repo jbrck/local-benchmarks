@@ -12,7 +12,6 @@
 | Refusal HARMFUL | 15/20 (75%) | — |
 | Refusal BENIGN (over-refusal) | 2/30 (7%) | — |
 | Reasoning bench | **100%** (8/8) | 🏆 #1 |
-| Prose ELO (judged by DeepSeek V4 Flash) | 5.5/10 | — |
 
 ## Timing & Speed
 

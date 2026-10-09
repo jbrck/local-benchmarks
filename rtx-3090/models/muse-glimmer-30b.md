@@ -1,6 +1,6 @@
 # Muse Glimmer 30B (GGUF Q4_K_M)
 
-**Status:** tested | **Decision:** strong writer/generalist, weak coder. Best prose quality of any local 30B model we've tested.
+**Status:** tested | **Decision:** strong writer/generalist, weak coder.
 
 | Spec | Value |
 |---|---|
@@ -16,7 +16,7 @@
 
 ## Results
 
-Muse Glimmer is a thinking model but produces useful content even within constrained budgets (unlike Nemotron which exhausts the ceiling on reasoning). Only 1/10 Prose ELO tasks hit the token cap with empty content.
+Muse Glimmer is a thinking model but produces useful content even within constrained budgets (unlike Nemotron which exhausts the ceiling on reasoning). Only 1/10 writing tasks hit the token cap with empty content.
 
 | Test | Score | vs 27B field | Notes |
 |---|---|---|---|
@@ -24,14 +24,13 @@ Muse Glimmer is a thinking model but produces useful content even within constra
 | HumanEval+ | **62.2%** (102/164) | 11th of 13 | Weak — coding is not a strength |
 | GPQA-Diamond | **56.6%** (112/198) | 2nd best (behind Holo4's 56.1% / tied OrcaSAQ2) | Strong graduate science, stable |
 | Instruction v2 | **75.0%** (15/20) | 2nd best (behind swift's 19/20) | Excellent constraint following |
-| Prose ELO | **1532**[¶](#fn-para) | 5th of 7 — pairwise ELO, on the same scale as the table |
 | Tool-eval-bench | — | Not tested | |
 | IFEval | — | Not tested with standard suite | |
 
 ## Analysis
 
 ### Strengths
-- **Best writer of the 30B class** — 7.3/10 prose ELO with real content. TaglineSet, EmailReply, LinkedInPost, BlogIntro, PressRelease, CustomerTestimonial all scored 9/10.
+- **Best writer of the 30B class** — TaglineSet, EmailReply, LinkedInPost, BlogIntro, PressRelease, CustomerTestimonial all scored 9/10.
 - **GPQA 56.6%** is the best we've seen after correcting for partial results. Second best GPQA score overall.
 - **8 GB VRAM headroom** is unmatched — almost as light as the 4B models but with 30B capability.
 - **IFEval 75%** demonstrates solid instruction-following without needing special budgets.
@@ -46,7 +45,7 @@ Muse Glimmer is a thinking model but produces useful content even within constra
 - Flash-attention (`-fa on`) cuts throughput from 43 tok/s to 5 tok/s on this architecture. Must be disabled for Muse.
 - With DFlash speculative decoding (draft GGUF available on HF), throughput could potentially reach 60-100 tok/s. Not tested.
 - All battery processes used `setsid` + `PYTHONPATH=` to survive Hermes lifecycle events (SIGHUP isolation, Python 3.14 env pollution).
-- The existing `Muse-Glimmer-30B` entry in the pruned table (1332 prose ELO) was from a different run — the full battery shows much better performance when served correctly.
+- The existing `Muse-Glimmer-30B` entry in the pruned table was from a different run — the full battery shows much better performance when served correctly.
 
 ## Timing
 
@@ -56,5 +55,4 @@ Muse Glimmer is a thinking model but produces useful content even within constra
 | HumanEval+ | ~1h |
 | GPQA-Diamond | ~1.5h |
 | IFEval | ~5 min |
-| Prose ELO | ~15 min |
 | **Total** | **~6h** |

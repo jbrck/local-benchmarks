@@ -23,7 +23,6 @@
 | Tool-eval | **93/100** | Ties DeepSeek V4 Flash remote baseline; 28/30 points |
 | Refusal | 20/20 harmful | 17% benign over-refusal, 10% edgy |
 | Reasoning | 8/8, 126s | Correctness saturated; no thinking-token edge |
-| Prose ELO | **1451** | Below qwen3.8-27b baseline (1704). Compression cost shows in writing |
 
 ## Context ceiling
 

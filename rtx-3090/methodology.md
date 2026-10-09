@@ -8,7 +8,7 @@ The test pipeline works in stages:
 
 1. **Smoke screening** — every candidate model runs a quick 35-task battery (~30 minutes). Models that pass proceed to the full battery.
 2. **Full battery** — MATH-500 + HumanEval+ (the primary verdict), then GPQA-Diamond and IFEval as secondary axes, then tool-eval-bench for agentic capability.
-3. **Specialized probes** — prose ELO (writing quality), instruction-following v2 (mechanical constraint obedience), refusal battery (safety alignment), reasoning bench (thinking-token efficiency).
+3. **Specialized probes** — instruction-following v2 (mechanical constraint obedience), refusal battery (safety alignment), reasoning bench (thinking-token efficiency).
 4. **Serving comparisons** — speculative decode A/B (MTP vs DFlash2), context ceiling, engine comparisons (llama.cpp GGUF vs exllamav3).
 
 Each stage runs unattended — the agent loads a model, runs the harness, saves results, swaps to the next model, and repeats.
@@ -83,7 +83,6 @@ A swap takes roughly 1-2 minutes depending on model size (5-21 GB files). The ag
 | GPQA-Diamond | Direct runner | Last `\boxed{letter}` in output (free-form response, 4-choice questions) |
 | IFEval | tool-eval-bench plugin | 25 mechanical constraint types checked programmatically — no judge |
 | Tool-eval-bench | tool-eval-bench full runner | 69 multi-turn agentic scenarios, per-scenario pass/partial/fail with safety warnings |
-| Prose ELO | Writing generator + neutral judge | Pairwise comparison by a frontier model (nous-deepseek-v4-flash), anonymized prompts, randomized side assignment, ELO k=32 |
 | Instruction v2 | Direct runner | 20 single-constraint mechanical checks — exact word, word count, no-letter-e, JSON schema, etc. |
 | Refusal battery | Direct runner | Pattern-based REFUSE/COMPLY classification across 70 prompts in three tiers |
 | Reasoning bench | Direct runner | Thinking-token estimation from `reasoning_content` field, wall time, correctness |
@@ -111,13 +110,13 @@ Links to the exact model files (or their base repos) tested on this system. Seve
 
 | Model | Source / HF link | Why pruned |
 |---|---|---|
-| gpt-oss-20b-mxfp4 | [openai/gpt-oss-20b](https://huggingface.co/openai/gpt-oss-20b) | Dead last on full battery: MATH 74.2%, HE+ 67.7%, tool 75, 12% multi-step chains. Smoke misled. |
-| hermes-4.3-36b | [NousResearch/Hermes-4.3-36B](https://huggingface.co/NousResearch/Hermes-4.3-36B) | 2nd-lowest prose ELO (1440). Mid math (81.0%) and HE+ (87.2%). Bigger does not beat the Qwen pair. |
+| gpt-oss-20b-mxfp4 | [openai/gpt-oss-20b](https://huggingface.co/openai/gpt-oss-20b) | Dead last on full battery. Smoke misled. |
+| hermes-4.3-36b | [NousResearch/Hermes-4.3-36B](https://huggingface.co/NousResearch/Hermes-4.3-36B) | Mid math (81.0%) and HE+ (87.2%). Bigger does not beat the Qwen pair. |
 | qwen3-coder-30b-A3B | [Qwen/Qwen3-Coder-30B-A3B-Instruct](https://huggingface.co/Qwen/Qwen3-Coder-30B-A3B-Instruct) | "Coder" that can't code: HE+ 73.2%, toolbench 68 with critical sleeper injection. Lost every axis. |
 | gemma-3-27b-it-qat | [google/gemma-3-27b-it-qat-gguf](https://huggingface.co/google/gemma-3-27b-it-qat-gguf) | 0/10 tool calls on smoke — GGUF lacks function-call template support. Disqualified. |
 | mistral-small-3.2-24b | [mistralai/Mistral-Small-3.2-24B-Instruct-2509](https://huggingface.co/mistralai/Mistral-Small-3.2-24B-Instruct-2509) | 3/10 reasoning on smoke. Too weak at multi-step. |
 | Qwen-AgentWorld-35B-A3B | [Qwen/Qwen-AgentWorld-35B-A3B](https://huggingface.co/Qwen/Qwen-AgentWorld-35B-A3B) | 4/10 reasoning on smoke. Same problem. |
-| Signal-3.8-27B-AP | Community merge. | Mid on every axis. Token-efficiency pitch didn't survive real prose. |
+| Signal-3.8-27B-AP | Community merge. | Mid on every axis |
 | Twin-Turbo | Community merge. | Reasoning claims inverted: +44% thinking, 0.59x wall speed. |
 
 ## What happens after the runs
@@ -138,7 +137,6 @@ Same hardware, same engine (llama.cpp), same quantized model files (available on
 - HumanEval+ via evalplus package
 - GPQA-Diamond: `hendrydong/gpqa_diamond` on HuggingFace (not gated)
 - tool-eval-bench: [github.com/SeraphimSerapis/tool-eval-bench](https://github.com/SeraphimSerapis/tool-eval-bench) (includes IFEval plugin)
-- Prose ELO: custom judge script using the same frontier model
 
 All harnesses accept `BENCH_API_BASE` to target your own endpoint. Model files cited in each test's notes are the specific quantizations tested — exact filenames on HuggingFace.
 
@@ -173,12 +171,6 @@ HumanEval+ executes model-generated Python code against hidden tests. Models can
 The flag accepts: `llamacpp`, `litellm`, `vllm`, `sglang`, `gemini`, `ninfer`. Using `--backend openai` produces a result JSON with `final_score: null` — it completes in ~8 seconds with no errors and the null score file looks like a successful run. Trip up: the skip-if-file-exists logic then treats the null artifact as complete.
 
 **Fix:** Use `--backend llamacpp` for a local GGUF server, `--backend litellm` for a proxy, `--backend vllm` for any plain OpenAI-wire server.
-
-### Prose ELO judge routing is deceptive
-
-The prose ELO judge script hardcodes the local endpoint. Passing a remote judge name (like `nous-deepseek-v4-flash` via `--judge`) is silently ignored — llama.cpp ignores the `model` field and serves whatever GGUF is loaded. The judge label in old result files is misleading.
-
-**Fix:** Use a separate script that routes through the model proxy and anonymizes the prompt (sample A/B naming instead of model names). Also randomize side assignment to cancel position bias.
 
 ### Smoke tests are not verdicts
 
@@ -219,19 +211,6 @@ PYTHONPATH= setsid /mnt/data/benchmark-venv/bin/python bench_full.py --model x -
 
 `setsid` creates a new session group, isolating the process from the agent's SIGHUP propagation. Without it, Hermes restarts kill the benchmark silently.
 
-### Prose ELO: draws must be excluded from ELO win-rate
-
-The pairwise ELO formula must exclude draws when computing win-rate. Including draws in the denominator causes the total ELO sum to drift downward — every draw subtracts K * draw_rate from both players. The correct formula:
-
-```python
-total_decided = wins_a + wins_b  # excludes draws
-actual_a = wins_a / total_decided
-expected_a = 1 / (1 + 10**((elo_b - elo_a) / 400))
-elo_a += K * (actual_a - expected_a)
-```
-
-With draws excluded, the ELO sum stays constant (zero-sum). The initial mis-application — dividing wins by (wins + losses + draws) — produced nonsensical ratings in the 500-700 range instead of the expected 1000-2000 range.
-
 ### Community merge card claims are unreliable in both directions
 
 Swift's card claimed 1.95x speedup (measured 1.41x). Twin-Turbo (DavidAU) claimed 1/2-to-1/20 thinking tokens (measured +44% MORE thinking, 0.59x wall time). Marketing numbers are directional at best and massaged for hype. Always verify with the reasoning bench before assigning a model to a role based on its card.
@@ -246,12 +225,6 @@ OrcaSAQ-2-27B has no GGUF quant available. The only serving options are vLLM Orc
 On vLLM with `REASONING_PARSER=qwen3` enabled, the model outputs `[think]...[/think]` reasoning before every answer. When ALL output tokens are consumed by reasoning (common for simple prompts like "write a blurb"), vLLM strips the think markers and returns `"content": null` with `finish_reason: "length"`. The response has 500 reasoning tokens and 0 visible content.
 
 **Fix:** Pass `chat_template_kwargs: {"enable_thinking": false}` in every API request to this model for non-reasoning tasks. Equivalent to the `--no-think` flag in tool-eval-bench, which does the same thing under the hood.
-
-### LiteLLM proxy auth for judging
-
-The prose ELO judge script calls the LiteLLM proxy at `http://100.117.19.78:4000/v1`. The proxy requires a valid master key in the `Authorization` header — passing `Bearer local` returns 401 silently, and the judge script catches the exception and records every match as `"tie"`. The first prose ELO run produced 30/30 ties before the auth issue was discovered.
-
-**Fix:** Generate a proxy API key via `PUT /key/generate` with the master key, or store one in a base64-encoded environment variable at runtime. The judge script must decode and pass the key in every request header.
 
 ### OrcaSAQ2 IFEval stuck on first request
 

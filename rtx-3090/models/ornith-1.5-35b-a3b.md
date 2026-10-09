@@ -13,7 +13,6 @@
 | Tool-eval-bench | 88 (★★★★) |
 | Instruction v2 | **19/20** |
 | Refusal HARMFUL | 19/20 (95%) — safe profile |
-| Prose ELO | not run |
 | Reasoning bench | not run |
 
 **Status:** kept, best coding

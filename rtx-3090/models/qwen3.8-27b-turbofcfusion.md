@@ -23,7 +23,6 @@ This model thinks before answering — every request burns tokens in `reasoning_
 | HumanEval+ | **86.0%** (141/164) | 2nd best (behind ornith-1.5-35b's 94.5%) | "CODER MAX" claim holds — genuinely good |
 | GPQA-Diamond | **35.9%** (71/198) | low end of 27B field (35-40%) | Barely above random (25%) |
 | Instruction v2 | **95.0%** (19/20) | best of the 27B class | Strong constraint following |
-| Prose ELO | **~equal to qwen3.8-27b** | 10/10 draws vs baseline at 3000-token budget | With default 1500 budget: 1158 (last place, empty outputs) |
 
 ## Analysis
 
@@ -52,5 +51,4 @@ This model thinks before answering — every request burns tokens in `reasoning_
 | HumanEval+ | ~55 min (20.1s/problem avg) |
 | GPQA-Diamond | ~1h 40m |
 | Instruction v2 | ~10 min |
-| Prose ELO | ~25 min |
 | **Total** | **~5.5h** |

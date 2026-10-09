@@ -24,7 +24,6 @@
 | IFEval Prompt | **71.5%** | Below average | 🔴 |
 | IFEval Instruction | **77.6%** | Below average (swift 85.1%, EXL3 85.8%) | 🔴 |
 | Tool-eval-bench | **91** | Tied with EXL3 (OrcaSAQ2 none, heretic 92) | 🟢 |
-| Prose ELO | **1406** | vs heretic (1566) — 4/10 outputs blank (token budget exhausted) | 🔴 |
 | Refusal H | **20/20 (100%)** | Perfect | 🟢 |
 | Refusal B | **2/30 (7%)** | Slight over-refusal, normal | 🟢 |
 | Reasoning | **7/8 pass** | Passable | 🟢 |
@@ -42,7 +41,7 @@ Holo4 is a **split personality**. It leads the field on GPQA (graduate science) 
 - **MATH 73.4%** — 15 points below the field average. For a reasoning-heavy model this is surprising
 - **IFEval 77.6% I** — Below every Qwen3 variant. Struggles with mechanical constraints (paragraph counting, letter frequency)
 - **Instr v2 45.0%** — Nearly half of simple single-constraint tests failed. Pattern suggests the model doesn't handle negative constraints well
-- **Prose ELO 1406** — 4/10 outputs blank (1500 tok budget exhausted by thinking). When it writes, quality is comparable to field average
+- Writing output is thinking-budget constrained — 4/10 outputs blank at default 1500 tok budget. When it writes, quality is comparable to field average.
 
 ### Context note
 The initial battery run (262K FP16 KV cache, 3.2 tok/s) produced 16.6% MATH — an artifact of context corruption from the 340 GB KV cache overflowing to system RAM. All scores above are from the **Q8 KV cache run** at 131K context, which stabilized at 23.1 tok/s and produced valid results.

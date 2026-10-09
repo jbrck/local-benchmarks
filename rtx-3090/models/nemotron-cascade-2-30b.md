@@ -15,7 +15,7 @@
 
 ## Results
 
-Nemotron is a **thinking model** — it writes full CoT in `reasoning_content` and leaves `content` near-empty on constrained budgets. MATH and HE+ extractors parse reasoning, so those scores are genuine. IFEval, Prose ELO, and GPQA at standard budgets are depressed because the model exhausts its token ceiling on reasoning.
+Nemotron is a **thinking model** — it writes full CoT in `reasoning_content` and leaves `content` near-empty on constrained budgets. MATH and HE+ extractors parse reasoning, so those scores are genuine. IFEval, writing tasks, and GPQA at standard budgets are depressed because the model exhausts its token ceiling on reasoning.
 
 | Test | Score | vs 27B field | Notes |
 |---|---|---|---|
@@ -23,7 +23,6 @@ Nemotron is a **thinking model** — it writes full CoT in `reasoning_content` a
 | HumanEval+ | **84.8%** (139/164) | 8th of 12 | Respectable, trails Qwen3.8 variants but above crack2 |
 | GPQA-Diamond | **54.0%** (107/198) | 3rd best (tied with Holo4/OrcaSAQ2) | Strong for graduate science |
 | Instruction v2 | **45.0%** (9/20) | Depressed by reasoning budget | Same mechanism as Spark-X2.5-4B |
-| Prose ELO | **1043**[¶](#fn-para) | Depressed — 8/10 tasks produced empty content | Same mechanism |
 | Tool-eval-bench | — | Not tested | |
 | IFEval | — | Not tested with standard suite | |
 
@@ -41,6 +40,6 @@ Nemotron is a **thinking model** — it writes full CoT in `reasoning_content` a
 - **IFEval 45%** — constraint-following is poor at 400-token budget. The model cannot produce a simple two-word answer within that limit.
 
 ### What would help
-- Rerun IFEval and Prose ELO with 4-8x the default budget to match the model's thinking overhead
+- Rerun IFEval and writing tasks with 4-8x the default budget to match the model's thinking overhead
 - Compare against other reasoning/thinking models (OrcaSAQ-2-27B, Spark) at budget-adjusted settings
 - Test with Bonsai 2's speculative decode for potential speed gains

@@ -12,7 +12,6 @@
 | GPQA-Diamond | 44.4% |
 | Tool-eval-bench | 92 (★★★★★) |
 | Instruction v2 | 18/20 |
-| Prose ELO | 1603 [‡](#fn-dagger) (Oct-06 recomputed) |
 | Reasoning bench | not run |
 | Refusal HARMFUL | 2/20 (10%) — working criminal code |
 
@@ -29,7 +28,7 @@
 
 ## Notes
 
-Scored 1603 on prose ELO (Oct-06 recomputed) — a strong writer, though GSQ (1733) and swift (1694) have pulled ahead in the latest recompute. Scored 92 on tool-eval-bench with no safety warnings. But the refusal battery is a hard red line: 0% harmful refusal, and several "compliant" responses contained working credit-card stealer code, doxxer code, and ransomware. Never use this model agentically or with untrusted input. Writing generation only, and only in a sandboxed context.
+Scored 92 on tool-eval-bench with no safety warnings. But the refusal battery is a hard red line: 0% harmful refusal, and several "compliant" responses contained working credit-card stealer code, doxxer code, and ransomware. Never use this model agentically or with untrusted input. Writing generation only, and only in a sandboxed context.
 
 ---
 

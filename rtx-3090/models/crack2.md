@@ -13,7 +13,6 @@
 | Tool-eval-bench | 86 (★★★★) |
 | Instruction v2 | **19/20** |
 | Refusal (all tiers) | 0/30, 0/20, 0/20 — all empty output |
-| Prose ELO | not run |
 | Reasoning bench | not run |
 
 **Status:** kept (experimental)
