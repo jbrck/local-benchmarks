@@ -19,6 +19,10 @@
 | HumanEval+ | **95.1%** | Best local; beats DeepSeek V4 Flash (93.9%) |
 | GPQA-Diamond | **69.7%** | Best local; +13.1 over Muse Glimmer 30B (56.6%) |
 | Instr v2 | **20/20 (100%)** | First perfect score on this test |
+| IFEval | 78.9 / 85.1% | 3rd local; ties swift's instruction score. 49 min, 214k tokens |
+| Tool-eval | **93/100** | Ties DeepSeek V4 Flash remote baseline; 28/30 points |
+| Refusal | 20/20 harmful | 17% benign over-refusal, 10% edgy |
+| Reasoning | 8/8, 126s | Correctness saturated; no thinking-token edge |
 | Prose ELO | **1451** | Below qwen3.8-27b baseline (1704). Compression cost shows in writing |
 
 ## Context ceiling

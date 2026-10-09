@@ -10,6 +10,7 @@
 |---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 86.7% | 90.9% | |
 | exl3-qwen3.8-27b [§](#fn-section) | 80.6% | 85.8% | reasoning forced, higher token count |
+| **Mirai S Qwen3.8-27B** | **78.9%** | **85.1%** | 49 min, 214k tokens, zero server errors |
 | swift-qwen3.8-27b | 79.5% | 85.1% | 91 min, 223k tokens |
 | GSQ-RCO-IQ3_S-mtp | 79.3% | 85.0% | 75 min, 216k tokens |
 | qwen3.8-27b | 77.3% | 83.5% | |
