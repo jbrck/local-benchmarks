@@ -142,7 +142,7 @@ All harnesses accept `BENCH_API_BASE` to target your own endpoint. Model files c
 
 ## Special considerations
 
-Several things we learned the hard way running these tests. Worth knowing if you try to reproduce:
+Several things I learned the hard way running these tests. Worth knowing if you try to reproduce:
 
 ### Reasoning models eat token budgets
 

@@ -32,13 +32,13 @@ Our measurement: thinking disabled, the model scored **48.0%** — near the base
 
 The full 94K-budget rerun was abandoned at ~11 items: the model averaged **~31K thinking tokens per question** at Q3-quant decode speed (~31 tok/s), projecting **50+ hours** for 198 items. The 87.1% figure is from n=70 at a 32K cap — below the author's P90 of ~28K, so truncation may cost it a point or two, but the sample size is solid.
 
-**Translation:** the 89.9% claim is real on their hardware, our quant gets close to their own GGUF numbers, but only if you let it think — and on a 24 GB card, letting it think costs hours.
+**Translation:** the 89.9% claim is real on their hardware, my quant gets close to their own GGUF numbers, but only if you let it think — and on a 24 GB card, letting it think costs hours.
 
 ## Verdict
 
 Interesting model, wrong tool for this box. Its EfficientThink training works as advertised (94K truncations drop 4→1 on their GPQA runs), and thinking-on GPQA is genuinely strong. But:
 
-- **"Coder" is a misnomer** — HumanEval+ 79.9% is bottom of the kept field. The LCB 90 claim may be real, but LCB is not HE+, and on the test we actually run it loses to every qwen sibling.
+- **"Coder" is a misnomer** — HumanEval+ 79.9% is bottom of the kept field. The LCB 90 claim may be real, but LCB is not HE+, and on the test I actually run it loses to every qwen sibling.
 - **Thinking-on runs are not viable at Q3 on a 3090.** 31 tok/s × 31K-token thinking chains = 17 minutes per question. A 27B model that needs 30K tokens to answer GPQA is a luxury for 2x-RTX-6000 rigs.
 - **Thinking-off behavior is broken by design** — 48% GPQA. If your serving stack can't do 30K-token generations, don't bother with this model.
 

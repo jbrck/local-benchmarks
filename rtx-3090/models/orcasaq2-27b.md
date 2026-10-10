@@ -36,7 +36,7 @@ OrcaSAQ-2-27B is a Qwen3-based 27B model with hybrid attention: 48 Gated DeltaNe
 
 Currently the strongest local model on MATH-500 (90.8% — 1.6 pts above swift's 89.2%). Code writing is 3rd at 89.6%, trailing behind heretic (92.7%) and base qwen3.8-27b (91.5%). 
 
-GPQA-Diamond has three runs on record. The Sep 18 orcarouter-stack full run scored **43.9% (87/198)** — that's the number we stand behind. A 20-item partial (55.0%) was abandoned before JSON saved; it's unverified and superseded. Two later attempts on the OrcaSAQ2-kernel stack (26.8%, 5.6%) show classic serving breakage — self-feedback thinking loops consuming the token budget, null responses — not model capability. The model's scientific knowledge scoring is also not directly comparable: vLLM at 11.6 tok/s vs llama.cpp GGUF at 20-25 tok/s for every other local model.
+GPQA-Diamond has three runs on record. The Sep 18 orcarouter-stack full run scored **43.9% (87/198)** — that's the number I stand behind. A 20-item partial (55.0%) was abandoned before JSON saved; it's unverified and superseded. Two later attempts on the OrcaSAQ2-kernel stack (26.8%, 5.6%) show classic serving breakage — self-feedback thinking loops consuming the token budget, null responses — not model capability. The model's scientific knowledge scoring is also not directly comparable: vLLM at 11.6 tok/s vs llama.cpp GGUF at 20-25 tok/s for every other local model.
 
 Served via vLLM OrcaSAQ2-kernel (Docker), model ID `exl3`. 262K context at ~21.9 GB VRAM with fp8 KV cache and hybrid attention tuning. Same GPU runs ComfyUI alongside at reduced context depth.
 

@@ -29,7 +29,7 @@ This model thinks before answering — every request burns tokens in `reasoning_
 ## Analysis
 
 ### Strengths
-- **HumanEval+ 86.0%** is the best 27B coding score we've seen this generation (behind only ornith-1.5-35b's 94.5% at a larger 35B). The "CODER MAX" in the name is real for code.
+- **HumanEval+ 86.0%** is the best 27B coding score I've seen this generation (behind only ornith-1.5-35b's 94.5% at a larger 35B). The "CODER MAX" in the name is real for code.
 - **Instruction v2 95.0%** (19/20) — best mechanical constraint-following of the 27B Qwen family. Only missed max_words.
 - Prose quality matches the baseline qwen3.8-27b when given enough tokens (10/10 draws head-to-head).
 

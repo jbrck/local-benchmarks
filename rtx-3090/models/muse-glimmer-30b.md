@@ -33,7 +33,7 @@ Muse Glimmer is a thinking model but produces useful content even within constra
 
 ### Strengths
 - **Best writer of the 30B class** — TaglineSet, EmailReply, LinkedInPost, BlogIntro, PressRelease, CustomerTestimonial all scored 9/10.
-- **GPQA 56.6%** is the best we've seen after correcting for partial results. Second best GPQA score overall.
+- **GPQA 56.6%** is the best I've seen after correcting for partial results. Second best GPQA score overall.
 - **8 GB VRAM headroom** is unmatched — almost as light as the 4B models but with 30B capability.
 - **IFEval 75%** demonstrates solid instruction-following without needing special budgets.
 - **Reasoning model that also outputs** — unlike Nemotron, Muse preserves enough token budget to produce visible content even at standard test limits.
