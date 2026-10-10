@@ -52,7 +52,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | | 2/20 | kept, writing |
 | **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | | | kept, footprint |
 | **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1.41x | **20/20** | kept, capable all-rounder |
-| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | | | kept, math + long ctx |
+| **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 43.9%[†](#fn-stuck) | | | | | kept, math + long ctx |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 89.0% | 79.9% | 71.5 / 84.9% | 48.0% / **87.1%**[±](#fn-coder390) | | **20/20** | | | pruned: thinking model, unusable pace at Q3 on 24 GB |
 | **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 7/8 | 20/20 | tested |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | kept: tiny VRAM, 128K ctx |
@@ -62,7 +62,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 81.2% | 84.8% | | 54.0% | | 9/20[¶](#fn-para) | | | tested: thinking model, fast, needs high budget |
 | **Muse Glimmer 30B** (Q4_K_M) | 82.6% | 62.2% | | **56.6%** | | **15/20** | | | tested: strong writer, solid GPQA, weak coder |
 | **Qwen3.8-27B-TurboFCFusion** ("turbo-fable", Q4_K_M) | 81.0% | **86.0%** | | 35.9% | | **19/20** | | | tested: strong coder, slow, token-hungry; full page [here](./models/qwen3.8-27b-turbofcfusion.md) |
-| **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 3/20[††](#fn-spark) | 0/8[††](#fn-spark) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
+| **Spark-X2.5-4B** (Q4_K_M) | 72.2% | 70.7% | 68.6 / 75.3% | 25.3%[††](#fn-spark) | 83 | 3/20[††](#fn-spark) | 8/8[†](#fn-stuck) | — | 4B agent model, 185 tok/s, 6.3 GB VRAM. Scores marked †† depressed by reasoning-content format mismatch |
 | Twin-Turbo | | | | | | | 0.59x | | pruned |
 | Signal-3.8-27B-AP | 85.6% | 84.1% | | | 83 | | | | pruned |
 | gpt-oss-20b-mxfp4 | 74.2% | 67.7% | | | 75 | | | | pruned |
@@ -75,7 +75,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 
 \* EXL3 HumanEval+ at the 4096-token-cap rerun. The first run at the 1024 default scored 74.4% — an artifact of un-disableable reasoning eating the token budget before code was generated. Details in [humaneval-plus.md](./test/test_humaneval-plus.md).
 
-† OrcaSAQ-2-27B GPQA-Diamond at 20/198 (55.0%*) — stopped early. The model's self-feedback loop consumed output tokens on thinking, producing null responses on 71% of first-attempt prompts. Score at 20 items is partial, not comparable.
+† OrcaSAQ-2-27B GPQA-Diamond: **43.9% (87/198, full run)** via the orcarouter serving stack (Sep 18). An earlier attempt at a 20-item partial scored 55% but was never saved to JSON — unverifiable, replaced by the full run. Two later leg3 attempts on the OrcaSAQ2-kernel stack scored 26.8% and 5.6% — those look like serving breakage (self-feedback loops consuming output tokens, null responses), not model capability. Trust the 43.9%.
 
 ‡ Tested with `--no-think` (reasoning disabled). Thinking degrades or stalls on these tasks — details in the [Think vs No-Think](#think-vs-no-think) section below.
 

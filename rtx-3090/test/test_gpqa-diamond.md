@@ -11,16 +11,23 @@
 | Model | Accuracy | Notes |
 |---|---|---|
 | nous-deepseek-v4-flash | 83.8% | remote baseline |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **69.7%** | **best local** by 13+ pts |
+| **Muse Glimmer 30B** (Q4_K_M) | **56.6%** | |
+| Holo4-27B (Q4_K_M, Q8 KV) | **56.1%** | |
+| OrcaSAQ-2-27B (vLLM) [†](#fn-stuck) | ~55.0%\* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
+| **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 54.0% | |
 | swift-qwen3.8-27b | 50.5% | best local; 136 average tokens (half of the next closest) |
 | GSQ-RCO-IQ3_S-mtp | 48.0% | |
+| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 48.0% / **87.1%**[±](#fn-coder390) | thinking-off / thinking-on (n=70 partial) |
 | exl3-qwen3.8-27b [§](#fn-section) | 46.5% | thinking forced |
 | qwen3.8-27b | 46.0% | |
-| bonsai2 (PrismML tern PTQ1_0) | 43.9% | |
-| ornith-1.5-35b-a3b (q4_k_s) | **34.3%** | worst local; knowledge gap |
 | qwen3.8-27b-heretic | 44.4% | 1.8x qwen's tokens, lower score |
+| bonsai2 (PrismML tern PTQ1_0) | 43.9% | |
 | crack2 (abliterated PQ2_0) | 43.4% | |
 | qwen3-coder-30b | 42.9% | |
-| OrcaSAQ-2-27B (vLLM) [†](#fn-stuck) | ~55.0%\* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
+| ornith-1.5-35b-a3b (q4_k_s) | **34.3%** | worst local; knowledge gap |
+| Spark-X2.5-4B (Q4_K_M) | 25.3%[††](#fn-spark) | format artifact — 83% when content present |
+| gemma-4-26b | 15.0% | rejected |
 
 **Scoring:** The model receives a free-form question with (A)-(D) options and is instructed to reply with `\boxed{letter}`. The parser extracts the LAST `\boxed{letter}` in the output (reasoning may contain boxed references; the final answer comes at the end).
 

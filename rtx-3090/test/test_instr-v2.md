@@ -19,6 +19,10 @@
 | GSQ-RCO-IQ3_S-mtp | 18/20 (90%) | |
 | **Muse Glimmer 30B** | **15/20 (75%)** [¶](#fn-para) | Good — clears constraints on most tasks. 3 letter-e failures, 1 two-words failure, 1 exact-word failure |
 | **Nemotron Cascade 2 30B A3B** | **9/20 (45%)** [¶](#fn-para) | Depressed — burned budget on reasoning, left content empty or incomplete on 11 tasks |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **20/20 (100%)** | |
+| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | **20/20 (100%)** | first perfect score; Mirai S also posts 20/20 |
+| Qwen3.8-27B-TurboFCFusion ("turbo-fable", Q4_K_M) | **19/20 (95%)** | |
+| Holo4-27B (Q4_K_M, Q8 KV) | 9/20 (45%) | thinking ate the budget |
 
 **Shared failure pattern:** the `two_words` test (reply with exactly two words) and the `no_e` test (write without the letter 'e' at 8+ words) fail for every local model. These are genuine capability ceilings, not model-specific defects.
 

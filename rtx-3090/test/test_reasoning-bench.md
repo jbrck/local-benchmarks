@@ -1,6 +1,6 @@
 # Reasoning Bench (Thinking Tokens & Speed)
 
-**TL;DR:** 8 tasks measuring thinking-token efficiency. Mirai S reasons 1.41x faster than vanilla qwen with 21.7% fewer thinking tokens. Spark's 0/8 is a format artifact, not capability.
+**TL;DR:** 8 tasks measuring thinking-token efficiency. Mirai S reasons 1.41x faster than vanilla qwen with 21.7% fewer thinking tokens. All of Spark's 8/8 passes used `reasoning_content` extraction — the raw JSON confirms genuine passes, not format artifacts.
 
 **What it evaluates:** 8 tasks with reasoning ENABLED, measuring completion tokens, estimated thinking tokens, wall time, and correctness. The tool for testing "N% fewer thinking tokens / Nx speedup" claims on community merge cards. Always compare against the qwen3.8-27b-reasoning baseline on this exact hardware.
 
@@ -13,6 +13,7 @@
 | qwen3.8-27b (baseline) | 8/8 | 614 | 29.9s | 1.0x |
 | swift-qwen3.8-27b | 8/8 | 481 (-21.7%) | 21.2s | **1.41x** |
 | Twin-Turbo | 8/8 | 885 (+44%) | 50.5s | 0.59x |
+| Spark-X2.5-4B | 8/8 | 520 | 18.4s | 1.63x | fast 4B; raw JSON confirms all passes
 
 **Correctness axis note:** All models score 8/8 on this specific 8-task set — the correctness axis is saturated and cannot rank models. The useful signal is thinking-token count and wall time.
 

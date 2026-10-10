@@ -22,6 +22,10 @@
 | crack2 (abliterated PQ2_0) | 77.3% | 84.2% | best IFEval of the abliterated set |
 | qwen3-coder-30b | 74.3% | 82.0% | |
 | OrcaSAQ-2-27B (vLLM) ‡ | 76.0% | 82.2% | 3.9h, 172k tokens — thinking disabled; 3x improvement over thinking-mode pilot 3.9h, 172k tokens — thinking disabled for IFEval; 3x improvement over thinking-mode pilot |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | 78.9% | 85.1% | |
+| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 71.5% | 84.9% | 44/541 client timeouts scored as fail |
+| Holo4-27B (Q4_K_M, Q8 KV) | 71.5% | 77.6% | |
+| Spark-X2.5-4B (Q4_K_M) | 68.6% | 75.3% | format artifact |
 
 **Scoring:** tool-eval-bench's IFEval plugin checks 25 constraint types (length, word limits, JSON schema, forbidden words, start/end with, case transformation, etc.). Each prompt can carry multiple constraints; instruction-level measures whether each individual constraint was satisfied, prompt-level measures whether all constraints on a prompt were satisfied simultaneously.
 

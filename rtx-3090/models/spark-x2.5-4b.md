@@ -1,6 +1,6 @@
 # Spark-X2.5-4B (GGUF Q4_K_M)
 
-**TL;DR:** 4B agent model at 185 tok/s. Genuine MATH/HE+/tool scores (72/71/83) are decent for its size; GPQA/Instr/IFEval rows are artifacts of reasoning-content format, not true capability.
+**TL;DR:** 4B agent model at 185 tok/s. Genuine MATH/HE+/tool/reasoning scores (72/71/83/8-of-8) are strong for its size; GPQA/Instr/IFEval rows are artifacts of reasoning-content format, not true capability.
 
 **Status:** tested | **Decision:** pending — strong coding/math for its size, but reasoning-content format breaks instruction-following bench scripts. Note: scores on GPQA, Instr v2, and similar tests are depressed by the model consuming its token budget on `reasoning_content` before producing an answer in `content` (the field the bench scripts read). True knowledge accuracy is higher than reported scores suggest.
 
@@ -26,7 +26,7 @@
 | IFEval | **68.6% / 75.3%** | Below 27B field (77-80%) | 🟡 |
 | Tool-eval-bench | **83 / ★★★★** | Strong for 4B, competitive with 27B agents | 🟢 |
 | Refusal | Unknown | Format mismatch | ⚪ |
-| Reasoning | 0/8 | ❌ All empty — reasoning consumed budget | 🔴 |
+| Reasoning | 8/8 | ✅ All passed — raw JSON confirms 100% accuracy | 🟢 |
 
 ## Analysis
 
@@ -42,7 +42,7 @@ Spark-X2.5-4B is a **small, fast agentic model** that punches above its weight o
 
 ### Weaknesses
 - **Reasoning-content format mismatch** — The model outputs thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when it did). Token budget (4096) is exhausted by thinking on complex queries before the answer appears.
-- **Instr v2 3/20, Reasoning 0/8** — Not true zeros; the model never reached `content` output within script token limits
+- **Instr v2 3/20, Refusal unparsed** — Script-compatibility failures, not true zeros; the model never reached `content` output within script token limits on those benches
 - **Refusal bench** — Format/parsing mismatch, no usable scores
 - **4B knowledge ceiling** — Trained on less data than 27B models; GPQA 25.3% even accounting for the content issue is far below 27B field average (~45%)
 

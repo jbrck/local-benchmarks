@@ -13,19 +13,28 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | Model | Accuracy | Notes |
 |---|---|---|
 | nous-deepseek-v4-flash | 93.9% | remote baseline |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **95.1%** | **best local** |
+| ornith-1.5-35b-a3b (q4_k_s) | **94.5%** | 2nd local coding |
 | qwen3.8-27b-heretic | 92.7% | best local |
-| bonsai2 (PrismML tern PTQ1_0) | 89.0% | tiny VRAM; mid coding |
-| **OrcaSAQ-2-27B** (vLLM) | 89.6% | SAQ-trained; 3rd, behind heretic & base qwen |
-| ornith-1.5-35b-a3b (q4_k_s) | **94.5%** | best local coding |
 | qwen3.8-27b | 91.5% | |
-| crack2 (abliterated PQ2_0) | **76.2%** | severe coding degrade from abliteration |
 | GSQ-RCO-IQ3_S-mtp | 91.5% | 11.8 GB file, full-size score |
+| Holo4-27B (Q4_K_M, Q8 KV) | **90.2%** | |
+| **OrcaSAQ-2-27B** (vLLM) | 89.6% | SAQ-trained; 3rd, behind heretic & base qwen |
+| OrcaSAQ-2-27B (vLLM) | 89.6% | |
+| bonsai2 (PrismML tern PTQ1_0) | 89.0% | tiny VRAM; mid coding |
 | swift-qwen3.8-27b | 87.8% | best math, mid coding |
 | exl3-qwen3.8-27b (3.5bpw) [§](#fn-section) | 87.8% | at 4096 cap |
 | hermes-4.3-36b | 87.2% | |
+| Qwen3.8-27B-TurboFCFusion ("turbo-fable", Q4_K_M) | **86.0%** | |
+| **Nemotron Cascade 2 30B A3B** (Q3_K_M) | 84.8% | |
 | Signal-3.8-27B-AP | 84.1% | |
+| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 79.9% | worst of kept 27Bs despite "coder" branding |
+| crack2 (abliterated PQ2_0) | **76.2%** | severe coding degrade from abliteration |
 | qwen3-coder-30b | 73.2% | |
+| Spark-X2.5-4B (Q4_K_M) | 70.7% | strong for 4B |
 | gpt-oss-20b-mxfp4 | 67.7% | |
+| **Muse Glimmer 30B** (Q4_K_M) | 62.2% | weak coder |
+| gemma-4-26b | 56.1% | rejected |
 
 **The EXL3 HumanEval+ correction.** The first EXL3 run scored 74.4%. Root cause: EXL3 cannot disable reasoning, and the harness capped responses at 1024 tokens — the model spent the budget thinking and the code got truncated (39/164 items hit the cap; 1/39 passed). GGUF runs had reasoning off, so all 1024 tokens went to code. Re-run at a 4096-token cap: **87.8%** (144/164), average 997 tokens, 16 items still exhausted the cap. So +13.4 points was artifact; the remaining ~4-5 point gap to the GGUF pair is genuine — coding is the one axis where GGUF Q5_K_M keeps the edge over EXL3 3.5bpw. Reasoning models need a token budget or they eat it all thinking; this pattern repeats across engines.
 

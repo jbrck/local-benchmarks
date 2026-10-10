@@ -1,6 +1,6 @@
 # ornith-1.5-35b-a3b (q4_k_s) [kept]
 
-**TL;DR:** Best local coding (94.5% HE+) and 2nd-best MATH (85.2%) for a 35B A3B MoE, but worst GPQA in the field (34.3%). 64K context cap.
+**TL;DR:** 2nd-best local coding (94.5% HE+, behind Mirai S 95.1%) and 2nd-best MATH (85.2%) for a 35B A3B MoE, but worst GPQA in the field (34.3%). 64K context cap.
 
 **Role:** Best coding, but heavy and narrow.
 
@@ -29,4 +29,4 @@
 
 ## Notes
 
-A 35B MoE model (21 GB GGUF, 0.7 GB free at load) — the only non-27B model that survived screening. Best local coding by a wide margin (94.5% HumanEval+), and best instruction-following alongside swift (19/20). Safe refusal profile (95% harmful, 0% over-refusal). But GPQA-Diamond at 34.3% is a knowledge gap that makes it unreliable for general reasoning tasks. Only fits 64K context on the 3090 (21 GB file leaves no room for deeper KV). Runs at the VRAM ceiling — one more GB and it wouldn't fit.
+A 35B MoE model (21 GB GGUF, 0.7 GB free at load) — the only non-27B model that survived screening. Strong local coding (94.5% HumanEval+, 2nd behind Mirai S's 95.1%), and best instruction-following alongside swift (19/20). Safe refusal profile (95% harmful, 0% over-refusal). But GPQA-Diamond at 34.3% is a knowledge gap that makes it unreliable for general reasoning tasks. Only fits 64K context on the 3090 (21 GB file leaves no room for deeper KV). Runs at the VRAM ceiling — one more GB and it wouldn't fit.
