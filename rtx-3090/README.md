@@ -49,6 +49,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | | | kept, footprint |
 | **swift-qwen3.8-27b** | **89.2%** | 87.8% | 79.5 / 85.1% | **50.5%** | 89 | **19/20** | 1.41x | **20/20** | kept, capable all-rounder |
 | **OrcaSAQ-2-27B** (vLLM) | **90.8%** | 89.6% | 76.0/82.2% [‡](#fn-dagger) | 55.0%*[†](#fn-stuck) | | | | | kept, math + long ctx |
+| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 89.0% | 79.9% | 71.5 / 84.9% | 48.0% / **87.1%**[±](#fn-coder390) | | **20/20** | | | pruned: thinking model, unusable pace at Q3 on 24 GB |
 | **Holo4-27B** (Q4_K_M, Q8 KV) | 73.4% | **90.2%** | 71.5/77.6% | **56.1%** | **91** | 9/20 | 7/8 | 20/20 | tested |
 | bonsai2 (PrismML tern PTQ1_0) | 85.6% | 89.0% | 74.3 / 81.8% | 43.9% | 87 | 18/20 | | | kept: tiny VRAM, 128K ctx |
 | ornith-1.5-35b-a3b (q4_k_s) | 85.2% | **94.5%** | 75.0 / 82.7% | 34.3% | 88 | **19/20** | | 19/20 (95%) | 2nd coding; worst GPQA; 64k ctx |
@@ -77,6 +78,8 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 § EXL3 engine forces reasoning with no off switch. All results reflect thinking-enabled mode — not directly comparable to llama.cpp GGUF runs of the same weights.
 
 †† Spark-X2.5-4B uses peg-native reasoning format: the model outputs full thinking in `reasoning_content` and only produces short answers in `content` after thinking completes. Bench scripts read `content` and score empty-as-fail. On GPQA, only 60/198 items produced content (83% accuracy when they did). On Instr v2, Reasoning bench, and 5/10 writing tasks, every item exhausted its token budget before reaching the answer. IFEval at 68.6/75.3% is depressed for the same reason (1.4M tokens burned on thinking). MATH, HumanEval+, and Toolbench (83) are unaffected — the thinking completes within the default budget on those tasks, so those scores are genuine.
+
+<a id="fn-coder390"></a>± Coder390 GPQA is two runs, both qualified. **48.0% (n=198)**: thinking disabled — the comparable row, and a near-floor score because this model is RL-trained to reason long before answering. **87.1% (n=70, 32K cap)**: thinking enabled — partial run, killed at 70 items; no saved JSON (stdout lost to a session restart), reconstructed from the live log. The author's claim is 89.9% at FP8 with a 94K thinking budget on 2x RTX PRO 6000; their own GGUF table shows 86.4-87.9% at Q8_0/Q6_K. A full 94K-budget rerun was abandoned at ~11 items: ~31K thinking tokens per question at ~31 tok/s projected 50+ hours. IFEval 44/541 prompts timed out at the 120s client limit (scored as fail).
 
 
 These models use Qwen3's built-in reasoning (thinking tokens inside `[think]...[/think]`). Whether thinking helps or hurts depends on the task:
