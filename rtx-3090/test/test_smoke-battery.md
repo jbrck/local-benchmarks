@@ -1,5 +1,7 @@
 # Easy 35-Task Smoke Battery
 
+**TL;DR:** 35-task 30-minute screening pass before committing to a full battery. Caught gemma-3-27b-qat, mistral-small, and Qwen-AgentWorld cheaply. Also lied once: gpt-oss-20b looked fine in smoke and finished dead last.
+
 **What it evaluates:** 10 coding + 10 reasoning + 10 tool + 5 writing quick tasks, ~30 minutes per model. This was the screening pass that every candidate ran before earning a full battery. It ranks models one way; the full battery often flips it — gpt-oss scored 10/10 reasoning + 10/10 tool on smoke and looked like the champion, then finished dead last on the full battery.
 
 **Smoke = floor check only. Full batteries = the verdict.**

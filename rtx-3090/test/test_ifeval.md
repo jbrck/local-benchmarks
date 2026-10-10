@@ -1,5 +1,7 @@
 # IFEval (Instruction Following)
 
+**TL;DR:** 541 prompts with mechanical constraints (length, format, keywords). Local best: deepseek remote at 86.7% prompt-level. Most locals land 71-80%. Timeouts score as fail.
+
 **What it evaluates:** 541 prompts, each with programmatically checkable constraints (length limits, forbidden words, format requirements, keyword frequency, case changes). Two scores: prompt-level (whole prompt followed) and instruction-level (individual constraints met — 834 total). No judge, no vibes — the checks are mechanical. Cheapest proxy for tool-call and format adherence.
 
 **Reading scores:** Prompt >= 80% / instruction >= 85% is excellent locally. The qwen GGUF pair sits at 77/83. Sub-75 prompt means the model can't hold multi-part instructions. Weak spot for every local model: paragraph counting (one model scored 14.8% on that constraint).

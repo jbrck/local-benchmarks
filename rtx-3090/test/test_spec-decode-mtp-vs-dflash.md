@@ -1,5 +1,7 @@
 # MTP vs DFlash2 on a 3090: I tested the tweet's claims
 
+**TL;DR:** MTP vs DFlash2 speculative decoding across 3 configs x 4 depths. MTP roughly doubles decode speed; the Mirai S fork holds ~54 tok/s flat across context sizes up to 262K.
+
 **Verdict up front:** DFlash2 does not beat MTP everywhere. On a 24 GB RTX 3090 running Qwen3.8-27B through llama.cpp, MTP is faster at short context. DFlash2 takes over past ~32k. Both crush no speculation — 1.6-2.6x. And the "240k vs 200k max context" ceiling claim? Both configs load the full native 262k, and way past it.
 
 ---

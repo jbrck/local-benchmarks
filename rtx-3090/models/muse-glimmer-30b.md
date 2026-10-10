@@ -1,5 +1,7 @@
 # Muse Glimmer 30B (GGUF Q4_K_M)
 
+**TL;DR:** Strong writer/generalist, weak coder (62.2% HE+). Solid GPQA (56.6%) once served correctly.
+
 **Status:** tested | **Decision:** strong writer/generalist, weak coder.
 
 | Spec | Value |

@@ -1,5 +1,7 @@
 # nous-deepseek-v4-flash (remote) [baseline]
 
+**TL;DR:** Remote baseline, not local. Tops every raw score (MATH 98.2, HE+ 93.9, GPQA 83.8, tool 93) — the datacenter bar local models chase.
+
 **Role:** Remote baseline — shows what a frontier model costs vs local.
 
 ## Results

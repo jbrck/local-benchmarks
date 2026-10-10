@@ -1,5 +1,7 @@
 # gpt-oss-20b-mxfp4 [rejected]
 
+**TL;DR:** Pruned. Dead last on the full battery (MATH 74.2, HE+ 67.7, tool 75); the smoke test lied.
+
 **Status:** pruned
 
 ## Results

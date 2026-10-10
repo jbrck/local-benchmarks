@@ -1,5 +1,7 @@
 # crack2 (PQ2_0 abliterate) [experimental]
 
+**TL;DR:** Weight-abliterated variant. Keeps tool-eval 86 and Instr 19/20, but HumanEval+ collapsed to 76.2%. Experimental.
+
 **Role:** Weight-abliterated Bonsai2 variant. Uncensored, but coding collapsed.
 
 ## Results

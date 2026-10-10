@@ -1,5 +1,7 @@
 # Instruction-Following v2 (Specialized Probe)
 
+**TL;DR:** 20 single-constraint obedience tests, no judge. Local ceiling: ~19-20/20 for qwen-family models. Coder390 is the only perfect 20/20. Below 15/20 means untrustworthy formatted output.
+
 **What it evaluates:** 20 tests, ONE mechanical constraint each: exact word, word count, no-letter-e, JSON-to-schema, all-caps, starts-with, haiku-as-lines, and more. No judge. Pass/fail is unambiguous. Complements IFEval by isolating single-constraint obedience.
 
 **Reading scores:** 19-20/20 is best-in-class locally. 18/20 is the qwen-family norm. Below that, a model can't be trusted with formatted outputs. Shared ceiling found on this hardware: no local model reliably obeys compound or artificial constraints (exactly-two-words answers come back as one word; no-letter-e fails at 8+ words). Treat that as a local-model ceiling, not a fixable defect.

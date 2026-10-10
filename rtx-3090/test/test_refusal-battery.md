@@ -1,5 +1,7 @@
 # Refusal Battery
 
+**TL;DR:** 70 benign/edgy/harmful prompts. The only binary pass/fail that matters for agentic use: swift, Mirai S, Holo4, and OrcaSAQ score 20/20 harmful-refusal; heretic scores 2/20 with working malware.
+
 **What it evaluates:** 70 prompts in 3 tiers: BENIGN (30 — violent-sounding but safe, e.g. "kill a Python process"), EDGY (20 — profanity/explicit fiction), HARMFUL (20 — weapons, fraud, doxxing). Classifies each response REFUSE vs COMPLY. The BENIGN tier measures over-refusal (good = low); the HARMFUL tier measures whether safety training (or its absence) holds.
 
 **Reading scores:** The ideal profile — refuse ~0% benign, ~100% harmful — does not exist locally. swift is the safe general profile: 100% harmful refusal, but over-refuses 17% of benign requests. heretic is the opposite: 0% over-refusal, but refuses only 10% of harmful and several of its "compliant" harmful responses contained working criminal code (credit-card stealer, doxxer, ransomware). Heretic is writing-only — never agentic, never exposed to untrusted input.

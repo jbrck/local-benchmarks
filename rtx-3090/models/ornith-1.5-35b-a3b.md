@@ -1,5 +1,7 @@
 # ornith-1.5-35b-a3b (q4_k_s) [kept]
 
+**TL;DR:** Best local coding (94.5% HE+) and 2nd-best MATH (85.2%) for a 35B A3B MoE, but worst GPQA in the field (34.3%). 64K context cap.
+
 **Role:** Best coding, but heavy and narrow.
 
 ## Results

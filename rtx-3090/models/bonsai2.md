@@ -1,5 +1,7 @@
 # bonsai2 (PrismML Ternary Bonsai 2 27B) [kept]
 
+**TL;DR:** Tiny VRAM, 128K context. Qwen-family-adjacent scores (MATH 85.6, HE+ 89.0) in a small package.
+
 **Role:** Tiny VRAM, 128K context — runs where nothing else fits.
 
 ## Results

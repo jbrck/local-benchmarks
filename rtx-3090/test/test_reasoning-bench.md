@@ -1,5 +1,7 @@
 # Reasoning Bench (Thinking Tokens & Speed)
 
+**TL;DR:** 8 tasks measuring thinking-token efficiency. Mirai S reasons 1.41x faster than vanilla qwen with 21.7% fewer thinking tokens. Spark's 0/8 is a format artifact, not capability.
+
 **What it evaluates:** 8 tasks with reasoning ENABLED, measuring completion tokens, estimated thinking tokens, wall time, and correctness. The tool for testing "N% fewer thinking tokens / Nx speedup" claims on community merge cards. Always compare against the qwen3.8-27b-reasoning baseline on this exact hardware.
 
 **Reading scores:** Better = fewer thinking tokens AND faster wall time at equal accuracy. swift delivers: 21.7% fewer thinking tokens, 1.41x wall speedup (its card claimed 58.3%/1.95x — direction true, magnitude overstated). Twin-Turbo's card claimed 1/2-to-1/20 thinking tokens; it measured +44% MORE thinking and 0.59x wall time — the claim was inverted. Marketing numbers on merge cards are unreliable in both directions.

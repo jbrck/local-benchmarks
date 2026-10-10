@@ -1,5 +1,7 @@
 # Qwen3.8-27B-Coder390-EfficientThink
 
+**TL;DR:** Thinking-tuned Qwen3.8 that needs 30K+ reasoning tokens per GPQA question — unusable pace at Q3 on 24 GB (projected 50+ hr). GPQA 87.1% thinking-on (n=70 partial) vs 48.0% off. HE+ 79.9% is worst of the kept field. Pruned.
+
 | Property | Detail |
 |---|---|
 | Source | [nerkyor](https://huggingface.co/nerkyor/Qwen3.8-27B-Coder390-EfficientThink-Opus5.5-GPT6Astra-Grok4.7-DSV4Pro-K3-SFT-RLOO-MTP-DFlash2) |

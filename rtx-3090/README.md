@@ -1,6 +1,10 @@
 # local-benchmarks / rtx-3090 — Local Model Benchmarks
 
-**Last updated:** 2026-10-08
+**Last updated:** 2026-10-10
+
+## TL;DR
+
+**Mirai S Qwen3.8-27B is the best model we've tested.** It wins or ties every major leg: MATH-500 94.2%, HumanEval+ 95.1%, GPQA-D 69.7% (12+ points clear of every other local model), Tool-eval 93/100, Instruction v2 20/20, perfect harmful refusal (20/20). It does this at 2.4 bpw trellis quantization — roughly 11 GB on disk — while holding a 262K context window and ~54 tok/s decode with MTP speculation. No other local model comes close on the combined record; the remote deepseek baseline beats it on raw scores but that's a datacenter model, not something you can run on this card. Full row in the results table below; details in [its model page](./models/mirai-s-qwen3-8-27b.md).
 
 ## System
 

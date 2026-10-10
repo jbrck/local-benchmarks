@@ -1,5 +1,7 @@
 # qwen3.8-27b (GGUF Q5_K_M) [kept]
 
+**TL;DR:** The baseline every model is judged against. Q5_K_M GGUF; strong everywhere (MATH 86.8, HE+ 91.5, tool 88), beaten only by specialized siblings.
+
 **Role:** Baseline, best coding among the qwen siblings.
 
 ## Results

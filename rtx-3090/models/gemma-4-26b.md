@@ -1,5 +1,7 @@
 # Gemma-4-26B
 
+**TL;DR:** Rejected. Far below the field on every leg (MATH 48.8%, HE+ 56.1%, GPQA 15.0%). Partial battery only.
+
 | Property | Detail |
 |---|---|
 | Source | Google DeepMind |

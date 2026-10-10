@@ -1,5 +1,7 @@
 # GPQA-Diamond
 
+**TL;DR:** 198 graduate-level science MCQs. The hardest leg locally: best is Mirai S at 69.7%, most 27Bs land 44-56%. Chance is 25%. Thinking models need large budgets here or they score at the floor.
+
 **What it evaluates:** 198 graduate-level science multiple-choice questions (biology, chemistry, physics). Expert knowledge + careful reasoning. Random guessing scores 25%. This is the hardest knowledge test in the battery.
 
 **Reading scores:** 44-48% is the 27B-class norm on this hardware. 50%+ is exceptional. 40-43% is below par. Frontier models reach 60-80%. The remote flash baseline's 83.8% shows how far local knowledge still is from cloud — the gap is bigger here than on any other test.

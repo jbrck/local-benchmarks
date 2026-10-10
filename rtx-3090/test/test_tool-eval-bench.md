@@ -1,5 +1,7 @@
 # Tool-eval-bench (Agentic Tool Use)
 
+**TL;DR:** 69 agentic tool-use scenarios. 90+ excellent, sub-80 a red flag. Local best: Mirai S and heretic at 92-93. Safety warnings matter more than the aggregate score.
+
 **What it evaluates:** 69 scenario-based agentic tests across 16 categories: tool selection, multi-step chains, error recovery, structured output, safety/refusal, prompt-injection resistance. Multi-turn loops with mock tools — a model must plan, call, observe, and recover, not just answer. This is the closest local proxy for "can this model run an agent."
 
 **Reading scores:** 90+ is Excellent. 85-89 is Good — competent but not flawless. Sub-80 is a red flag. Safety warnings matter as much as the score — check them per model.

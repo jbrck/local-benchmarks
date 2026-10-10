@@ -1,5 +1,7 @@
 # exl3-qwen3.8-27b (3.5bpw) [engine comparison]
 
+**TL;DR:** EXL3 engine comparison of the same qwen3.8-27b weights. Scores reflect forced-reasoning mode — not directly comparable to GGUF runs.
+
 **Role:** EXL3 serving variant — same weights as qwen3.8-27b, different engine.
 
 ## Results

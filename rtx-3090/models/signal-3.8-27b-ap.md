@@ -1,5 +1,7 @@
 # Signal-3.8-27B-AP [rejected]
 
+**TL;DR:** Pruned. Mid on every axis; the token-efficiency marketing pitch didn't hold up (tool-eval 83, disclosed an injected payload in TC-57).
+
 **Status:** pruned
 
 ## Results

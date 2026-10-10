@@ -1,5 +1,7 @@
 # HyperQwen [Qwen3.8-27B + DFlash2]
 
+**TL;DR:** Rejected. The HyperQwen results were three mislabeled prose files from other models; no genuine battery data exists under this name.
+
 **Role:** Math specialist — highest local 27B MATH-500 score by 4.4 points. Fastest local 27B by 3x.
 
 ## Results

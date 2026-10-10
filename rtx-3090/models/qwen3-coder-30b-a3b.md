@@ -1,5 +1,7 @@
 # qwen3-coder-30b-A3B [rejected]
 
+**TL;DR:** Pruned. A coder that can't code: 73.2% HE+ and a CRITICAL sleeper-injection flag in tool-eval (68).
+
 **Status:** pruned
 
 ## Results

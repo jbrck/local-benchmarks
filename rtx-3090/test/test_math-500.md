@@ -1,5 +1,7 @@
 # MATH-500
 
+**TL;DR:** 500 competition math problems. Local best: Mirai S at 94.2%. The qwen3.8-27B family clusters at 85-90%; anything under 80% is a red flag for reasoning.
+
 **What it evaluates:** 500 competition-style math problems (MATH dataset's hardest split), free-form answer, graded for exact correctness. Measures raw reasoning: multi-step algebra, combinatorics, probability, number theory. No tools, no code execution — pure chain-of-thought quality.
 
 **Reading scores:** 85-87% is the 27B-class norm on this hardware. 89%+ is standout. 98% from a frontier remote model shows the gap between local and cloud reasoning. Sub-80% means the model can't sustain multi-step chains reliably.

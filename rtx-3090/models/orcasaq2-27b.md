@@ -1,5 +1,7 @@
 # OrcaSAQ-2-27B [kept]
 
+**TL;DR:** Math + long-context specialist on vLLM. MATH 90.8% (2nd best local). GPQA row partial (55% at 20/198). OrcaSAQ2 kernel only.
+
 **Role:** Math leader, 262K context — hybrid attention (SAQ) model from OrcaRouter / Continuum AI Corporation.
 
 ## Results

@@ -1,5 +1,7 @@
 # Nemotron Cascade 2 30B A3B (GGUF Q3_K_M)
 
+**TL;DR:** Fast thinking model that needs 4-8x the default token budget — standard-budget scores are depressed by reasoning eating the cap.
+
 **Status:** tested | **Decision:** fast, thinking model that needs above-budget token allocations to shine.
 
 | Spec | Value |

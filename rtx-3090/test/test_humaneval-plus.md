@@ -1,5 +1,7 @@
 # HumanEval+
 
+**TL;DR:** 164 Python coding problems against hidden tests. Local best: Mirai S at 95.1%. Code scores are the most quant-sensitive leg — sub-80 on a 27B model means quant or serving damage.
+
 **What it evaluates:** 164 Python programming problems (HumanEval with the evalplus extended test suite — more tests than the original). Generated code is executed against hidden tests, not eyeballed. Measures code generation that actually runs.
 
 Token budget matters: reasoning models spend part of their output budget on chain-of-thought before writing code. A 1024-token output cap is enough for non-reasoning models (code is short) but truncates reasoning models mid-code. All reasoning-model figures here use a 4096-token cap; the difference is visible in the EXL3 correction below.

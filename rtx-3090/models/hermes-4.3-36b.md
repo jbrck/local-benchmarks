@@ -1,5 +1,7 @@
 # hermes-4.3-36b [rejected]
 
+**TL;DR:** Pruned. 36B lost to the 27B qwen pair on every axis (MATH 81.0, HE+ 87.2). Bigger did not beat better.
+
 **Status:** pruned
 
 ## Results
