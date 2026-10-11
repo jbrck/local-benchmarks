@@ -45,7 +45,7 @@ Each benchmark evaluates a specific capability. Full methodology and automation 
 Blank cells mean the model was pruned before running that test (smoke battery caught it).
 
 | Model | MATH-500 | HumanEval+ | IFEval P/I | GPQA-D | Tool-eval | Instr v2 | Reasoning | Refusal H | Status |
-|---|---|---|---|---|---|---|---|---|---|---|
+|---|---|---|---|---|---|---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | remote baseline |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | 78.9 / 85.1% | **69.7%** | **93** | **20/20** | | 20/20 | kept, best overall |
 | **qwen3.8-27b** (GGUF Q5_K_M) | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | baseline | | kept |
@@ -71,7 +71,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | gemma-4-26b | 48.8% | 56.1% | | 15.0% | | | | | rejected — far below field |
 | gemma-3-27b-it-qat | | | | | | | | | pruned (smoke: tool 0/10) |
 | mistral-small-3.2-24b | | | | | | | | | pruned (smoke: reason 3/10) |
-| Qwen-AgentWorld-35B-A3B | | | | | | | | | | pruned (smoke: reason 4/10) |
+| Qwen-AgentWorld-35B-A3B | | | | | | | | | pruned (smoke: reason 4/10) |
 
 \* EXL3 HumanEval+ at the 4096-token-cap rerun. The first run at the 1024 default scored 74.4% — an artifact of un-disableable reasoning eating the token budget before code was generated. Details in [humaneval-plus.md](./test/test_humaneval-plus.md).
 

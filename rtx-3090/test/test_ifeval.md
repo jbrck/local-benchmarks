@@ -17,12 +17,11 @@
 | GSQ-RCO-IQ3_S-mtp | 79.3% | 85.0% | 75 min, 216k tokens |
 | qwen3.8-27b | 77.3% | 83.5% | |
 | bonsai2 (PrismML tern PTQ1_0) | 74.3% | 81.8% | ~65 min, low reason tokens |
-| ornith-1.5-35b-a3b (q4_k_s) | 75.0 / 82.7% | verbose coder |
+| ornith-1.5-35b-a3b (q4_k_s) | 75.0% | 82.7% | verbose coder |
 | qwen3.8-27b-heretic | 77.1% | 83.3% | |
 | crack2 (abliterated PQ2_0) | 77.3% | 84.2% | best IFEval of the abliterated set |
 | qwen3-coder-30b | 74.3% | 82.0% | |
 | OrcaSAQ-2-27B (vLLM) ‡ | 76.0% | 82.2% | 3.9h, 172k tokens — thinking disabled; 3x improvement over thinking-mode pilot 3.9h, 172k tokens — thinking disabled for IFEval; 3x improvement over thinking-mode pilot |
-| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | 78.9% | 85.1% | |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 71.5% | 84.9% | 44/541 client timeouts scored as fail |
 | Holo4-27B (Q4_K_M, Q8 KV) | 71.5% | 77.6% | |
 | Spark-X2.5-4B (Q4_K_M) | 68.6% | 75.3% | format artifact |

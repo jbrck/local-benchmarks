@@ -18,7 +18,7 @@
 ## Results
 
 | Test | Score | vs 4B field | Grade |
-|---|---|---|---|---|
+|---|---|---|---|
 | MATH-500 | **72.2%** (361/500) | Strong for 4B | 🟢 |
 | HumanEval+ | **70.7%** (116/164) | Strong for 4B | 🟢 |
 | GPQA-Diamond | **25.3%** (50/198) | ⚠️ See note below | 🟡 |
