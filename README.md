@@ -1,6 +1,6 @@
 # Local Benchmarks
 
-Results from running standardized LLM benchmarks on local hardware — MATH-500, HumanEval+, GPQA-Diamond, IFEval, tool-eval-bench, prose ELO, and more.
+Results from running standardized LLM benchmarks on local hardware — MATH-500, HumanEval+, MMLU, LiveCodeBench, GPQA-Diamond, IFEval, tool-eval-bench, prose ELO, and more.
 
 Each system tested gets its own directory:
 

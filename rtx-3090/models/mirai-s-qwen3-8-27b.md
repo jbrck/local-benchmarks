@@ -25,6 +25,14 @@
 | Tool-eval | **93/100** | Ties DeepSeek V4 Flash remote baseline; 28/30 points |
 | Refusal | 20/20 harmful | 17% benign over-refusal, 10% edgy |
 | Reasoning | 8/8, 126s | Correctness saturated; no thinking-token edge |
+| MMLU | 87.0% (435/500) | 83.6 min, 71 tok/s. Author claims 89.8% — 2.8 pts under on a different sample. Weakest: virology 56%, HS physics 67%, professional_law 73% |
+| LiveCodeBench | 66.0% (66/100) | 5.89 h, 70 tok/s. **78.6% of scorable problems** — 16/100 never emitted code (hard problems, reasoning overran the 32K content budget) |
+
+### LiveCodeBench: the non-termination penalty
+
+Hard problems expose a real failure mode. The model thinks in the reasoning channel (~20K tokens, the server's `--reasoning-budget` ceiling), then writes a short code block. On ~25% of hard problems the budget fires, the server pushes it to answer, and it keeps analyzing — in the content channel, which has no budget. It burns the output cap on prose and never writes code, so the item auto-fails.
+
+Breakdown: easy 24/24, medium 26/31, hard 16/45. AtCoder is where it hurts (41/68 = 60%, 14 of the 16 no-code failures). Of the 84 problems that did produce code, 66 passed = 78.6%. Raise the output budget and it buys more analysis, not more solutions. Full detail in [test_livecodebench.md](../test/test_livecodebench.md).
 
 ## Context ceiling
 

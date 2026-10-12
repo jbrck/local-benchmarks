@@ -86,6 +86,8 @@ A swap takes roughly 1-2 minutes depending on model size (5-21 GB files). The ag
 | Instruction v2 | Direct runner | 20 single-constraint mechanical checks — exact word, word count, no-letter-e, JSON schema, etc. |
 | Refusal battery | Direct runner | Pattern-based REFUSE/COMPLY classification across 70 prompts in three tiers |
 | Reasoning bench | Direct runner | Thinking-token estimation from `reasoning_content` field, wall time, correctness |
+| MMLU | Direct runner | Letter extraction from generative answer, case-insensitive pattern match vs gold key |
+| LiveCodeBench | Direct runner | Official `codegen_metrics` — hidden test cases run in isolated subprocesses, `all(result > 0)` per case |
 
 ## Models tested
 
@@ -210,6 +212,16 @@ PYTHONPATH= setsid /mnt/data/benchmark-venv/bin/python bench_full.py --model x -
 ```
 
 `setsid` creates a new session group, isolating the process from the agent's SIGHUP propagation. Without it, Hermes restarts kill the benchmark silently.
+
+### Reasoning models can keep thinking in the content channel
+
+A thinking model has two output channels: the reasoning channel (capped by the server's `--reasoning-budget`) and the visible content channel (capped only by your `max_tokens`). Normally the model thinks in the first and answers in the second. On hard problems it can hit the reasoning budget, get pushed to answer, and **keep analyzing in content instead** — which has no budget of its own.
+
+Symptom: the item returns `finish_reason: "length"` with a huge content field and no answer. On LiveCodeBench this hit 16 of 100 problems (all hard, 14 of them AtCoder); the content tails were mid-sentence analysis, not partial code. Each one burns the full output budget and scores zero.
+
+**Diagnosis:** compare content length on solved vs failed items. Solved items have short content (the answer); failures have content in the tens of thousands of characters. If the failed tails are prose, a bigger `max_tokens` buys more prose, not a solution.
+
+**Fix:** bound the content side too — a server-side stop, a template that forbids continued reasoning in content, or a permissive extractor. Raising `max_tokens` alone does not help.
 
 ### Community merge card claims are unreliable in both directions
 
