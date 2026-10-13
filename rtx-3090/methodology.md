@@ -213,15 +213,29 @@ PYTHONPATH= setsid /mnt/data/benchmark-venv/bin/python bench_full.py --model x -
 
 `setsid` creates a new session group, isolating the process from the agent's SIGHUP propagation. Without it, Hermes restarts kill the benchmark silently.
 
-### Reasoning models can keep thinking in the content channel
+### Reasoning budgets trade one failure mode for another
 
-A thinking model has two output channels: the reasoning channel (capped by the server's `--reasoning-budget`) and the visible content channel (capped only by your `max_tokens`). Normally the model thinks in the first and answers in the second. On hard problems it can hit the reasoning budget, get pushed to answer, and **keep analyzing in content instead** — which has no budget of its own.
+A thinking model has two output channels: the reasoning channel (capped by the server's `--reasoning-budget`) and the visible content channel (capped only by your `max_tokens`). Normally the model thinks in the first and answers in the second. Hard problems break that arrangement in one of two ways, depending on whether you cap reasoning at all.
 
-Symptom: the item returns `finish_reason: "length"` with a huge content field and no answer. On LiveCodeBench this hit 16 of 100 problems (all hard, 14 of them AtCoder); the content tails were mid-sentence analysis, not partial code. Each one burns the full output budget and scores zero.
+**Bounded.** The model hits the reasoning budget, the server pushes it to answer, and it **keeps analyzing in content** — which has no budget of its own. Symptom: `finish_reason: "length"`, a huge content field, no answer. On LiveCodeBench this hit 16 of 100 problems (14 of them AtCoder); the content tails were mid-sentence analysis, not partial code, and each burned the full 32,768-token output cap.
 
-**Diagnosis:** compare content length on solved vs failed items. Solved items have short content (the answer); failures have content in the tens of thousands of characters. If the failed tails are prose, a bigger `max_tokens` buys more prose, not a solution.
+**Unbounded.** Remove `--reasoning-budget` entirely and the content failure vanishes — replaced by pure non-termination. The same 16 problems now return **zero** content and 305K–431K characters of reasoning, burning a 114,688-token cap. Same failure *count*, 3.5× the tokens each.
 
-**Fix:** bound the content side too — a server-side stop, a template that forbids continued reasoning in content, or a permissive extractor. Raising `max_tokens` alone does not help.
+What removing the budget bought: correctness. LiveCodeBench went 66.0% → 76.0% overall and 36% → 53% on hard, with **identical code emission** (84/100 in both runs). The model wasn't writing fewer answers under the budget — it was writing wrong ones.
+
+What it cost: 5.89 h → 14.10 h wall clock at unchanged throughput (70.3 → 68.7 tok/s). The run is longer only because it generated 2.34× the tokens, and 7.42 h of the 14.10 h — over half — went to the 16 problems that fail either way.
+
+**Diagnosis:** compare both channel lengths on solved vs failed items. Bounded failures have large content (12,865–43,638 chars) with mid-sentence prose tails. Unbounded failures have zero content and reasoning past 300K characters. Solved items in both configs end with short content — a tight code block, once thinking actually finishes.
+
+**Fix:** an abort guard, not a budget. Kill a request when the reasoning channel passes a threshold (~100K characters) with no content in sight, then move on or retry once. That keeps the accuracy and sheds most of the wall clock. A hard budget is the wrong tool — it converts silent non-termination into confidently wrong answers, which is worse than a zero because it looks like a result.
+
+### Wall clock and throughput belong in every result file
+
+Every harness records `elapsed_s`, total completion tokens, and derived tok/s, and every result page reports them. Wall clock alone is misleading on reasoning models — a run can double in length purely from non-termination while throughput stays flat.
+
+Report four numbers together: wall clock, generation tokens, throughput, and **time spent in items that hit the output cap**. The last is the honest cost of a run. On the unbounded LiveCodeBench run, 7.42 h of 14.10 h went to 16 problems that failed either way. Without that line in the record, the 2.4× time increase reads as the price of accuracy when most of it is waste.
+
+**One test at a time.** Run a single benchmark against a single model, score it, then move on. Parallel runs on one 24 GB card contend for VRAM, and the resulting tok/s figures describe the contention, not the model.
 
 ### Community merge card claims are unreliable in both directions
 
