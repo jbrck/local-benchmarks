@@ -2,6 +2,8 @@
 
 **TL;DR:** 100 competition coding problems with hidden test cases, drawn from a contamination-free window. Mirai S Qwen3.8-27B scores **76.0%** when the server lets it think without a budget — up from **66.0%** under the model's default bounded config. Code emission is identical at 84/100 in both runs, so the +10 points are entirely correctness: the same problems, answered right more often. The cost is wall clock — 14.1 h against 5.9 h.
 
+**LFM2.5-24B-A2B** ran the same 100 problems and produced code on **99 of 100** — the highest emission recorded here — while scoring **61.0%** in **3.07 h**. It writes code where Mirai doesn't, and gets it wrong where Mirai gets it right.
+
 **What it evaluates:** Competition programming problems from LeetCode, AtCoder, and Codeforces, each with hidden test cases run against the generated solution. Problems are date-stamped, so results can be filtered to a contamination-free window. This is a harder coding test than HumanEval+ — algorithmic thinking on unseen problems, not boilerplate completion.
 
 **Reading scores:** 60-70% is solid for a 27B on hard problems. The easy and medium split is where a capable model lives; the hard tail separates models. Watch the no-code rate — a model that reasons well but doesn't terminate scores low for the wrong reason, and that is this model's entire story.
@@ -84,6 +86,30 @@ Raising the ceiling bought correctness on problems that already produced code �
 The economics are poor only because of the runaways. An abort guard that kills a problem once the reasoning channel passes some threshold — say 100K characters with no code in sight — would have recovered most of the 7.42 h while keeping nearly all of the gain. That is the config this model actually wants: **xhigh with a runaway detector**, not xhigh alone and not a hard budget. A 76% run in roughly 7 hours instead of 14.
 
 For interactive coding use, the bounded config is the better default — it is 2.4× faster and loses only 10 points. For batch evaluation where hours are cheap and scores matter, unbounded wins.
+
+## LFM2.5-24B-A2B — the most code emitted, the least of it correct
+
+LFM2.5-24B-A2B ran the identical 100 problems under a single unbounded config. It produced a code block on **99 of 100** — the highest emission on record here, 15 better than Mirai — and still finished 15 points behind.
+
+| | LFM2.5-24B-A2B | Mirai S (xhigh) |
+|---|---|---|
+| Score | 61.0% (61/100) | 76.0% (76/100) |
+| Scorable | 61/99 = 61.6% | 76/84 = 90.5% |
+| Code emitted | **99/100** | 84/100 |
+| Wall clock | **3.07 h** | 14.10 h |
+| Generation tokens | 1,918,672 | 3,486,964 |
+| Throughput | **191 tok/s** | 68.7 tok/s |
+| easy | 24/24 = 100% | 24/24 = 100% |
+| medium | 23/31 = 74% | 28/31 = 90% |
+| hard | 14/45 = 31% | 24/45 = 53% |
+
+The failure modes are opposites. Mirai stops thinking and never writes code — 16 blanks, each carrying 305K+ characters of reasoning. LFM2.5 always writes code, and the code is wrong on two-thirds of the hard tier.
+
+For a batch harness LFM2.5's failure is the cheaper one. It terminates, it returns something gradeable, and the entire run costs 3.07 h against Mirai's 14.10.
+
+Runaway behaviour is present but mild: one item hit the 114,688-token cap, 18 of 100 passed 30K tokens. The hard tier absorbed **1,382,425 of the run's 1,918,672 generation tokens — 72% of the work for 31% of the hard problems.** Same shape as Mirai, one-fifth the cost.
+
+No effort knob exists on this model. The chat template defines neither `enable_thinking` nor `reasoning_effort`, and llama.cpp ignores both silently — no HTTP errors, unlike Mirai's invalid `high`. There is no bounded config to compare against. Full detail in [its model page](../models/lfm2.5-24b-a2b.md).
 
 ## Scoring
 

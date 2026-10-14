@@ -107,6 +107,7 @@ Links to the exact model files (or their base repos) tested on this system. Seve
 | exl3-qwen3.8-27b (3.5bpw) | same weights as qwen3.8-27b above, served via [exllamav3](https://github.com/turboderp/exllamav3) | Same weights, different serving engine. Always reasons. |
 | Nemotron Cascade 2 30B A3B (Q3_K_M) | [mradermacher/Nemotron-Cascade-2-30B-A3B-GGUF](https://huggingface.co/mradermacher/Nemotron-Cascade-2-30B-A3B-GGUF) | Fastest 30B (146 tok/s). Reasoning-heavy: burns budget on thinking. Needs high token caps. |
 | Muse Glimmer 30B (Q4_K_M) | [AaryanK/Muse-Glimmer-30B-GGUF](https://huggingface.co/AaryanK/Muse-Glimmer-30B-GGUF) | Best GPQA (56.6%). Weak coder (62% HE+). Needs build-muse-glimmer binary. Flash-attention OFF. |
+| LFM2.5-24B-A2B (Q4_K_M) | [LiquidAI/LFM2.5-24B-A2B-GGUF](https://huggingface.co/LiquidAI/LFM2.5-24B-A2B-GGUF) | **Speed champion — 191 tok/s, 2.7× Mirai**, and best IFEval (84.3 / 89.0%). Loses every knowledge leg (GPQA 50.5%, MMLU 73.6%). MoE 24B/2B active, hybrid conv/attention, mainline llama.cpp `lfm2moe`, no speculative-decode path. Tool-eval safety gate **failed**. |
 
 ### Pruned models (with rationale and links)
 
@@ -236,6 +237,12 @@ Every harness records `elapsed_s`, total completion tokens, and derived tok/s, a
 Report four numbers together: wall clock, generation tokens, throughput, and **time spent in items that hit the output cap**. The last is the honest cost of a run. On the unbounded LiveCodeBench run, 7.42 h of 14.10 h went to 16 problems that failed either way. Without that line in the record, the 2.4× time increase reads as the price of accuracy when most of it is waste.
 
 **One test at a time.** Run a single benchmark against a single model, score it, then move on. Parallel runs on one 24 GB card contend for VRAM, and the resulting tok/s figures describe the contention, not the model.
+
+### llama.cpp `/metrics` is off by default — read tok/s from the result items
+
+The `/metrics` endpoint returns `501 not_supported_error` unless the server was started with `--metrics`. A driver that scrapes `llamacpp:tokens_predicted_total` records silent zeros on such a build and reports `n/a` for every phase — the numbers look collected but aren't.
+
+Every harness already stores `completion_tokens`, `elapsed_s`, and `tokens_per_s` per item. Compute throughput as `sum(completion_tokens) / sum(elapsed_s)` from the result JSON instead of scraping the server. It survives server restarts, needs no flags, and behaves identically on any build. On the LFM2.5 battery this gave 191–193 tok/s on every leg while the metric scrape read zero.
 
 ### Community merge card claims are unreliable in both directions
 

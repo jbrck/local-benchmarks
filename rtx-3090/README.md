@@ -6,6 +6,8 @@
 
 **Mirai S Qwen3.8-27B is the best model I've tested.** It wins or ties every major leg: MATH-500 94.2%, HumanEval+ 95.1%, GPQA-D 69.7% (12+ points clear of every other local model), Tool-eval 93/100, Instruction v2 20/20, perfect harmful refusal (20/20), MMLU 87.0%. LiveCodeBench lands at **76.0%** once the reasoning budget is removed — **90.5% of the problems it actually solved** — though 16 of 100 still never reach a code block, and those 16 eat 7.4 of the run's 14.1 hours. It does this at 2.4 bpw trellis quantization — roughly 11 GB on disk — while holding a 262K context window and ~54 tok/s decode with MTP speculation. No other local model comes close on the combined record; the remote deepseek baseline beats it on raw scores but that's a datacenter model, not something you can run on this card. Full row in the results table below; details in [its model page](./models/mirai-s-qwen3-8-27b.md).
 
+**LFM2.5-24B-A2B is the speed champion** — **191 tok/s, 2.7× Mirai** — and the best instruction-follower in this repo (IFEval **84.3 / 89.0%**, clearing the next-best by 4+ points). It buys that speed by giving up 18 points of math and 19 of science. Its tool-eval safety gate **failed**: it called `send_email` before observing a calendar-create result. Details in [its model page](./models/lfm2.5-24b-a2b.md).
+
 ## System
 
 | Component | Detail |
@@ -50,6 +52,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 |---|---|---|---|---|---|---|---|---|---|---|---|
 | nous-deepseek-v4-flash (remote) | 98.2% | 93.9% | 86.7 / 90.9% | 83.8% | 93 | | | | | | remote baseline |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **94.2%** | **95.1%** | 78.9 / 85.1% | **69.7%** | **93** | **20/20** | | 20/20 |**87.0%**|**76.0%**[※](#fn-lcb)| kept, best overall |
+| **LFM2.5-24B-A2B** (Q4_K_M, 2B active MoE) | 76.4% | 91.5% | **84.3 / 89.0%** | 50.5% | 84 [◊](#fn-lfm) | 15/20 | 8/8 | 20/20 | 73.6% | 61.0% | tested: **191 tok/s speed champ**, best IFEval; **tool safety gate failed** |
 | **qwen3.8-27b** (GGUF Q5_K_M) | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | baseline | | | | kept |
 | **qwen3.8-27b-heretic** | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 | | 2/20 | | | kept, writing |
 | **GSQ-RCO IQ3_S-mtp** | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 | | | | | kept, footprint |
@@ -88,6 +91,8 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 <a id="fn-coder390"></a>± Coder390 GPQA is two runs, both qualified. **48.0% (n=198)**: thinking disabled — the comparable row, and a near-floor score because this model is RL-trained to reason long before answering. **87.1% (n=70, 32K cap)**: thinking enabled — partial run, killed at 70 items; no saved JSON (stdout lost to a session restart), reconstructed from the live log. The author's claim is 89.9% at FP8 with a 94K thinking budget on 2x RTX PRO 6000; their own GGUF table shows 86.4-87.9% at Q8_0/Q6_K. A full 94K-budget rerun was abandoned at ~11 items: ~31K thinking tokens per question at ~31 tok/s projected 50+ hours. IFEval 44/541 prompts timed out at the 120s client limit (scored as fail).
 
 <a id="fn-lcb"></a>※ LiveCodeBench was run twice on Mirai S. **76.0%** is the unbounded-reasoning run (`xhigh` effort, no `--reasoning-budget`, 114,688-token harness cap, 14.10 h). Under the model's default bounded config (`medium`, `--reasoning-budget 20480`, 32,768-token cap) the same model scored **66.0%** in 5.89 h. Code emission is identical at 84/100 in both runs — the difference is correctness on problems that already answered. Details in [livecodebench.md](./test/test_livecodebench.md).
+
+<a id="fn-lfm"></a>◊ LFM2.5-24B-A2B tool-eval returned 84/100 (★★★★ Good) with `safety_gate: passed: false` — **TC-47** (performed an unrelated side effect while correcting a calendar event) and **TC-51** (called `send_email` before observing the `create_calendar_event` result). Ten of fifteen categories scored 100%; the losses concentrate in O Structured Output (50%), M Autonomous Planning (67%), H Instruction Following (70%). Its IFEval report wrote to `runs/` instead of the harness `--json-file` path — the run is real (541 prompts, 1,024,486 tokens, 85.7 min) and fully recorded in the battery log, but no clean JSON exists for that leg.
 
 
 These models use Qwen3's built-in reasoning (thinking tokens inside `[think]...[/think]`). Whether thinking helps or hurts depends on the task:
