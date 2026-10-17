@@ -11,12 +11,13 @@
 | Model | [Origin](../README.md#results-summary) | Accuracy | Notes |
 |---|---|---|---|
 | nous-deepseek-v4-flash | China | 83.8% | remote baseline |
-| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **69.7%** | **best local** by 13+ pts |
+| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **77.8%** | **best local** by 8 pts; 333.5 min. 57/198 items (29%) hit the 16,384 cap — 94.3% on the ones that finished |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **69.7%** | 2nd local |
 | **Muse Glimmer 30B** (Q4_K_M) | USA | **56.6%** | |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | **56.1%** | |
 | OrcaSAQ-2-27B (vLLM) [†](#fn-stuck) | China | ~55.0%\* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | USA | 54.0% | |
-| swift-qwen3.8-27b | China | 50.5% | best local; 136 average tokens (half of the next closest) |
+| swift-qwen3.8-27b | China | 50.5% | 136 average tokens (half of the next closest) |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 48.0% | |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | 48.0% / **87.1%**[±](#fn-coder390) | thinking-off / thinking-on (n=70 partial) |
 | exl3-qwen3.8-27b [§](#fn-section) | China | 46.5% | thinking forced |
@@ -39,6 +40,8 @@
 ---
 
 <a id="fn-stuck">†</a> Stuck-loop — model entered a self-referential reasoning loop; run stopped early.
+<a id="fn-coder390">±</a> Coder390 GPQA is two runs, both qualified — 48.0% with thinking disabled (the comparable row), and 87.1% (n=70, 32K cap) with thinking enabled, killed at 70 items. A full 94K-budget rerun was abandoned at ~11 items: ~31K thinking tokens per question at ~31 tok/s projected 50+ hours. Details in [README](../README.md#fn-coder390).
+<a id="fn-spark">††</a> Spark-X2.5-4B uses peg-native reasoning format — full thinking in `reasoning_content`, short answers in `content` only after thinking completes. On GPQA only 60/198 items produced content (83% accurate when they did). Details in [README](../README.md#fn-spark).
 <a id="fn-section">§</a> Reasoning forced — model architecture cannot disable thinking.
 
 **Hardware:** RTX 3090 24 GB, llama.cpp GGUF server (except EXL3 row), quantized models from HuggingFace.

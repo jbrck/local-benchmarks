@@ -22,6 +22,7 @@
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **20/20 (100%)** | |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | **20/20 (100%)** | first perfect score; Mirai S also posts 20/20 |
 | Qwen3.8-27B-TurboFCFusion ("turbo-fable", Q4_K_M) | China | **19/20 (95%)** | |
+| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **19/20 (95%)** | |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | 9/20 (45%) | thinking ate the budget |
 
 **Shared failure pattern:** the `two_words` test (reply with exactly two words) and the `no_e` test (write without the letter 'e' at 8+ words) fail for every local model. These are genuine capability ceilings, not model-specific defects.

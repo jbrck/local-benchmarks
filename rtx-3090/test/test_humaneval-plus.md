@@ -13,9 +13,10 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | Model | [Origin](../README.md#results-summary) | Accuracy | Notes |
 |---|---|---|---|
 | nous-deepseek-v4-flash | China | 93.9% | remote baseline |
-| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **95.1%** | **best local** |
+| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **96.3%** | **best local** — 44.9 min, 78.3 tok/s |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **95.1%** | 2nd local |
 | ornith-1.5-35b-a3b (q4_k_s) | not est. | **94.5%** | 2nd local coding |
-| qwen3.8-27b-heretic | China | 92.7% | best local |
+| qwen3.8-27b-heretic | China | 92.7% | |
 | qwen3.8-27b | China | 91.5% | |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 91.5% | 11.8 GB file, full-size score |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | **90.2%** | |

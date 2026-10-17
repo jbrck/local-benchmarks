@@ -4,6 +4,8 @@
 
 **LFM2.5-24B-A2B** ran the same 100 problems and produced code on **99 of 100** — the highest emission recorded here — while scoring **61.0%** in **3.07 h**. It writes code where Mirai doesn't, and gets it wrong where Mirai gets it right.
 
+**Nemotron 3.5 Bolt 74B-A9B has no number here.** Its run was killed at 54 of 100 problems generated and never scored: 19 of the 54 produced no code, and 84% of generated tokens went to items that returned nothing. At the observed rate it projected past 20 hours, against 14.1 h for Mirai S. That gap is the point — this is Mirai S's headline win, and it is the one leg Bolt has no data for.
+
 **What it evaluates:** Competition programming problems from LeetCode, AtCoder, and Codeforces, each with hidden test cases run against the generated solution. Problems are date-stamped, so results can be filtered to a contamination-free window. This is a harder coding test than HumanEval+ — algorithmic thinking on unseen problems, not boilerplate completion.
 
 **Reading scores:** 60-70% is solid for a 27B on hard problems. The easy and medium split is where a capable model lives; the hard tail separates models. Watch the no-code rate — a model that reasons well but doesn't terminate scores low for the wrong reason, and that is this model's entire story.

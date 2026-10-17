@@ -10,7 +10,8 @@
 
 | Model | [Origin](../README.md#results-summary) | Accuracy | Notes |
 |---|---|---|---|
-| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **87.0%** (435/500) | thinking on; author claims 89.8% — not reproduced on this sample |
+| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **88.2%** (441/500) [※](#fn-bolt-mmlu) | cap-rescued from 78.4% at the 4096 default; 2nd local was Mirai S |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | 87.0% (435/500) | thinking on; author claims 89.8% — not reproduced on this sample |
 
 ## Subject breakdown
 
@@ -48,4 +49,8 @@ Generative mode — the model answers in prose, the harness extracts the chosen 
 
 **Harness:** `bench_mmlu.py` (direct runner, `--selftest` proves the parser with unit tests before any scored run).
 
-**Hardware:** RTX 3090 24 GB, llama.cpp (Mirai S-ada fork), q8_0 KV, MTP speculative decoding, 300 W power cap.
+**Hardware:** RTX 3090 24 GB. Mirai S row: llama.cpp (Mirai S-ada fork), q8_0 KV, MTP speculative decoding, 300 W power cap. Nemotron 3.5 Bolt row: upstream llama.cpp b11670, which is required — `nemotron_h_moe` is not in the mirai fork.
+
+---
+
+<a id="fn-bolt-mmlu">※</a> Nemotron 3.5 Bolt MMLU ran twice. **88.2% (441/500)** is the headline — the 4096-cap run (148.8 min) scored 78.4% with 77 of 500 items (15%) exhausting the cap on reasoning and emitting no answer letter; a rescue pass re-ran just those 77 at a 16,384 cap (140.5 min) and flipped 49 right. The rescued number is the headline because the 4096 cap is a harness default, not a property of the model. Twelve items never answered even at 4x the budget. See [README](../README.md#fn-bolt-mmlu).

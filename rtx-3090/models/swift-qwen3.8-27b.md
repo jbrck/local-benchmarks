@@ -1,10 +1,10 @@
 # swift-qwen3.8-27b [kept — default]
 
-**TL;DR:** Best all-rounder kept. MATH 89.2%, best GPQA of the qwen family (50.5%), Instr v2 19/20, perfect refusal, 1.41x faster reasoning than vanilla. Coding a notch behind (87.8%).
+**TL;DR:** Default kept. MATH 89.2%, GPQA 50.5%, Instr v2 19/20, perfect refusal, 1.41x faster reasoning than vanilla. Coding a notch behind (87.8%).
 
 **Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — `ukisai` (Hugging Face), publisher country not established
 
-**Role:** Default — safest safety profile, best math, best GPQA.
+**Role:** Default — safest safety profile, fastest reasoning.
 
 ## Results
 
@@ -33,7 +33,7 @@
 
 ## Notes
 
-The Swiss Army knife of the local stack. Best local math score (89.2%), best local GPQA (50.5% — the only model above 50%), perfect harmful refusal (20/20), and best instruction-following (19/20). Its reasoning is 1.41x faster than vanilla qwen with 21.7% fewer thinking tokens (its marketing claimed 1.95x/58.3% — direction true, overstated). The tradeoff: coding is a notch behind (87.8% vs 91.5%). Slight over-refusal on benign prompts (17%). Decode is ~22% slower than GSQ-RCO at equal per-token quality — an engine characteristic, not a model weakness.
+The Swiss Army knife of the local stack. Strong math (89.2%), perfect harmful refusal (20/20), instruction-following 19/20, and the fastest reasoning of any model tested (1.41x over vanilla). Its reasoning is 1.41x faster than vanilla qwen with 21.7% fewer thinking tokens (its marketing claimed 1.95x/58.3% — direction true, overstated). The tradeoff: coding is a notch behind (87.8% vs 91.5%). Slight over-refusal on benign prompts (17%). Decode is ~22% slower than GSQ-RCO at equal per-token quality — an engine characteristic, not a model weakness.
 
 ---
 

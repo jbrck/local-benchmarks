@@ -31,4 +31,4 @@
 
 ## Notes
 
-The gulf between local and cloud. This model (served via API through a model proxy) crushes local on MATH (98.2 vs best local 89.2), GPQA (83.8 vs best local 50.5), and IFEval (86.7/90.9 vs best local 80.6/85.8). On coding, the gap is much smaller: 93.9 vs best local 94.5 (ornith). The local models are surprisingly close on code generation despite being ~2-4 years behind on reasoning and knowledge breadth.
+The gulf between local and cloud. This model (served via API through a model proxy) crushes local on MATH (98.2 vs best local 96.4), GPQA (83.8 vs best local 77.8), and IFEval (86.7/90.9 vs best local 84.3/89.0). On coding, the gap has closed: 93.9 against a best local of 96.3 (Nemotron 3.5 Bolt). The local models are surprisingly close on code generation despite being ~2-4 years behind on reasoning and knowledge breadth.

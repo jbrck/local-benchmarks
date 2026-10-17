@@ -19,9 +19,9 @@
 
 | Test | Score | Notes |
 |---|---|---|
-| MATH-500 | **94.2%** | Best local; +3.4 over OrcaSAQ-2-27B |
-| HumanEval+ | **95.1%** | Best local; beats DeepSeek V4 Flash (93.9%) |
-| GPQA-Diamond | **69.7%** | Best local; +13.1 over Muse Glimmer 30B (56.6%) |
+| MATH-500 | **94.2%** | 2nd local, behind Nemotron 3.5 Bolt (96.4%); +3.4 over OrcaSAQ-2-27B |
+| HumanEval+ | **95.1%** | 2nd local, behind Nemotron 3.5 Bolt (96.3%); beats DeepSeek V4 Flash (93.9%) |
+| GPQA-Diamond | **69.7%** | 2nd local, behind Nemotron 3.5 Bolt (77.8%); +13.1 over Muse Glimmer 30B (56.6%) |
 | Instr v2 | **20/20 (100%)** | First perfect score on this test |
 | IFEval | 78.9 / 85.1% | 3rd local; ties swift's instruction score. 49 min, 214k tokens |
 | Tool-eval | **93/100** | Ties DeepSeek V4 Flash remote baseline; 28/30 points |

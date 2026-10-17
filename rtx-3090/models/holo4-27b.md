@@ -23,7 +23,7 @@
 |---|---|---|---|
 | MATH-500 | **73.4%** (367/500) | 2nd-lowest (only gpt-oss-20b is worse) | 🔴 |
 | HumanEval+ | **90.2%** (148/164) | 3rd-best (ornith 94.5%, heretic 92.7%) | 🟢 |
-| GPQA-Diamond | **56.1%** (111/198) | **Best local score** (OrcaSAQ2 55.0% partial) | 🟢 |
+| GPQA-Diamond | **56.1%** (111/198) | 4th local — Bolt 77.8%, Mirai S 69.7%, Muse Glimmer 56.6% precede it | 🟢 |
 | Instruction v2 | **45.0%** (9/20) | Below average | 🔴 |
 | IFEval Prompt | **71.5%** | Below average | 🔴 |
 | IFEval Instruction | **77.6%** | Below average (swift 85.1%, EXL3 85.8%) | 🔴 |
@@ -34,7 +34,7 @@
 
 ## Analysis
 
-Holo4 is a **split personality**. It leads the field on GPQA (graduate science) and competes for top spot on coding and tool use, but collapses on basic mechanical constraints (IFEval, Instruction v2) and lags on math.
+Holo4 is a **split personality**. It has the strongest GPQA among the small models (56.1%) and competes for top spot on coding and tool use, but collapses on basic mechanical constraints (IFEval, Instruction v2) and lags on math.
 
 ### Strengths
 - **HE+ 90.2%** — Nearly matches ornith (94.5%) and heretic (92.7%) without sacrificing quality
@@ -61,6 +61,6 @@ The initial battery run (262K FP16 KV cache, 3.2 tok/s) produced 16.6% MATH — 
 
 ## Verdict
 
-Holo4 is a **specialist, not a generalist**. It's the best local model for graduate-level science reasoning (GPQA) and competitive on coding and tool use, but its mechanical constraint-following and math scores are weak enough that it can't replace a Qwen3 variant as a daily driver.
+Holo4 is a **specialist, not a generalist**. It's the best of the small local models for graduate-level science reasoning (GPQA) and competitive on coding and tool use, but its mechanical constraint-following and math scores are weak enough that it can't replace a Qwen3 variant as a daily driver.
 
 Not a keeper for general use. Worth keeping as a **GPQA specialist** if you need science-heavy agentic work.

@@ -11,7 +11,8 @@
 | Model | [Origin](../README.md#results-summary) | Accuracy | Notes |
 |---|---|---|---|
 | nous-deepseek-v4-flash (remote) | China | 98.2% | remote baseline |
-| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **94.2%** | **best local** — see [model page](../models/mirai-s-qwen3-8-27b.md) |
+| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **96.4%** | **best local** — thinking on; 167.1 min, 77.2 tok/s. See [model page](../models/nemotron-3.5-bolt-74b-a9b.md) |
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **94.2%** | 2nd local — instruction + agentic leader |
 | **OrcaSAQ-2-27B** (vLLM) | China | **90.8%** | 2nd local — math leader, 262K ctx |
 | swift-qwen3.8-27b | China | 89.2% | best local (previous) |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | 89.0% | thinking-off run |

@@ -1,6 +1,6 @@
 # OrcaSAQ-2-27B [kept]
 
-**TL;DR:** Math + long-context specialist on vLLM. MATH 90.8% (2nd best local). GPQA 43.9% on a full 198-item run (Sep 18 orcarouter stack). OrcaSAQ2 kernel only.
+**TL;DR:** Math + long-context specialist on vLLM. MATH 90.8% (3rd best local). GPQA 43.9% on a full 198-item run (Sep 18 orcarouter stack). OrcaSAQ2 kernel only.
 
 **Origin:** Base weights — **China** (Alibaba Qwen3 lineage, SAQ hybrid attention) · Publisher — **OrcaRouter / Continuum AI Corporation**, publisher country not established
 
