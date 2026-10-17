@@ -2,6 +2,8 @@
 
 **TL;DR:** Best all-rounder kept. MATH 89.2%, best GPQA of the qwen family (50.5%), Instr v2 19/20, perfect refusal, 1.41x faster reasoning than vanilla. Coding a notch behind (87.8%).
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — `ukisai` (Hugging Face), publisher country not established
+
 **Role:** Default — safest safety profile, best math, best GPQA.
 
 ## Results

@@ -2,6 +2,8 @@
 
 **TL;DR:** Strong coder (86.0% HE+), mediocre elsewhere (MATH 81.0, GPQA 35.9). 'Turbo' speed claims did not hold. Token-hungry.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — **DavidAU** (David Belton, Hugging Face merger), publisher country not established
+
 **Status:** tested | **Decision:** strong coder, mediocre elsewhere. The "TURBO / CODER MAX" claims hold for code only; speed is a lie.
 
 | Spec | Value |

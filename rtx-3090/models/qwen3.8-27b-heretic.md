@@ -2,6 +2,8 @@
 
 **TL;DR:** Abliterated writer. Tool-eval 92 and decent coding (92.7% HE+), but 0% harmful refusal with working malware in responses — sandboxed writing only, never agentic.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — community abliterate, publisher country not established
+
 **Role:** Writing/fiction only. Do not expose to untrusted input.
 
 ## Results

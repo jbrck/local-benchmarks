@@ -2,6 +2,8 @@
 
 **TL;DR:** Tiny VRAM, 128K context. Qwen-family-adjacent scores (MATH 85.6, HE+ 89.0) in a small package.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B, ternary-quantized) · Publisher — **PrismML** (USA, Pasadena CA)
+
 **Role:** Tiny VRAM, 128K context — runs where nothing else fits.
 
 ## Results

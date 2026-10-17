@@ -2,6 +2,8 @@
 
 **TL;DR:** Footprint champion. IQ3_S at ~12 GB keeps qwen-family scores (MATH 85.4, HE+ 91.5) — the best score-per-GB in the field.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — **ISTA-DASLab** (Austria, IST Austria)
+
 **Role:** Smallest footprint, long context, vision.
 
 ## Results

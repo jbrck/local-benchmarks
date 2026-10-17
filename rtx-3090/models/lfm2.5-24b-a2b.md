@@ -2,6 +2,8 @@
 
 **TL;DR:** Speed champion. **191 tok/s** — 2.7× Mirai S — from a 2B-active MoE. Wins IFEval outright (84.3 / 89.0%, best local) and ties the reasoning bench at 4× the speed. Loses every knowledge leg: GPQA 50.5%, MMLU 73.6%, MATH 76.4%. Failed the tool-eval safety gate. Best code emission ever recorded here — 99/100 on LiveCodeBench — but only turns that into 61.0%.
 
+**Origin:** Base weights — **USA** (Liquid AI) · Publisher — **Liquid AI** (USA)
+
 | Property | Detail |
 |---|---|
 | Source | [LiquidAI/LFM2.5-24B-A2B](https://huggingface.co/LiquidAI/LFM2.5-24B-A2B) (released 2026-10-13) |

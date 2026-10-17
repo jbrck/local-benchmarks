@@ -2,6 +2,8 @@
 
 **TL;DR:** Rejected. Far below the field on every leg (MATH 48.8%, HE+ 56.1%, GPQA 15.0%). Partial battery only.
 
+**Origin:** Base weights — **USA** (Google DeepMind) · Publisher — **Google DeepMind** (USA)
+
 | Property | Detail |
 |---|---|
 | Source | Google DeepMind |

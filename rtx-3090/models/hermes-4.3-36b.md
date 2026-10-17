@@ -2,6 +2,8 @@
 
 **TL;DR:** Pruned. 36B lost to the 27B qwen pair on every axis (MATH 81.0, HE+ 87.2). Bigger did not beat better.
 
+**Origin:** Base weights — **USA** (Nous Research) · Publisher — **Nous Research** (USA)
+
 **Status:** pruned
 
 ## Results

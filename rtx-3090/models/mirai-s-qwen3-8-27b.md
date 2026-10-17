@@ -2,6 +2,8 @@
 
 **TL;DR:** Best model tested. Tops every leg: MATH 94.2%, HE+ 95.1%, GPQA 69.7%, tool-eval 93, Instr v2 20/20, perfect refusal, LiveCodeBench 76.0% (unbounded reasoning). 2.4 bpw trellis (~11 GB) at 262K context.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B, MoE) · Publisher — `alesha-pro` / Mirai (Hugging Face), publisher country not established
+
 | Property | Detail |
 |---|---|
 | Source | [Mirai S](https://x.com/superalesha/status/2107896192591945829) (tweet) |

@@ -2,6 +2,8 @@
 
 **TL;DR:** Pruned. A coder that can't code: 73.2% HE+ and a CRITICAL sleeper-injection flag in tool-eval (68).
 
+**Origin:** Base weights — **China** (Alibaba Qwen3 coder lineage) · Publisher — **Alibaba** (China)
+
 **Status:** pruned
 
 ## Results

@@ -2,6 +2,8 @@
 
 **TL;DR:** EXL3 engine comparison of the same qwen3.8-27b weights. Scores reflect forced-reasoning mode — not directly comparable to GGUF runs.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — EXL3 engine quant, publisher country not established
+
 **Role:** EXL3 serving variant — same weights as qwen3.8-27b, different engine.
 
 ## Results

@@ -2,6 +2,8 @@
 
 **TL;DR:** 4B agent model at 185 tok/s. Genuine MATH/HE+/tool/reasoning scores (72/71/83/8-of-8) are strong for its size; GPQA/Instr/IFEval rows are artifacts of reasoning-content format, not true capability.
 
+**Origin:** Base weights — **not established** (`spark2_5` architecture, not a Qwen derivative) · Publisher — `XHToken` / `KyleAIers` (Hugging Face), publisher country not established
+
 **Status:** tested | **Decision:** pending — strong coding/math for its size, but reasoning-content format breaks instruction-following bench scripts. Note: scores on GPQA, Instr v2, and similar tests are depressed by the model consuming its token budget on `reasoning_content` before producing an answer in `content` (the field the bench scripts read). True knowledge accuracy is higher than reported scores suggest.
 
 | Spec | Value |

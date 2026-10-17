@@ -2,6 +2,8 @@
 
 **TL;DR:** 2nd-best local coding (94.5% HE+, behind Mirai S 95.1%) and 2nd-best MATH (85.2%) for a 35B A3B MoE, but worst GPQA in the field (34.3%). 64K context cap.
 
+**Origin:** Base weights — **not established** (Ornith-1.5 lineage) · Publisher — **DeepReinforce AI** (`deep-reinforce.com`), publisher country not established
+
 **Role:** Best coding, but heavy and narrow.
 
 ## Results

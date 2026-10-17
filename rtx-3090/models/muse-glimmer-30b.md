@@ -2,6 +2,8 @@
 
 **TL;DR:** Strong writer/generalist, weak coder (62.2% HE+). Solid GPQA (56.6%) once served correctly.
 
+**Origin:** Base weights — **USA** (Meta) · Publisher — **Meta** (USA)
+
 **Status:** tested | **Decision:** strong writer/generalist, weak coder.
 
 | Spec | Value |

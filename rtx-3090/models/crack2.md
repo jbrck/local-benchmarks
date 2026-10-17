@@ -2,6 +2,8 @@
 
 **TL;DR:** Weight-abliterated variant. Keeps tool-eval 86 and Instr 19/20, but HumanEval+ collapsed to 76.2%. Experimental.
 
+**Origin:** Base weights — **China** (Bonsai2 ← Alibaba Qwen3.8-27B) · Publisher — community weight-abliterate, publisher country not established
+
 **Role:** Weight-abliterated Bonsai2 variant. Uncensored, but coding collapsed.
 
 ## Results

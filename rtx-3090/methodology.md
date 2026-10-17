@@ -244,6 +244,19 @@ The `/metrics` endpoint returns `501 not_supported_error` unless the server was 
 
 Every harness already stores `completion_tokens`, `elapsed_s`, and `tokens_per_s` per item. Compute throughput as `sum(completion_tokens) / sum(elapsed_s)` from the result JSON instead of scraping the server. It survives server restarts, needs no flags, and behaves identically on any build. On the LFM2.5 battery this gave 191–193 tok/s on every leg while the metric scrape read zero.
 
+### Record provenance, and define "origin" as base weights
+
+Every model page carries an `**Origin:**` line and the README table has an `Origin` column. **Origin means the country of the model's base weights** — the lab whose pretraining produced them — not the country of the quantizer or merger. Most of this collection is a single Chinese lineage (Alibaba Qwen3.8); an American or European uploader posting a Qwen merge does not make the model American or European.
+
+Establish it in this order:
+
+1. The card's `base_model` field, or an explicit "built on X" sentence. Holo4-27B's card states it is built on Qwen3.8-27B and developed by H Company — that single sentence settles both halves.
+2. The publisher's own site. An About page stating a founding city beats any inference from the company name. (H Company: "Founded in Paris.")
+3. Card metadata architecture strings (`qwen3_5`, `spark2_5`) — good for confirming a lineage, useless for locating a publisher.
+4. If it isn't stated, write `not established`. **Never infer a country from a handle or a company name.** Three rows are marked this way rather than guessed.
+
+Where the publisher's country differs from the base weights', record both — those cells read `China (FR pub.)`. Collapsing it to one value makes the record wrong in one direction or the other.
+
 ### Community merge card claims are unreliable in both directions
 
 Swift's card claimed 1.95x speedup (measured 1.41x). Twin-Turbo (DavidAU) claimed 1/2-to-1/20 thinking tokens (measured +44% MORE thinking, 0.59x wall time). Marketing numbers are directional at best and massaged for hype. Always verify with the reasoning bench before assigning a model to a role based on its card.

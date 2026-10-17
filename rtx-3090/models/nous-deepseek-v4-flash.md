@@ -2,6 +2,8 @@
 
 **TL;DR:** Remote baseline, not local. Tops every raw score (MATH 98.2, HE+ 93.9, GPQA 83.8, tool 93) — the datacenter bar local models chase.
 
+**Origin:** Base weights — **China** (DeepSeek) · Publisher — **DeepSeek** (China), served remotely via the Nous portal — not a local model
+
 **Role:** Remote baseline — shows what a frontier model costs vs local.
 
 ## Results

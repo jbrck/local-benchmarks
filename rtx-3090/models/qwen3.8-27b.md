@@ -2,6 +2,8 @@
 
 **TL;DR:** The baseline every model is judged against. Q5_K_M GGUF; strong everywhere (MATH 86.8, HE+ 91.5, tool 88), beaten only by specialized siblings.
 
+**Origin:** Base weights — **China** (**Alibaba Qwen**) · Publisher — **Alibaba** (China). This is the origin point of the family — every "qwen3.8" derivative below inherits its Chinese provenance
+
 **Role:** Baseline, best coding among the qwen siblings.
 
 ## Results

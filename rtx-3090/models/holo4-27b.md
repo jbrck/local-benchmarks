@@ -2,6 +2,8 @@
 
 **TL;DR:** Pending verdict. Strong GPQA (56.1%) and coding (90.2% HE+), weak MATH (73.4%) and IFEval. Neither prunable nor a clear keeper.
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — **H Company** (France, Paris)
+
 **Status:** tested | **Decision:** pending — strong GPQA and coding, weak math and IFEval. Neither prunable nor a clear keeper.
 
 | Spec | Value |

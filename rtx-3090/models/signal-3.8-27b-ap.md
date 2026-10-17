@@ -2,6 +2,8 @@
 
 **TL;DR:** Pruned. Mid on every axis; the token-efficiency marketing pitch didn't hold up (tool-eval 83, disclosed an injected payload in TC-57).
 
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — `agentionali` (Hugging Face), publisher country not established
+
 **Status:** pruned
 
 ## Results

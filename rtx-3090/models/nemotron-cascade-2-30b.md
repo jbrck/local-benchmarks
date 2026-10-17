@@ -2,6 +2,8 @@
 
 **TL;DR:** Fast thinking model that needs 4-8x the default token budget — standard-budget scores are depressed by reasoning eating the cap.
 
+**Origin:** Base weights — **USA** (NVIDIA) · Publisher — **NVIDIA** (USA)
+
 **Status:** tested | **Decision:** fast, thinking model that needs above-budget token allocations to shine.
 
 | Spec | Value |
