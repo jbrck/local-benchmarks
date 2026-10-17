@@ -8,23 +8,23 @@
 
 ## Results
 
-| Model | Prompt | Instruction | Duration / tokens |
-|---|---|---|---|
-| nous-deepseek-v4-flash (remote) | 86.7% | 90.9% | |
-| exl3-qwen3.8-27b [§](#fn-section) | 80.6% | 85.8% | reasoning forced, higher token count |
-| **Mirai S Qwen3.8-27B** | **78.9%** | **85.1%** | 49 min, 214k tokens, zero server errors |
-| swift-qwen3.8-27b | 79.5% | 85.1% | 91 min, 223k tokens |
-| GSQ-RCO-IQ3_S-mtp | 79.3% | 85.0% | 75 min, 216k tokens |
-| qwen3.8-27b | 77.3% | 83.5% | |
-| bonsai2 (PrismML tern PTQ1_0) | 74.3% | 81.8% | ~65 min, low reason tokens |
-| ornith-1.5-35b-a3b (q4_k_s) | 75.0% | 82.7% | verbose coder |
-| qwen3.8-27b-heretic | 77.1% | 83.3% | |
-| crack2 (abliterated PQ2_0) | 77.3% | 84.2% | best IFEval of the abliterated set |
-| qwen3-coder-30b | 74.3% | 82.0% | |
-| OrcaSAQ-2-27B (vLLM) ‡ | 76.0% | 82.2% | 3.9h, 172k tokens — thinking disabled; 3x improvement over thinking-mode pilot 3.9h, 172k tokens — thinking disabled for IFEval; 3x improvement over thinking-mode pilot |
-| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | 71.5% | 84.9% | 44/541 client timeouts scored as fail |
-| Holo4-27B (Q4_K_M, Q8 KV) | 71.5% | 77.6% | |
-| Spark-X2.5-4B (Q4_K_M) | 68.6% | 75.3% | format artifact |
+| Model | [Origin](../README.md#results-summary) | Prompt | Instruction | Duration / tokens |
+|---|---|---|---|---|
+| nous-deepseek-v4-flash (remote) | China | 86.7% | 90.9% | |
+| exl3-qwen3.8-27b [§](#fn-section) | China | 80.6% | 85.8% | reasoning forced, higher token count |
+| **Mirai S Qwen3.8-27B** | China | **78.9%** | **85.1%** | 49 min, 214k tokens, zero server errors |
+| swift-qwen3.8-27b | China | 79.5% | 85.1% | 91 min, 223k tokens |
+| GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 79.3% | 85.0% | 75 min, 216k tokens |
+| qwen3.8-27b | China | 77.3% | 83.5% | |
+| bonsai2 (PrismML tern PTQ1_0) | China | 74.3% | 81.8% | ~65 min, low reason tokens |
+| ornith-1.5-35b-a3b (q4_k_s) | not est. | 75.0% | 82.7% | verbose coder |
+| qwen3.8-27b-heretic | China | 77.1% | 83.3% | |
+| crack2 (abliterated PQ2_0) | China | 77.3% | 84.2% | best IFEval of the abliterated set |
+| qwen3-coder-30b | China | 74.3% | 82.0% | |
+| OrcaSAQ-2-27B (vLLM) ‡ | China | 76.0% | 82.2% | 3.9h, 172k tokens — thinking disabled; 3x improvement over thinking-mode pilot 3.9h, 172k tokens — thinking disabled for IFEval; 3x improvement over thinking-mode pilot |
+| **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | 71.5% | 84.9% | 44/541 client timeouts scored as fail |
+| Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | 71.5% | 77.6% | |
+| Spark-X2.5-4B (Q4_K_M) | not est. | 68.6% | 75.3% | format artifact |
 
 **Scoring:** tool-eval-bench's IFEval plugin checks 25 constraint types (length, word limits, JSON schema, forbidden words, start/end with, case transformation, etc.). Each prompt can carry multiple constraints; instruction-level measures whether each individual constraint was satisfied, prompt-level measures whether all constraints on a prompt were satisfied simultaneously.
 

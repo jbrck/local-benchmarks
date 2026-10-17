@@ -8,12 +8,12 @@
 
 ## Results
 
-| Model | Correct | Thinking tokens (est) | Wall time | vs baseline |
-|---|---|---|---|---|
-| qwen3.8-27b (baseline) | 8/8 | 614 | 29.9s | 1.0x |
-| swift-qwen3.8-27b | 8/8 | 481 (-21.7%) | 21.2s | **1.41x** |
-| Twin-Turbo | 8/8 | 885 (+44%) | 50.5s | 0.59x |
-| Spark-X2.5-4B | 8/8 | 520 | 18.4s | 1.63x | fast 4B; raw JSON confirms all passes
+| Model | [Origin](../README.md#results-summary) | Correct | Thinking tokens (est) | Wall time | vs baseline |
+|---|---|---|---|---|---|
+| qwen3.8-27b (baseline) | China | 8/8 | 614 | 29.9s | 1.0x |
+| swift-qwen3.8-27b | China | 8/8 | 481 (-21.7%) | 21.2s | **1.41x** |
+| Twin-Turbo | not est. | 8/8 | 885 (+44%) | 50.5s | 0.59x |
+| Spark-X2.5-4B | not est. | 8/8 | 520 | 18.4s | 1.63x | fast 4B; raw JSON confirms all passes
 
 **Correctness axis note:** All models score 8/8 on this specific 8-task set — the correctness axis is saturated and cannot rank models. The useful signal is thinking-token count and wall time.
 

@@ -10,15 +10,15 @@
 
 ## Results
 
-| Model | Coding | Reasoning | Tool |
-|---|---|---|---|
-| gpt-oss-20b-mxfp4 | 8/10 | 10/10 | 10/10 |
-| qwen3.8-27b-heretic | 8/10 | 8/10 | 10/10 |
-| qwen3.8-27b | 8/10 | 7/10 | 10/10 |
-| Signal-3.8-27B-AP | 8/10 | 7/10 | 9/10 |
-| Qwen-AgentWorld-35B-A3B | 8/10 | 4/10 | 7/10 |
-| gemma-3-27b-it-qat | 8/10 | 5/10 | **0/10** |
-| mistral-small-3.2-24b | 8/10 | 3/10 | 10/10 |
+| Model | [Origin](../README.md#results-summary) | Coding | Reasoning | Tool |
+|---|---|---|---|---|
+| gpt-oss-20b-mxfp4 | USA | 8/10 | 10/10 | 10/10 |
+| qwen3.8-27b-heretic | China | 8/10 | 8/10 | 10/10 |
+| qwen3.8-27b | China | 8/10 | 7/10 | 10/10 |
+| Signal-3.8-27B-AP | China | 8/10 | 7/10 | 9/10 |
+| Qwen-AgentWorld-35B-A3B | China | 8/10 | 4/10 | 7/10 |
+| gemma-3-27b-it-qat | USA | 8/10 | 5/10 | **0/10** |
+| mistral-small-3.2-24b | France | 8/10 | 3/10 | 10/10 |
 
 **Why the pruned models lost (from full battery data):**
 

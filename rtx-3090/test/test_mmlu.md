@@ -8,9 +8,9 @@
 
 ## Results
 
-| Model | Accuracy | Notes |
-|---|---|---|
-| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | **87.0%** (435/500) | thinking on; author claims 89.8% — not reproduced on this sample |
+| Model | [Origin](../README.md#results-summary) | Accuracy | Notes |
+|---|---|---|---|
+| **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **87.0%** (435/500) | thinking on; author claims 89.8% — not reproduced on this sample |
 
 ## Subject breakdown
 
