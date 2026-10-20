@@ -7,7 +7,7 @@ The results here were produced by automating the full test lifecycle through an 
 The test pipeline works in stages:
 
 1. **Smoke screening** — every candidate model runs a quick 35-task battery (~30 minutes). Models that pass proceed to the full battery.
-2. **Full battery** — MATH-500 + HumanEval+ (the primary verdict), then GPQA-Diamond and IFEval as secondary axes, then tool-eval-bench for agentic capability.
+2. **Full battery** — MATH-500 + HumanEval+ (the primary verdict), then GPQA-Diamond and IFEval as secondary axes, then tool-eval-bench for agentic capability, then HermesAgent-20 for agentic *harness* behavior.
 3. **Specialized probes** — instruction-following v2 (mechanical constraint obedience), refusal battery (safety alignment), reasoning bench (thinking-token efficiency).
 4. **Serving comparisons** — speculative decode A/B (MTP vs DFlash2), context ceiling, engine comparisons (llama.cpp GGUF vs exllamav3).
 
@@ -83,6 +83,7 @@ A swap takes roughly 1-2 minutes depending on model size (5-21 GB files). The ag
 | GPQA-Diamond | Direct runner | Last `\boxed{letter}` in output (free-form response, 4-choice questions) |
 | IFEval | tool-eval-bench plugin | 25 mechanical constraint types checked programmatically — no judge |
 | Tool-eval-bench | tool-eval-bench full runner | 69 multi-turn agentic scenarios, per-scenario pass/partial/fail with safety warnings |
+| HermesAgent-20 | benchlocal-cli (sandboxed) | 20 scenarios driving a real Hermes Agent runtime in Docker; runtime artifacts graded deterministically, per-scenario 0–1, runaway and token spend recorded |
 | Instruction v2 | Direct runner | 20 single-constraint mechanical checks — exact word, word count, no-letter-e, JSON schema, etc. |
 | Refusal battery | Direct runner | Pattern-based REFUSE/COMPLY classification across 70 prompts in three tiers |
 | Reasoning bench | Direct runner | Thinking-token estimation from `reasoning_content` field, wall time, correctness |
@@ -143,6 +144,8 @@ Same hardware, same engine (llama.cpp), same quantized model files (available on
 - tool-eval-bench: [github.com/SeraphimSerapis/tool-eval-bench](https://github.com/SeraphimSerapis/tool-eval-bench) (includes IFEval plugin)
 
 All harnesses accept `BENCH_API_BASE` to target your own endpoint. Model files cited in each test's notes are the specific quantizations tested — exact filenames on HuggingFace.
+
+**The per-model battery scripts in the agent workspace are snapshots, not sources.** Files like `run_lfm2_battery.sh`, `run_holo4_battery.sh` and `run_spark_battery.sh` were copied from the template on their run date and then frozen. They do not carry legs added later — none of them include HermesAgent-20. The canonical, current battery is `skills/devops/badger-local-model-benchmark/templates/run_battery.sh`. Copy from the template, never from a previous model's script, or the new leg silently goes missing.
 
 ## Special considerations
 
@@ -278,3 +281,15 @@ On vLLM with `REASONING_PARSER=qwen3` enabled, the model outputs `[think]...[/th
 IFEval run with no `--no-think` flag and default timeout: the model entered thinking mode, generated reasoning indefinitely (no visible output), and the first request appeared stuck for 47 minutes. The log showed no progress because Rich terminal output buffers differently without a PTY.
 
 **Fix:** Always pair `--no-think` with `--no-live` for IFEval on thinking models. Validate with a 3-prompt pilot (with vs without thinking) before committing to the full 541-prompt run.
+
+### HermesAgent-20 grades a runtime, so the harness is part of the result
+
+Unlike every other leg here, this one boots a real agent runtime in a Docker sandbox and grades the files it wrote. That moves several things from "harness detail" to "part of the score."
+
+- **The top-level `thinking_enabled` field lies.** It echoes the CLI override, which is absent, so it reads `false` on a run where thinking is genuinely on. Read resolved state from `packs[].thinking_enabled` and `sampling_params.chat_template_kwargs.enable_thinking`. This pack defaults thinking on and the runner forces it; verified `true` from a live result JSON.
+- **Sampling under this harness is greedy** — `temperature: 0, top_p: 1, max_tokens: 16384`. Model cards in this collection often specify different sampling (Tess-4.5-27B's card asks for `temperature: 1.0, top_p: 0.95, top_k: 20`). A score produced under card sampling is **not** comparable to a row in this table, and a harness score is not a verification of a card's claim unless the sampling matches.
+- **`--enable-sandboxed-packs` is mandatory.** Without it the pack is a stub, the scenarios dispatch to nothing, and the run finishes cleanly having tested nothing.
+- **An unpinned agent is a confound.** BenchLocal's own release notes attribute an early scoring artifact to an unpinned agent in the verifier. The sandbox image here bakes Hermes Agent at commit `44cdf55`; re-baking on a different commit changes the harness, not the model, and results across images are not directly comparable.
+- **A `runaway` count belongs next to every score.** This leg's purpose is finding models that return useful agent behavior without burning tokens. A model that scores well by failing to terminate is not a usable agent, and a score quoted without its runaway count and token spend is unreadable.
+- **Queueing on a single-slot server looks like a runaway.** Do not start this leg while another client is mid-generation; server-side request queueing reads as a model that will not stop.
+- **`/health` returns `ok` on a wedged slot.** Verify readiness with an actual round trip, not the health endpoint.
