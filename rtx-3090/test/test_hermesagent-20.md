@@ -15,6 +15,7 @@
 | Model | Origin | Score | Scenarios | Runaway | Tokens | Wall | Notes |
 |---|---|---|---|---|---|---|---|
 | Tess-4.5-27B (Q6_K) | China | 1.0 on 2 of 20 | 2 | 0 | 3,676 / 26,168 | 20.9 s / 114.8 s | partial — HA-01 and HA-02 only, integration smoke |
+| Nanbeige4.3-33B (Q4_K_S) | China | 15/20 (75%) pass@k | 20 | 0 | 554,338 | 56.8 min | strict-totals grading 12/20; thinking disabled |
 
 Blank means not run. The backfill plan lives in `hermes/docs/benchmarks/hermesagent-20-backfill-plan.md`.
 

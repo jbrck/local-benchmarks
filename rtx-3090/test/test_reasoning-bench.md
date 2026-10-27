@@ -14,6 +14,7 @@
 | swift-qwen3.8-27b | China | 8/8 | 481 (-21.7%) | 21.2s | **1.41x** |
 | Twin-Turbo | not est. | 8/8 | 885 (+44%) | 50.5s | 0.59x |
 | Spark-X2.5-4B | not est. | 8/8 | 520 | 18.4s | 1.63x | fast 4B; raw JSON confirms all passes
+| Nanbeige4.3-33B (Q4_K_S) | China | 8/8 | 1,122 (+83%) | 53.8s | 0.56x | 34.6 tok/s decode
 
 **Correctness axis note:** All models score 8/8 on this specific 8-task set — the correctness axis is saturated and cannot rank models. The useful signal is thinking-token count and wall time.
 

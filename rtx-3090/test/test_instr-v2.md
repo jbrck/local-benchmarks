@@ -17,6 +17,7 @@
 | qwen3.8-27b-heretic | China | 18/20 (90%) | |
 | crack2 (abliterated PQ2_0) | China | **19/20 (95%)** | |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 18/20 (90%) | |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | 17/20 (85%) | |
 | **Muse Glimmer 30B** | USA | **15/20 (75%)** [¶](#fn-para) | Good — clears constraints on most tasks. 3 letter-e failures, 1 two-words failure, 1 exact-word failure |
 | **Nemotron Cascade 2 30B A3B** | USA | **9/20 (45%)** [¶](#fn-para) | Depressed — burned budget on reasoning, left content empty or incomplete on 11 tasks |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **20/20 (100%)** | |

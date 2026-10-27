@@ -16,6 +16,7 @@
 | **Muse Glimmer 30B** (Q4_K_M) | USA | **56.6%** | |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | **56.1%** | |
 | OrcaSAQ-2-27B (vLLM) [†](#fn-stuck) | China | ~55.0%\* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | 52.5% | 35.1 min |
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | USA | 54.0% | |
 | swift-qwen3.8-27b | China | 50.5% | 136 average tokens (half of the next closest) |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 48.0% | |

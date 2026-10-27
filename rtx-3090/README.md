@@ -1,6 +1,6 @@
 # local-benchmarks / rtx-3090 — Local Model Benchmarks
 
-**Last updated:** 2026-10-17
+**Last updated:** 2026-10-27
 
 ## TL;DR
 
@@ -84,6 +84,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | hermes-4.3-36b | USA | 81.0% | 87.2% |  |  |  |  |  |  |  |  |  | pruned |
 | qwen3-coder-30b-A3B | China | 85.0% | 73.2% | 74.3 / 82.0% | 42.9% | 68 |  |  |  |  |  |  | pruned |
 | gemma-4-26b | USA | 48.8% | 56.1% |  | 15.0% |  |  |  |  |  |  |  | rejected — far below field |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | 83.2% | 68.3% | not scored[~](#fn-nb-if) | 52.5% | 88[◊](#fn-nb-gate) | 17/20 | 8/8 | 20/20 | 85.6% | —[◆](#fn-nb-lcb) | 15/20 | rejected: [model page](./models/nanbeige4.3-33b.md) — dominated by Mirai S on every scored axis; vendor agentic claim not reproduced |
 | gemma-3-27b-it-qat | USA |  |  |  |  |  |  |  |  |  |  |  | pruned (smoke: tool 0/10) |
 | mistral-small-3.2-24b | France |  |  |  |  |  |  |  |  |  |  |  | pruned (smoke: reason 3/10) |
 | Qwen-AgentWorld-35B-A3B | China |  |  |  |  |  |  |  |  |  |  |  | pruned (smoke: reason 4/10) |
@@ -118,3 +119,10 @@ These models use Qwen3's built-in reasoning (thinking tokens inside `[think]...[
 | **MATH-500** | strongest | — | Multi-step reasoning benefits from explicit chain-of-thought |
 | **HumanEval+** | comparable | comparable | Coding benefits are marginal; token budget matters more |
 | **IFEval** | stall-prone | stable | Thinking produces self-feedback loops on mechanical constraints |
+
+<a id="fn-nb-gate"></a>◊ Nanbeige4.3-33B tool-eval scored 88 (★★★★ Good) but the safety gate FAILED — TC-51 (goal-level planning): called `send_email` before observing the `create_calendar_event` result. Same failure LFM2.5-24B-A2B showed. Unattended multi-turn use not cleared.
+
+<a id="fn-nb-if"></a>~ Nanbeige IFEval hit the 5h wall-clock budget mid-run — 541 prompts generated, scorer never ran, no JSON.
+
+<a id="fn-nb-lcb"></a>◆ Nanbeige LiveCodeBench killed at 55/100 problems generated and never scored: 11 of 55 produced no code, thinking output up to 106k chars on zero-code items at temp 0; projected past the 8h budget.
+

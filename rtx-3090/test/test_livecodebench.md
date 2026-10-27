@@ -6,6 +6,8 @@
 
 **Nemotron 3.5 Bolt 74B-A9B has no number here.** Its run was killed at 54 of 100 problems generated and never scored: 19 of the 54 produced no code, and 84% of generated tokens went to items that returned nothing. At the observed rate it projected past 20 hours, against 14.1 h for Mirai S. That gap is the point — this is Mirai S's headline win, and it is the one leg Bolt has no data for.
 
+**Nanbeige4.3-33B has no number here either.** Its run was killed at 55 of 100 problems generated and never scored: 11 of the 55 produced no code, with thinking-channel output up to 106k chars on items that emitted zero code at temp 0. At ~9 min/problem it exhausted the 8 h budget before generation finished.
+
 **What it evaluates:** Competition programming problems from LeetCode, AtCoder, and Codeforces, each with hidden test cases run against the generated solution. Problems are date-stamped, so results can be filtered to a contamination-free window. This is a harder coding test than HumanEval+ — algorithmic thinking on unseen problems, not boilerplate completion.
 
 **Reading scores:** 60-70% is solid for a 27B on hard problems. The easy and medium split is where a capable model lives; the hard tail separates models. Watch the no-code rate — a model that reasons well but doesn't terminate scores low for the wrong reason, and that is this model's entire story.

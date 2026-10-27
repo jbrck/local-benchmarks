@@ -26,6 +26,11 @@
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | 71.5% | 84.9% | 44/541 client timeouts scored as fail |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | 71.5% | 77.6% | |
 | Spark-X2.5-4B (Q4_K_M) | not est. | 68.6% | 75.3% | format artifact |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | not scored[~](#fn-nb-if) | — | 5h budget hit; 541 prompts generated, scorer never ran |
+
+---
+
+<a id="fn-nb-if">~</a> Leg truncated at the 5h wall-clock budget — all 541 prompts generated but the scoring pass never ran; no JSON, no score.
 
 **Scoring:** tool-eval-bench's IFEval plugin checks 25 constraint types (length, word limits, JSON schema, forbidden words, start/end with, case transformation, etc.). Each prompt can carry multiple constraints; instruction-level measures whether each individual constraint was satisfied, prompt-level measures whether all constraints on a prompt were satisfied simultaneously.
 

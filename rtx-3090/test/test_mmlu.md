@@ -12,6 +12,7 @@
 |---|---|---|---|
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **88.2%** (441/500) [※](#fn-bolt-mmlu) | cap-rescued from 78.4% at the 4096 default; 2nd local was Mirai S |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | 87.0% (435/500) | thinking on; author claims 89.8% — not reproduced on this sample |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | 85.6% (428/500) | thinking on; 4.0 h |
 
 ## Subject breakdown
 

@@ -25,6 +25,7 @@
 | ornith-1.5-35b-a3b (q4_k_s) | not est. | 85.2% | 35B MoE, 21 GB, 64k ctx |
 | qwen3-coder-30b | China | 85.0% | "coder" model, mid math |
 | crack2 (abliterated PQ2_0) | China | 83.6% | 7.2 GB, weight-edit |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | 83.2% | two complete runs: 83.2 / 82.6 (first pass before a process kill, same config) — tight repro |
 | **Muse Glimmer 30B** (Q4_K_M) | USA | 82.6% | |
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | USA | 81.2% | |
 | hermes-4.3-36b | USA | 81.0% | |

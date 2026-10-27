@@ -33,6 +33,7 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | crack2 (abliterated PQ2_0) | China | **76.2%** | severe coding degrade from abliteration |
 | qwen3-coder-30b | China | 73.2% | |
 | Spark-X2.5-4B (Q4_K_M) | not est. | 70.7% | strong for 4B |
+| **Nanbeige4.3-33B** (Q4_K_S) | China | 68.3% | ~20 pts under the 27B class; vendor pitches it as an agentic coder |
 | gpt-oss-20b-mxfp4 | USA | 67.7% | |
 | **Muse Glimmer 30B** (Q4_K_M) | USA | 62.2% | weak coder |
 | gemma-4-26b | USA | 56.1% | rejected |
