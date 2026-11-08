@@ -1,6 +1,6 @@
 # MMLU
 
-**TL;DR:** 500-question sample of the 57-subject exam. Mirai S Qwen3.8-27B scored 87.0% (435/500) — 2.8 points under the author's 89.8% claim, on a different sample. Strong on math, CS, and elementary material; bleeds on medicine, law, and moral reasoning.
+**TL;DR:** Arete-27B now leads this leg at **88.4% (442/500)**, a clean single pass that edges Bolt's cap-rescued 88.2%. Old leader Mirai S scored 87.0% (435/500) — 2.8 points under the author's 89.8% claim, on a different sample. Strong on math, CS, and elementary material; bleeds on medicine, law, and moral reasoning.
 
 **What it evaluates:** The Massive Multitask Language Understanding benchmark — 14,042 multiple-choice questions across 57 subjects (STEM, humanities, social sciences, professional domains). This run samples 500 items. It measures retained knowledge, not reasoning depth: the model either knows the fact or it doesn't. Cheap to run, useful as a knowledge floor.
 
@@ -10,7 +10,8 @@
 
 | Model | [Origin](../README.md#results-summary) | Accuracy | Notes |
 |---|---|---|---|
-| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **88.2%** (441/500) [※](#fn-bolt-mmlu) | cap-rescued from 78.4% at the 4096 default; 2nd local was Mirai S |
+| **Arete-27B** (Q4_K_M) | China (US pub.) | **88.4%** (442/500) | new local leader — clean single pass, no rescue |
+| **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | 88.2% (441/500) [※](#fn-bolt-mmlu) | cap-rescued from 78.4% at the 4096 default; 3rd local now Mirai S |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | 87.0% (435/500) | thinking on; author claims 89.8% — not reproduced on this sample |
 | **Nanbeige4.3-33B** (Q4_K_S) | China | 85.6% (428/500) | thinking on; 4.0 h |
 

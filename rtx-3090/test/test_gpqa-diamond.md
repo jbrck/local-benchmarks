@@ -15,6 +15,7 @@
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **69.7%** | 2nd local |
 | **Muse Glimmer 30B** (Q4_K_M) | USA | **56.6%** | |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | **56.1%** | |
+| **Arete-27B** (Q4_K_M) | China (US pub.) | 55.6% | 5th local — ahead of every 27B but Holo4 (56.1%) |
 | OrcaSAQ-2-27B (vLLM) [†](#fn-stuck) | China | ~55.0%\* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
 | **Nanbeige4.3-33B** (Q4_K_S) | China | 52.5% | 35.1 min |
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | USA | 54.0% | |

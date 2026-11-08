@@ -1,6 +1,6 @@
 # HumanEval+
 
-**TL;DR:** 164 Python coding problems against hidden tests. Local best: Mirai S at 95.1%. Code scores are the most quant-sensitive leg — sub-80 on a 27B model means quant or serving damage.
+**TL;DR:** 164 Python coding problems against hidden tests. Local best: Bolt at 96.3%, with Mirai 2nd (95.1%) and ornith + Arete-27B tied at 94.5%. Code scores are the most quant-sensitive leg — sub-80 on a 27B model means quant or serving damage.
 
 **What it evaluates:** 164 Python programming problems (HumanEval with the evalplus extended test suite — more tests than the original). Generated code is executed against hidden tests, not eyeballed. Measures code generation that actually runs.
 
@@ -15,7 +15,8 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | nous-deepseek-v4-flash | China | 93.9% | remote baseline |
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **96.3%** | **best local** — 44.9 min, 78.3 tok/s |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **95.1%** | 2nd local |
-| ornith-1.5-35b-a3b (q4_k_s) | not est. | **94.5%** | 2nd local coding |
+| ornith-1.5-35b-a3b (q4_k_s) | not est. | **94.5%** | 3rd local — tied with Arete-27B |
+| **Arete-27B** (Q4_K_M) | China (US pub.) | **94.5%** | ties ornith; Nous SFT of Qwen3.8-27B |
 | qwen3.8-27b-heretic | China | 92.7% | |
 | qwen3.8-27b | China | 91.5% | |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 91.5% | 11.8 GB file, full-size score |

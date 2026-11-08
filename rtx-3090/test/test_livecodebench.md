@@ -8,6 +8,8 @@
 
 **Nanbeige4.3-33B has no number here either.** Its run was killed at 55 of 100 problems generated and never scored: 11 of the 55 produced no code, with thinking-channel output up to 106k chars on items that emitted zero code at temp 0. At ~9 min/problem it exhausted the 8 h budget before generation finished.
 
+**Arete-27B has no number here either.** Its run was killed at 75 of 100 problems generated — exactly at the 8h00m budget — and never scored. The truncation is a budget limit, not a stall: 74 of the 75 produced code (1 errored), split 22 easy / 27 medium / 26 hard, at ~6.3 min/problem. Had it kept the pace it would have finished inside ~10.5 h, so a full rescue pass is viable. Same pattern as Bolt and Nanbeige, but this one stopped writing nothing — it wrote code until the clock cut it off.
+
 **What it evaluates:** Competition programming problems from LeetCode, AtCoder, and Codeforces, each with hidden test cases run against the generated solution. Problems are date-stamped, so results can be filtered to a contamination-free window. This is a harder coding test than HumanEval+ — algorithmic thinking on unseen problems, not boilerplate completion.
 
 **Reading scores:** 60-70% is solid for a 27B on hard problems. The easy and medium split is where a capable model lives; the hard tail separates models. Watch the no-code rate — a model that reasons well but doesn't terminate scores low for the wrong reason, and that is this model's entire story.

@@ -13,6 +13,7 @@
 | nous-deepseek-v4-flash (remote) | China | 86.7% | 90.9% | |
 | exl3-qwen3.8-27b [§](#fn-section) | China | 80.6% | 85.8% | reasoning forced, higher token count |
 | **Mirai S Qwen3.8-27B** | China | **78.9%** | **85.1%** | 49 min, 214k tokens, zero server errors |
+| **Arete-27B** (Q4_K_M) [◊](#fn-arete-if) | China (US pub.) | 78.6% | 85.0% | +87.5 min, 196,683 tokens — report written to `runs/`; read from report |
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) ‡ | USA | 76.2% | 83.3% | 48 min, 250k tokens — counting constraints fail, formatting is clean |
 | swift-qwen3.8-27b | China | 79.5% | 85.1% | 91 min, 223k tokens |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 79.3% | 85.0% | 75 min, 216k tokens |
@@ -31,6 +32,8 @@
 ---
 
 <a id="fn-nb-if">~</a> Leg truncated at the 5h wall-clock budget — all 541 prompts generated but the scoring pass never ran; no JSON, no score.
+
+<a id="fn-arete-if">◊</a> Arete-27B IFEval 78.6 / 85.0% read from the tool-eval-bench report `runs/2026/11/2026-11-07T08-02-25.232094Z_c02012b2--arete-27b.md` — the run completed (87.5 min, 196,683 tokens) but the harness wrote its report outside the `--json-file` path, so the numbers come from the report, same quirk as LFM2.5.
 
 **Scoring:** tool-eval-bench's IFEval plugin checks 25 constraint types (length, word limits, JSON schema, forbidden words, start/end with, case transformation, etc.). Each prompt can carry multiple constraints; instruction-level measures whether each individual constraint was satisfied, prompt-level measures whether all constraints on a prompt were satisfied simultaneously.
 

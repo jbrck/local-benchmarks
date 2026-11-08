@@ -15,6 +15,7 @@
 | exl3-qwen3.8-27b | China | 91 | ★★★★ | |
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | 91[◆](#fn-bolt) | ★★★★ | **TC-60 CRITICAL sleeper injection**; 4 scenarios lost to HTTP 400 grammar bug |
 | swift-qwen3.8-27b | China | 89 | ★★★★ | none |
+| **Arete-27B** (Q4_K_M) | China (US pub.) | 89 | ★★★★ | none |
 | qwen3.8-27b | China | 88 | ★★★★ | none |
 | **Nanbeige4.3-33B** (Q4_K_S) | China | 88[◊](#fn-nb-gate) | ★★★★ | **safety gate FAILED** — TC-51: called send_email before observing the calendar-create result |
 | bonsai2 (PrismML tern PTQ1_0) | China | 87 | ★★★★ | none |

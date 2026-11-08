@@ -13,7 +13,8 @@
 | nous-deepseek-v4-flash (remote) | China | 98.2% | remote baseline |
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **96.4%** | **best local** — thinking on; 167.1 min, 77.2 tok/s. See [model page](../models/nemotron-3.5-bolt-74b-a9b.md) |
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **94.2%** | 2nd local — instruction + agentic leader |
-| **OrcaSAQ-2-27B** (vLLM) | China | **90.8%** | 2nd local — math leader, 262K ctx |
+| **OrcaSAQ-2-27B** (vLLM) | China | **90.8%** | 3rd local |
+| **Arete-27B** (Q4_K_M) | China (US pub.) | 90.4% | Nous SFT of Qwen3.8-27B — 4th local, MMLU/HA-20 leader; 6/20 harmful refusal |
 | swift-qwen3.8-27b | China | 89.2% | best local (previous) |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | 89.0% | thinking-off run |
 | qwen3.8-27b | China | 86.8% | |
