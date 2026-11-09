@@ -5,7 +5,7 @@ Results from running standardized LLM benchmarks on local hardware — MATH-500,
 Each system tested gets its own directory:
 
 - [rtx-3090](./rtx-3090/README.md) — RTX 3090, i7-8700K, 64 GB, Ubuntu 24.04
-- [dual-rtx-3080-20gb](./dual-rtx-3080-20gb/README.md) — 2× modded RTX 3080 20 GB, i7-8700K, 256 GiB, Ubuntu 24.04
+- [dual-rtx-3080-20gb](./dual-rtx-3080-20gb/README.md) — 2× modded RTX 3080 20 GB, 2× Xeon Gold 6138, 262 GiB, Ubuntu 24.04
 
 Devices are added as they're tested.
 

@@ -15,8 +15,8 @@ The whole battery ran with thinking off (this model's default here). The one leg
 | Component | Detail |
 |---|---|
 | GPU | 2× NVIDIA GeForce RTX 3080 20 GB (modded, no ECC) |
-| CPU | Intel Core i7-8700K @ 3.70 GHz (6 cores / 12 threads) |
-| RAM | 256 GiB |
+| CPU | 2× Intel Xeon Gold 6138 @ 2.00 GHz (20 cores / 40 threads each, 80 threads total) |
+| RAM | 262 GiB |
 | OS | Ubuntu 24.04.4 LTS |
 | Inference engine | Strata 0.1.57 (CUDA 13) + DFlash2 speculative decode |
 | Model pack | Qwen3.8-Flash-Next IQ3_XXS (75.8 GB), 125B MoE / 6B active, 64K ctx, int8 KV |
