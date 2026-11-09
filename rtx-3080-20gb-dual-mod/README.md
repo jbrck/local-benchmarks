@@ -1,6 +1,6 @@
 # local-benchmarks / rtx-3080-20gb-dual-mod — Local Model Benchmarks
 
-**Last updated:** 2026-11-08
+**Last updated:** 2026-11-09
 
 ## TL;DR
 

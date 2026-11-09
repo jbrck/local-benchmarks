@@ -1,6 +1,6 @@
 # Local Benchmarks
 
-Results from running standardized LLM benchmarks on local hardware — MATH-500, HumanEval+, MMLU, LiveCodeBench, GPQA-Diamond, IFEval, tool-eval-bench, prose ELO, and more.
+Results from running standardized LLM benchmarks on local hardware — MATH-500, HumanEval+, MMLU, LiveCodeBench, GPQA-Diamond, IFEval, tool-eval-bench, HermesAgent-20, refusal, instruction following, and speculative decode comparisons.
 
 Each system tested gets its own directory:
 
@@ -15,4 +15,4 @@ Prose and benchmark data are licensed under [CC BY 4.0](https://creativecommons.
 
 If you cite this work:
 
-> Justin Brock, *Local Benchmarks — RTX 3090*, 2026. https://github.com/jbrck/local-benchmarks
+> Justin Brock, *Local Benchmarks*, 2026. https://github.com/jbrck/local-benchmarks
