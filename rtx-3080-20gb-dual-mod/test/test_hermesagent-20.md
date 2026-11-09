@@ -7,7 +7,7 @@
 ## Results
 
 | Model |  Origin |  Score |  Scenarios |  Runaway |  Tokens |  Wall |  Notes |
-|---|---|--|--|--|--|--|--|--|
+|---|---|---|---|---|---|---|---|
 | **Qwen3.8-Flash-Next** (IQ3_XXS, 6B active) | China (AT pub.) | 13/20 (65%) pass@1; 14/20 (70%) pass@k[‡](#fn-dagger) | 20 | 0 | 469,498 | 13.2 min | thinking forced off; p50 turn 21.6 s; 1 flaky credited, 7 retried
 
 **Hardware:** 2× modded RTX 3080 20 GB — 2× Intel Xeon Gold 6138, 262 GiB, Ubuntu 24.04 — Strata 0.1.57 + DFlash2.

@@ -7,7 +7,7 @@
 ## Results
 
 | Model |  Origin |  Score |  Est. thinking tokens |  Wall |  Note |
-|---|---|--|--|--|--|--|
+|---|---|---|---|---|---|
 | **Qwen3.8-Flash-Next** (IQ3_XXS, 6B active) | China (AT pub.) | 8/8 | 589 | 13.8 s | 78.5 tok/s; 0.2 min
 
 **Hardware:** 2× modded RTX 3080 20 GB — 2× Intel Xeon Gold 6138, 262 GiB, Ubuntu 24.04 — Strata 0.1.57 + DFlash2.

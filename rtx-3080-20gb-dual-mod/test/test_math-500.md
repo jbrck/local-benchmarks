@@ -7,7 +7,7 @@
 ## Results
 
 | Model |  Origin |  Accuracy |  Notes |
-|---|---|--|--|--|
+|---|---|---|---|
 | **Qwen3.8-Flash-Next** (IQ3_XXS, 6B active) | China (AT pub.) | **91.0%** (455/500)[†](#fn-thinkon) | thinking-on rerun (1h02m, avg 922 tok/item); thinking-off baseline 83.2% (416/500)
 
 <a id="fn-thinkon">†</a> Thinking-on rerun 2026-11-09; battery default is thinking-off. Token cap 4096 for reasoning room.
