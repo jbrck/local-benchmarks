@@ -16,6 +16,7 @@
 | Spark-X2.5-4B | not est. | 8/8 | 520 | 18.4s | 1.63x | fast 4B; raw JSON confirms all passes
 | Nanbeige4.3-33B (Q4_K_S) | China | 8/8 | 1,122 (+83%) | 53.8s | 0.56x | 34.6 tok/s decode
 | **Arete-27B** (Q4_K_M) | China (US pub.) | 8/8 | 0 (content chain, no hidden `[think]`) | 53.7s | 0.56x | 32.1 tok/s decode |
+| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 8/8 | not recorded | 12 s | not run against the baseline |
 
 **Correctness axis note:** All models score 8/8 on this specific 8-task set — the correctness axis is saturated and cannot rank models. The useful signal is thinking-token count and wall time.
 

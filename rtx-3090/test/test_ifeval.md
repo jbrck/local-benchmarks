@@ -15,6 +15,7 @@
 | **Mirai S Qwen3.8-27B** | China | **78.9%** | **85.1%** | 49 min, 214k tokens, zero server errors |
 | **Arete-27B** (Q4_K_M) [◊](#fn-arete-if) | China (US pub.) | 78.6% | 85.0% | +87.5 min, 196,683 tokens — report written to `runs/`; read from report |
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) ‡ | USA | 76.2% | 83.3% | 48 min, 250k tokens — counting constraints fail, formatting is clean |
+| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 78.7% | 83.0% | 80.3 min, 759,878 tokens |
 | swift-qwen3.8-27b | China | 79.5% | 85.1% | 91 min, 223k tokens |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 79.3% | 85.0% | 75 min, 216k tokens |
 | qwen3.8-27b | China | 77.3% | 83.5% | |

@@ -15,6 +15,7 @@
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **94.2%** | 2nd local — instruction + agentic leader |
 | **OrcaSAQ-2-27B** (vLLM) | China | **90.8%** | 3rd local |
 | **Arete-27B** (Q4_K_M) | China (US pub.) | 90.4% | Nous SFT of Qwen3.8-27B — 4th local, MMLU/HA-20 leader; 6/20 harmful refusal |
+| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 95.6%[†](../README.md#fn-inkling-math) | **regraded offline, not comparable with the rows around it** — 42.8% on the strict `\boxed{}` grader. Thinking on; 48.0 min, 172.9 tok/s. [model page](../models/inkling-2-mini-maya.md) |
 | swift-qwen3.8-27b | China | 89.2% | best local (previous) |
 | **Coder390-EfficientThink** (Q3LynnStyle-Q8MTP) | China | 89.0% | thinking-off run |
 | qwen3.8-27b | China | 86.8% | |

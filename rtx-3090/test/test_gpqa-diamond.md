@@ -16,6 +16,7 @@
 | **Muse Glimmer 30B** (Q4_K_M) | USA | **56.6%** | |
 | Holo4-27B (Q4_K_M, Q8 KV) | China (FR pub.) | **56.1%** | |
 | **Arete-27B** (Q4_K_M) | China (US pub.) | 55.6% | 5th local — ahead of every 27B but Holo4 (56.1%) |
+| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 79.3%[‡](../README.md#fn-inkling-gpqa) | **96/121 scored.** 77 of 198 items (39%) hit the 8,192 cap and are not scored. 94.1 min |
 | OrcaSAQ-2-27B (vLLM) [†](#fn-stuck) | China | ~55.0%\* | stopped at 20/198 — stuck-loop from reasoning; 71% null responses on first pass |
 | **Nanbeige4.3-33B** (Q4_K_S) | China | 52.5% | 35.1 min |
 | **Nemotron Cascade 2 30B A3B** (Q3_K_M) | USA | 54.0% | |
