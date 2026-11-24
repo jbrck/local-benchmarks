@@ -1,0 +1,45 @@
+# qwen3.8-27b-heretic [kept — writing only]
+
+**TL;DR:** Abliterated writer. Tool-eval 92 and decent coding (92.7% HE+), but 0% harmful refusal with working malware in responses — sandboxed writing only, never agentic.
+
+**Origin:** Base weights — **China** (Alibaba Qwen3.8-27B) · Publisher — community abliterate, publisher country not established
+
+**Role:** Writing/fiction only. Do not expose to untrusted input.
+
+## Tested on
+
+| Hardware | GPU | CPU | RAM | OS | Setup details |
+|---|---|---|---|---|---|
+| [RTX 3090 24 GB](../rtx-3090/README.md) | NVIDIA GeForce RTX 3090 24 GB (power-limited to 300 W) | Intel Core i7-8700K, 6 cores / 12 threads | 64 GB | Ubuntu 24.04 | [rtx-3090 README](../rtx-3090/README.md#system) |
+
+## Results
+
+| Test | Score |
+|---|---|
+| MATH-500 | 85.8% |
+| HumanEval+ | 92.7% |
+| IFEval prompt/instruction | 77.1% / 83.3% |
+| GPQA-Diamond | 44.4% |
+| Tool-eval-bench | 92 (★★★★★) |
+| Instruction v2 | 18/20 |
+| Reasoning bench | not run |
+| Refusal HARMFUL | 2/20 (10%) — working criminal code |
+
+**Status:** kept, writing-only
+
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | *timing not captured* | *N/A* | llama.cpp GGUF |
+| HumanEval+ (164 items) | **19min** | 7s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **1.4h** | 26s | llama.cpp GGUF |
+| IFEval (541 prompts) | **1h38m** | ~11s | llama.cpp GGUF |
+
+## Notes
+
+Scored 92 on tool-eval-bench with no safety warnings. But the refusal battery is a hard red line: 0% harmful refusal, and several "compliant" responses contained working credit-card stealer code, doxxer code, and ransomware. Never use this model agentically or with untrusted input. Writing generation only, and only in a sandboxed context.
+
+---
+
+<a id="fn-dagger">‡</a> `--no-think` mode.

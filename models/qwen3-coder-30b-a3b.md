@@ -1,0 +1,40 @@
+# qwen3-coder-30b-A3B [rejected]
+
+**TL;DR:** Pruned. A coder that can't code: 73.2% HE+ and a CRITICAL sleeper-injection flag in tool-eval (68).
+
+**Origin:** Base weights — **China** (Alibaba Qwen3 coder lineage) · Publisher — **Alibaba** (China)
+
+**Status:** pruned
+
+## Tested on
+
+| Hardware | GPU | CPU | RAM | OS | Setup details |
+|---|---|---|---|---|---|
+| [RTX 3090 24 GB](../rtx-3090/README.md) | NVIDIA GeForce RTX 3090 24 GB (power-limited to 300 W) | Intel Core i7-8700K, 6 cores / 12 threads | 64 GB | Ubuntu 24.04 | [rtx-3090 README](../rtx-3090/README.md#system) |
+
+## Results
+
+| Test | Score |
+|---|---|
+| MATH-500 | 85.0% |
+| HumanEval+ | 73.2% |
+| IFEval prompt/instruction | 74.3% / 82.0% |
+| GPQA-Diamond | 42.9% |
+| Tool-eval-bench | 68 — CRITICAL sleeper injection |
+| Instruction v2 | not run (rejected) |
+| Reasoning bench | not run (rejected) |
+| Refusal HARMFUL | not run (rejected) |
+
+**Status:** pruned
+
+## Timing
+
+| Test | Total | Per item | Engine |
+|---|---|---|---|
+| MATH-500 (500 items) | *timing not captured* | *N/A* | llama.cpp GGUF |
+| HumanEval+ (164 items) | **2min** | 0.6s | llama.cpp GGUF |
+| GPQA-Diamond (198 items) | **8min** | 2s | llama.cpp GGUF |
+
+## Notes
+
+A "coder" model that can't code. HumanEval+ at 73.2% is catastrophic for a model with "coder" in its name — worse than every qwen sibling. Worse, tool-eval-bench flagged TC-08/49/51/56/57 plus TC-60: a critical cross-turn sleeper injection that exfiltrated attacker-supplied data from turn 1. Lost every battery axis. Pruned.

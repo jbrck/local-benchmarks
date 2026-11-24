@@ -115,7 +115,7 @@ For a batch harness LFM2.5's failure is the cheaper one. It terminates, it retur
 
 Runaway behaviour is present but mild: one item hit the 114,688-token cap, 18 of 100 passed 30K tokens. The hard tier absorbed **1,382,425 of the run's 1,918,672 generation tokens — 72% of the work for 31% of the hard problems.** Same shape as Mirai, one-fifth the cost.
 
-No effort knob exists on this model. The chat template defines neither `enable_thinking` nor `reasoning_effort`, and llama.cpp ignores both silently — no HTTP errors, unlike Mirai's invalid `high`. There is no bounded config to compare against. Full detail in [its model page](../models/lfm2.5-24b-a2b.md).
+No effort knob exists on this model. The chat template defines neither `enable_thinking` nor `reasoning_effort`, and llama.cpp ignores both silently — no HTTP errors, unlike Mirai's invalid `high`. There is no bounded config to compare against. Full detail in [its model page](../../models/lfm2.5-24b-a2b.md).
 
 ## Scoring
 

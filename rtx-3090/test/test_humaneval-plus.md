@@ -17,7 +17,7 @@ Token budget matters: reasoning models spend part of their output budget on chai
 | **Mirai S Qwen3.8-27B** (2.4 bpw trellis) | China | **95.1%** | 2nd local |
 | ornith-1.5-35b-a3b (q4_k_s) | not est. | **94.5%** | 3rd local — tied with Arete-27B |
 | **Arete-27B** (Q4_K_M) | China (US pub.) | **94.5%** | ties ornith; Nous SFT of Qwen3.8-27B |
-| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 92.7% (152/164) | 7 items hit the 8,192 cap. [model page](../models/inkling-2-mini-maya.md) |
+| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 92.7% (152/164) | 7 items hit the 8,192 cap. [model page](../../models/inkling-2-mini-maya.md) |
 | qwen3.8-27b-heretic | China | 92.7% | |
 | qwen3.8-27b | China | 91.5% | |
 | GSQ-RCO-IQ3_S-mtp | China (AT pub.) | 91.5% | 11.8 GB file, full-size score |

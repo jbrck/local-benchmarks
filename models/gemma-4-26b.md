@@ -1,0 +1,30 @@
+# Gemma-4-26B
+
+**TL;DR:** Rejected. Far below the field on every leg (MATH 48.8%, HE+ 56.1%, GPQA 15.0%). Partial battery only.
+
+**Origin:** Base weights — **USA** (Google DeepMind) · Publisher — **Google DeepMind** (USA)
+
+| Property | Detail |
+|---|---|
+| Source | Google DeepMind |
+| Architecture | Dense 26B |
+| Format | GGUF (Q4_K_M, ~15 GB) |
+| Engine | llama.cpp (port 11434) |
+| Context | 8,192 tokens (tested) |
+| VRAM | ~16 GB |
+
+## Tested on
+
+| Hardware | GPU | CPU | RAM | OS | Setup details |
+|---|---|---|---|---|---|
+| [RTX 3090 24 GB](../rtx-3090/README.md) | NVIDIA GeForce RTX 3090 24 GB (power-limited to 300 W) | Intel Core i7-8700K, 6 cores / 12 threads | 64 GB | Ubuntu 24.04 | [rtx-3090 README](../rtx-3090/README.md#system) |
+
+## Partial battery
+
+| Test | Score | Notes |
+|---|---|---|
+| MATH-500 | **48.8%** | Far below 27B qwen family (86-94%). The 26B dense architecture is outperformed by compressed 27B MoEs. |
+| HumanEval+ | **56.1%** | Weak for its size. |
+| GPQA-Diamond | **15.0%** | Near chance on graduate science MCQs. |
+
+Not competitive with any qwen3.8-27B variant. No further testing justified. Marked as rejected.
