@@ -49,6 +49,7 @@ Each benchmark evaluates a specific capability. Full methodology and automation 
 | [Reasoning bench](test/test_reasoning-bench.md) | Thinking-token efficiency and wall time with reasoning enabled | 8 tasks |
 | [Smoke battery](test/test_smoke-battery.md) | Quick screening pass (30 min per model) | 35 tasks |
 | [Speculative decode](test/test_spec-decode-mtp-vs-dflash.md) | MTP vs DFlash2 speed and context ceiling comparison | 3 configs × 4 depths |
+| [Context-depth speed](test/test_context-depth-speed.md) | Decode and prefill speed as the prompt grows, and the deepest prompt the server takes | 6 depths × 2 tasks × 2 trials |
 | [MMLU](test/test_mmlu.md) | Multi-subject knowledge retention across 57 subjects | 500 |
 | [LiveCodeBench](test/test_livecodebench.md) | Competition coding with hidden tests, contamination-free window | 100 |
 | [HermesAgent-20](test/test_hermesagent-20.md) | Agentic harness behavior — drives a real agent runtime in Docker and grades the artifacts it produces | 20 scenarios |

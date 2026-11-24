@@ -48,6 +48,21 @@
 
 Maya's own calibration at 240K context: 129.7 tok/s without drafting, 151.7 with the drafter. Prefill is about 2,000 tok/s on 8K and 32K prompts. 262,144 context does not fit with the drafter (0.11 GiB short), so Maya was served at 240K.
 
+## Decode speed by context depth
+
+Run with the [`ctxspeed` leg](../rtx-3090/test/test_context-depth-speed.md) at Maya's 240K window, prose task, thinking off. Decode falls 40% from 512 to 237K tokens with no cliff.
+
+| Depth (tokens) | Decode tok/s | Prefill tok/s | Time to first token |
+|---|---|---|---|
+| 512 | 123.6 | 1,048 | 0.5 s |
+| 8,192 | 119.5 | 2,091 | 3.9 s |
+| 32,768 | 110.3 | 2,026 | 16.4 s |
+| 65,536 | 101.8 | 1,881 | 35.3 s |
+| 131,072 | 89.4 | 1,637 | 81.5 s |
+| 237,326 | **74.6** | 1,362 | 174.2 s |
+
+Every rung the 240K window allows ran and nothing failed, so the ceiling reported is the served window. 256K, 512K and 1M were held back as past the window and the hardware limit is not measured. Full table, copy-task numbers and caveats: [test page](../rtx-3090/test/test_context-depth-speed.md).
+
 ## Caveats
 
 - **Different weights from llama.cpp runs of this model.** Maya serves the Unsloth UD-Q4_K_XL file. llama.cpp's official quant (`ggml-org` IQ4_NL) is a different file, so quality is not like-for-like between the two stacks.
