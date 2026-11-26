@@ -61,7 +61,9 @@ Run with the [`ctxspeed` leg](../rtx-3090/test/test_context-depth-speed.md) at M
 | 131,072 | 89.4 | 1,637 | 81.5 s |
 | 237,326 | **74.6** | 1,362 | 174.2 s |
 
-Every rung the 240K window allows ran and nothing failed, so the ceiling reported is the served window. 256K, 512K and 1M were held back as past the window and the hardware limit is not measured. Full table, copy-task numbers and caveats: [test page](../rtx-3090/test/test_context-depth-speed.md).
+Every rung the 240K window allows ran and nothing failed, so the ceiling reported is the served window.
+
+With a 1M window the model takes a 1,015,652-token prompt and nothing fails, but the same card is slower everywhere (89.5 tok/s at 512 against 123.6) and decode falls to 28.2 tok/s at 262K, 15.6 at 524K and 6.5 at 1M. First token at 1M takes 41 minutes. The hardware limit is still past the window and unmeasured. Full tables for both windows, copy-task numbers and caveats: [test page](../rtx-3090/test/test_context-depth-speed.md).
 
 ## Caveats
 

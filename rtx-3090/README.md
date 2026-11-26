@@ -49,7 +49,7 @@ Each benchmark evaluates a specific capability. Full methodology and automation 
 | [Reasoning bench](test/test_reasoning-bench.md) | Thinking-token efficiency and wall time with reasoning enabled | 8 tasks |
 | [Smoke battery](test/test_smoke-battery.md) | Quick screening pass (30 min per model) | 35 tasks |
 | [Speculative decode](test/test_spec-decode-mtp-vs-dflash.md) | MTP vs DFlash2 speed and context ceiling comparison | 3 configs × 4 depths |
-| [Context-depth speed](test/test_context-depth-speed.md) | Decode and prefill speed as the prompt grows, and the deepest prompt the server takes | 6 depths × 2 tasks × 2 trials |
+| [Context-depth speed](test/test_context-depth-speed.md) | Decode and prefill speed as the prompt grows, and the deepest prompt the server takes | 6 depths (240K window), 8 depths (1M window) × 2 tasks × 2 trials |
 | [MMLU](test/test_mmlu.md) | Multi-subject knowledge retention across 57 subjects | 500 |
 | [LiveCodeBench](test/test_livecodebench.md) | Competition coding with hidden tests, contamination-free window | 100 |
 | [HermesAgent-20](test/test_hermesagent-20.md) | Agentic harness behavior — drives a real agent runtime in Docker and grades the artifacts it produces | 20 scenarios |
@@ -67,7 +67,7 @@ Blank cells mean the model was pruned before running that test (smoke battery ca
 | **Nemotron 3.5 Bolt 74B-A9B** (IQ2_XXS, 9B active) | USA | **96.4%** | **96.3%** | 76.2 / 83.3%[‡](#fn-dagger) | **77.8%** | 91[◆](#fn-bolt) | 19/20 |  |  | 88.2%[※](#fn-bolt-mmlu) | —[◆](#fn-bolt) |  | tested: leads 3 of 8 legs (MMLU ceded to Arete); **tool safety gate failed**; LCB killed at 54/100 |
 | **LFM2.5-24B-A2B** (Q4_K_M, 2B active MoE) | USA | 76.4% | 91.5% | **84.3 / 89.0%** | 50.5% | 84 [◊](#fn-lfm) | 15/20 | 8/8 | 20/20 | 73.6% | 61.0% |  | tested: **191 tok/s speed champ**, best IFEval; **tool safety gate failed** |
 | **Arete-27B** (Q4_K_M) | China (US pub.) | 90.4% | 94.5% | 78.6 / 85.0%[◊](#fn-arete-if) | 55.6% | 89 | 19/20 | 8/8 | **6/20** | **88.4%** | —[~](#fn-arete-lcb) | 17/20 | tested: **MMLU leader**; best HermesAgent-20; **refusal FAIL** (6/20 harmful); LCB killed at 75/100 |
-| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 95.6%[※※](#fn-inkling-math) | 92.7% | 78.7 / 83.0% | 79.3%[‡‡](#fn-inkling-gpqa) | 87[◊◊](#fn-inkling-tool) | 20/20 | 8/8 | 19/20 | 76.2% | —[~~](#fn-inkling-lcb) | 14/20 | tested: 173 tok/s decode on Maya, 74.6 tok/s at 237K context ([depth test](test/test_context-depth-speed.md)); MATH-500 is a regrade, see footnote; [model page](../models/inkling-2-mini-maya.md) |
+| **Inkling 2 Mini** (UD-Q4_K_XL, Project Maya) | USA | 95.6%[※※](#fn-inkling-math) | 92.7% | 78.7 / 83.0% | 79.3%[‡‡](#fn-inkling-gpqa) | 87[◊◊](#fn-inkling-tool) | 20/20 | 8/8 | 19/20 | 76.2% | —[~~](#fn-inkling-lcb) | 14/20 | tested: 173 tok/s decode on Maya, 74.6 tok/s at 237K, takes a 1M prompt at 6.5 tok/s ([depth test](test/test_context-depth-speed.md)); MATH-500 is a regrade, see footnote; [model page](../models/inkling-2-mini-maya.md) |
 | **qwen3.8-27b** (GGUF Q5_K_M) | China | 86.8% | 91.5% | 77.3 / 83.5% | 46.0% | 88 | 18/20 | baseline |  |  |  |  | kept |
 | **qwen3.8-27b-heretic** | China | 85.8% | 92.7% | 77.1 / 83.3% | 44.4% | 92 | 18/20 |  | 2/20 |  |  |  | kept, writing |
 | **GSQ-RCO IQ3_S-mtp** | China (AT pub.) | 85.4% | 91.5% | 79.3 / 85.0% | 48.0% | 88 | 18/20 |  |  |  |  |  | kept, footprint |
